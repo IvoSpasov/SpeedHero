@@ -243,17 +243,17 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Data\SpeedHero.Data\SpeedHero.Data.csproj">
-      <Project>{f7aa3411-38cb-4f5e-ac84-5f3b2e7a46a5}</Project>
-      <Name>SpeedHero.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SpeedHero.Data.Common\SpeedHero.Data.Common.csproj">
+    <ProjectReference Include="..\..\Data\SpeedHero.Data.Common\SpeedHero.Data.Common.csproj">
       <Project>{50a73845-1c38-4645-8243-652851380cb3}</Project>
       <Name>SpeedHero.Data.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\SpeedHero.Data.Models\SpeedHero.Data.Models.csproj">
+    <ProjectReference Include="..\..\Data\SpeedHero.Data.Models\SpeedHero.Data.Models.csproj">
       <Project>{50722dd9-0d29-478a-83fa-965b76150943}</Project>
       <Name>SpeedHero.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\SpeedHero.Data\SpeedHero.Data.csproj">
+      <Project>{f7aa3411-38cb-4f5e-ac84-5f3b2e7a46a5}</Project>
+      <Name>SpeedHero.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
