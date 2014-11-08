@@ -3,8 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31010.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{75858AB3-6885-4500-ADBA-4D40BFDC6EFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{4E15E2D4-E17B-4B8F-ADA0-B17DBF71C8A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedHero.Web", "Web\SpeedHero.Web\SpeedHero.Web.csproj", "{DF76D650-062D-4D59-9382-DF1CCC6038E3}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF76D650-062D-4D59-9382-DF1CCC6038E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF76D650-062D-4D59-9382-DF1CCC6038E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF76D650-062D-4D59-9382-DF1CCC6038E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF76D650-062D-4D59-9382-DF1CCC6038E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DF76D650-062D-4D59-9382-DF1CCC6038E3} = {4E15E2D4-E17B-4B8F-ADA0-B17DBF71C8A3}
 	EndGlobalSection
 EndGlobal
