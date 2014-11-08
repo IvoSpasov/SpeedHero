@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\AuditInfo.cs" />
+    <Compile Include="Models\IAuditInfo.cs" />
+    <Compile Include="Models\IDeletableEntity.cs" />
+    <Compile Include="Models\IOrderable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
