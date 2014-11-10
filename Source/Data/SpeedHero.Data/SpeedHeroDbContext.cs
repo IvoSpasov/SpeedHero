@@ -1,12 +1,14 @@
 ﻿namespace SpeedHero.Data
 {
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using SpeedHero.Data.Common.Models;
-    using SpeedHero.Data.Migrations;
-    using SpeedHero.Data.Models;
     using System;
     using System.Data.Entity;
     using System.Linq;
+
+    using Microsoft.AspNet.Identity.EntityFramework;
+
+    using SpeedHero.Data.Common.Models;
+    using SpeedHero.Data.Migrations;
+    using SpeedHero.Data.Models;
 
     public class SpeedHeroDbContext : IdentityDbContext<User>
     {

@@ -6,8 +6,6 @@
     using System.Data.Entity.Infrastructure;
     using System.Linq;
 
-    //using ForumSystem.Data.Common.Repository;
-
     public class GenericRepository<T> : IRepository<T> where T : class
     {
         public GenericRepository(DbContext context)

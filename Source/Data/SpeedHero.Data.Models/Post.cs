@@ -1,9 +1,10 @@
 ﻿namespace SpeedHero.Data.Models
 {
-    using SpeedHero.Data.Common.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
+    using SpeedHero.Data.Common.Models;
 
     public class Post : AuditInfo, IDeletableEntity
     {
@@ -34,10 +35,10 @@
             set { this.comments = value; }
         }
 
-        // TODO Post also have Tags... Implement later?
-
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+        
+        // TODO Post also have Tags... Implement later?
     }
 }

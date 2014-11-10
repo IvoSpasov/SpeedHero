@@ -1,9 +1,9 @@
-﻿
-namespace SpeedHero.Data.Models
+﻿namespace SpeedHero.Data.Models
 {
-    using SpeedHero.Data.Common.Models;
     using System;
     using System.ComponentModel.DataAnnotations;
+
+    using SpeedHero.Data.Common.Models;
 
     public class Comment : AuditInfo
     {

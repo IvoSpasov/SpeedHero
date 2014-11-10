@@ -1,13 +1,15 @@
 ﻿namespace SpeedHero.Data.Models
 {
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using SpeedHero.Data.Common.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
+
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+
+    using SpeedHero.Data.Common.Models;
 
     public class User : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -15,7 +17,6 @@
         // all users may leave comments but not all may create posts. May be there should be another user?
         private ICollection<Post> posts;
         private ICollection<Comment> comments;
-
 
         // This will prevent UserManager.CreateAsync from causing exception
         public User()
@@ -53,6 +54,7 @@
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+
             // Add custom user claims here
             return userIdentity;
         }

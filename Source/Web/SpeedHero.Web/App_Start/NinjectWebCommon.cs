@@ -4,15 +4,16 @@
 namespace SpeedHero.Web.App_Start
 {
     using System;
+    using System.Data.Entity;
     using System.Web;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
     using Ninject.Web.Common;
-    using SpeedHero.Data.Common.Repository;
-    using System.Data.Entity;
+
     using SpeedHero.Data;
+    using SpeedHero.Data.Common.Repository;
 
     public static class NinjectWebCommon 
     {
