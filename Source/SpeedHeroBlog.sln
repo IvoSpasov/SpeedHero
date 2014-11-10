@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedHero.Data.Common", "Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedHero.Data.Models", "Data\SpeedHero.Data.Models\SpeedHero.Data.Models.csproj", "{50722DD9-0D29-478A-83FA-965B76150943}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedHero.Web.Infrastructure", "SpeedHero.Web.Infrastructure\SpeedHero.Web.Infrastructure.csproj", "{DD67AD55-0488-454C-AAAF-D492146CC17B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{50722DD9-0D29-478A-83FA-965B76150943}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50722DD9-0D29-478A-83FA-965B76150943}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50722DD9-0D29-478A-83FA-965B76150943}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD67AD55-0488-454C-AAAF-D492146CC17B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD67AD55-0488-454C-AAAF-D492146CC17B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD67AD55-0488-454C-AAAF-D492146CC17B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD67AD55-0488-454C-AAAF-D492146CC17B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,5 +52,6 @@ Global
 		{F7AA3411-38CB-4F5E-AC84-5F3B2E7A46A5} = {75858AB3-6885-4500-ADBA-4D40BFDC6EFB}
 		{50A73845-1C38-4645-8243-652851380CB3} = {75858AB3-6885-4500-ADBA-4D40BFDC6EFB}
 		{50722DD9-0D29-478A-83FA-965B76150943} = {75858AB3-6885-4500-ADBA-4D40BFDC6EFB}
+		{DD67AD55-0488-454C-AAAF-D492146CC17B} = {4E15E2D4-E17B-4B8F-ADA0-B17DBF71C8A3}
 	EndGlobalSection
 EndGlobal
