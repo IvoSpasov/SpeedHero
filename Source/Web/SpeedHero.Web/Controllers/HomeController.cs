@@ -33,7 +33,7 @@
                 .Project()
                 .To<PostViewModel>();
 
-            return View(posts);
+            return this.View(posts);
         }
     }
 }

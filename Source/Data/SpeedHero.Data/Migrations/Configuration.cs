@@ -6,7 +6,7 @@ namespace SpeedHero.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationsEnabled = true;
 
             // TODO: Remove in production
             this.AutomaticMigrationDataLossAllowed = true;
