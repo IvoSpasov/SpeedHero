@@ -5,6 +5,7 @@
     using SpeedHero.Data.Common.Models;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -30,6 +31,8 @@
 
         public DateTime? ModifiedOn { get; set; }
 
+        // for fast db search
+        [Index] 
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }

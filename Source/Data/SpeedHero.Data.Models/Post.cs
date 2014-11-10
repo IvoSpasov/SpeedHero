@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Post : AuditInfo
+    public class Post : AuditInfo, IDeletableEntity
     {
         private ICollection<Comment> comments;
 
@@ -17,6 +17,7 @@
         [Key]
         public int Id { get; set; }
 
+        [MaxLength(70)]
         public string Title { get; set; }
 
         public string AuthorId { get; set; }
@@ -34,5 +35,9 @@
         }
 
         // TODO Post also have Tags... Implement later?
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
     }
 }

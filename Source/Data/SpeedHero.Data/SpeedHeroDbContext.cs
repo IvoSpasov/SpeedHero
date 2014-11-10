@@ -15,6 +15,10 @@
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<SpeedHeroDbContext, Configuration>());
         }
+
+        public IDbSet<Comment> Comments { get; set; }
+
+        public IDbSet<Post> Posts { get; set; }
         
         public static SpeedHeroDbContext Create()
         {
