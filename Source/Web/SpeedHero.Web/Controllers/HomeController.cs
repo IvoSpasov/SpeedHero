@@ -1,8 +1,10 @@
 ﻿namespace SpeedHero.Web.Controllers
 {
+    using AutoMapper.QueryableExtensions;
     using SpeedHero.Data;
     using SpeedHero.Data.Common.Repository;
     using SpeedHero.Data.Models;
+    using SpeedHero.Web.ViewModels.Home;
     using System.Web.Mvc;
 
     public class HomeController : Controller
@@ -25,7 +27,12 @@
 
         public ActionResult Index()
         {
-            return View();
+            var posts = this.posts
+                .All()
+                .Project()
+                .To<PostViewModel>();
+
+            return View(posts);
         }
     }
 }
