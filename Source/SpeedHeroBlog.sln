@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedHero.Data.Common", "Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedHero.Data.Models", "Data\SpeedHero.Data.Models\SpeedHero.Data.Models.csproj", "{50722DD9-0D29-478A-83FA-965B76150943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedHero.Web.Infrastructure", "SpeedHero.Web.Infrastructure\SpeedHero.Web.Infrastructure.csproj", "{DD67AD55-0488-454C-AAAF-D492146CC17B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedHero.Web.Infrastructure", "Web\SpeedHero.Web.Infrastructure\SpeedHero.Web.Infrastructure.csproj", "{DD67AD55-0488-454C-AAAF-D492146CC17B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

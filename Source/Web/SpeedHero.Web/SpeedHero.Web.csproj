@@ -287,7 +287,7 @@
       <Project>{f7aa3411-38cb-4f5e-ac84-5f3b2e7a46a5}</Project>
       <Name>SpeedHero.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\SpeedHero.Web.Infrastructure\SpeedHero.Web.Infrastructure.csproj">
+    <ProjectReference Include="..\SpeedHero.Web.Infrastructure\SpeedHero.Web.Infrastructure.csproj">
       <Project>{dd67ad55-0488-454c-aaaf-d492146cc17b}</Project>
       <Name>SpeedHero.Web.Infrastructure</Name>
     </ProjectReference>
