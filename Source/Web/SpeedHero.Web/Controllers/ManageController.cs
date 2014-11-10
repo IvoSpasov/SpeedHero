@@ -10,7 +10,7 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
 
-    using SpeedHero.Web.Models;
+    using SpeedHero.Web.ViewModels.Manage;
 
     [Authorize]
     public class ManageController : Controller

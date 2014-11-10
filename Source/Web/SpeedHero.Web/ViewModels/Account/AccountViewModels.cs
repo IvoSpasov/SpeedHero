@@ -1,4 +1,4 @@
-﻿namespace SpeedHero.Web.Models
+﻿namespace SpeedHero.Web.ViewModels.Account
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;

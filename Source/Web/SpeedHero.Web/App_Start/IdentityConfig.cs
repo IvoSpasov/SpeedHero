@@ -16,7 +16,6 @@
 
     using SpeedHero.Data;
     using SpeedHero.Data.Models;
-    using SpeedHero.Web.Models;
 
     public class EmailService : IIdentityMessageService
     {
