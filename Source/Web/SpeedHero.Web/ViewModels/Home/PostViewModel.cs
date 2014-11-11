@@ -12,6 +12,8 @@
 
         public string Title { get; set; }
 
+        public string Content { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public virtual User Author { get; set; }
