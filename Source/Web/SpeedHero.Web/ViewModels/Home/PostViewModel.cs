@@ -8,9 +8,13 @@
 
     public class PostViewModel : IMapFrom<Post>
     {
+        public int Id { get; set; }
+
         public string Title { get; set; }
 
         public DateTime CreatedOn { get; set; }
+
+        public virtual User Author { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
     }

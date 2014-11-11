@@ -1,0 +1,10 @@
+﻿@model SpeedHero.Web.ViewModels.Home.PostViewModel
+
+@{
+    ViewBag.Title = "Post";
+}
+
+<h2>@Model.Title</h2>
+<div>by @Model.Author.UserName</div>
+<div>@Model.CreatedOn - @Model.Comments.Count Comments</div>
+
