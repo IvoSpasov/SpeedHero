@@ -19,6 +19,7 @@
         public int Id { get; set; }
 
         [MaxLength(70)]
+        [Required]
         public string Title { get; set; }
 
         public string AuthorId { get; set; }

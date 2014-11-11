@@ -7,7 +7,7 @@
 <div>
     @foreach (var post in Model)
     {
-        <a href="~/Post/Post/@post.Id"><h3>@post.Title</h3></a>
+        <a href="~/Post/ShowPost/@post.Id"><h3>@post.Title</h3></a>
         
         <div>@post.CreatedOn - @post.Comments.Count Comments</div>
     }

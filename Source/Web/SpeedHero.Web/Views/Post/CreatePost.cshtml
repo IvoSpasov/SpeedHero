@@ -1,0 +1,26 @@
+﻿@model SpeedHero.Web.ViewModels.Home.PostViewModel
+
+@{
+    ViewBag.Title = "CreatePost";
+}
+
+<h2>CreatePost</h2>
+
+@using (Html.BeginForm("CreatePost", "Post", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.LabelFor(p => p.Title)
+    @Html.EditorFor(p => p.Title)
+    @Html.ValidationMessageFor(p => p.Title)
+    <br />
+    @Html.LabelFor(p => p.Content)
+    @Html.EditorFor(p => p.Content)
+    @Html.ValidationMessageFor(p => p.Content)
+
+    <input type="submit" />
+    <br />
+    @Html.ValidationSummary()
+    
+    
+}
+

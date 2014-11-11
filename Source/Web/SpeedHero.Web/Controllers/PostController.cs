@@ -5,6 +5,8 @@
 
     using AutoMapper.QueryableExtensions;
 
+    using Microsoft.AspNet.Identity;
+
     using SpeedHero.Data.Common.Repository;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.ViewModels.Home;
@@ -20,7 +22,8 @@
             this.posts = posts;
         }
 
-        public ActionResult Post(int id)
+        [HttpGet]
+        public ActionResult ShowPost(int id)
         {
             var selectedPost = this.posts
                 .All()
@@ -36,6 +39,30 @@
             }
 
             return View(selectedPost);
+        }
+
+        [HttpGet]
+        public ActionResult CreatePost()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreatePost(Post createdPost) // use Post or PostViewModel?
+        {
+            // TODO Check if the user is authenticated
+            var currentUser = this.User.Identity.GetUserId();
+            createdPost.AuthorId = currentUser;
+
+            if (ModelState.IsValid)
+            {
+                this.posts.Add(createdPost);
+                this.posts.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View();
         }
     }
 }
