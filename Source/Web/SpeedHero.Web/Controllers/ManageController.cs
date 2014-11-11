@@ -10,6 +10,7 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
 
+    using SpeedHero.Web.App_Start;
     using SpeedHero.Web.ViewModels.Manage;
 
     [Authorize]

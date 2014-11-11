@@ -10,6 +10,7 @@
     using Microsoft.Owin.Security;
 
     using SpeedHero.Data.Models;
+    using SpeedHero.Web.App_Start;
     using SpeedHero.Web.ViewModels.Account;
 
     [Authorize]

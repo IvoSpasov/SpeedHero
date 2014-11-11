@@ -12,6 +12,7 @@
 
     using SpeedHero.Data;
     using SpeedHero.Data.Models;
+    using SpeedHero.Web.App_Start;
 
     public partial class Startup
     {
