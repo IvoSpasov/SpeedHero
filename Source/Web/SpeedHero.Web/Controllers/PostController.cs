@@ -1,6 +1,8 @@
 ﻿namespace SpeedHero.Web.Controllers
 {
     using System.Linq;
+    using System.IO;
+    using System.Web;
     using System.Web.Mvc;
 
     using AutoMapper.QueryableExtensions;
@@ -10,8 +12,6 @@
     using SpeedHero.Data.Common.Repository;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.ViewModels.Home;
-
-
 
     public class PostController : Controller
     {
@@ -49,8 +49,21 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreatePost(Post createdPost) // use Post or PostViewModel?
+        public ActionResult CreatePost(Post createdPost, HttpPostedFileBase file) // use Post or PostViewModel?
         {
+            if (file != null && file.ContentLength > 0)
+            {
+                string path = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(file.FileName));
+                file.SaveAs(path);
+ 
+                Picture currentPicture = new Picture
+                {
+                    Name = file.FileName,
+                    Path = "/Images/" + file.FileName
+                };
+                createdPost.Pictures.Add(currentPicture);
+            }
+
             // TODO Check if the user is authenticated
             var currentUser = this.User.Identity.GetUserId();
             createdPost.AuthorId = currentUser;

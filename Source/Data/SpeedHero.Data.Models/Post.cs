@@ -9,10 +9,12 @@
     public class Post : AuditInfo, IDeletableEntity
     {
         private ICollection<Comment> comments;
+        private ICollection<Picture> pictures;
 
         public Post()
         {
             this.comments = new HashSet<Comment>();
+            this.pictures = new HashSet<Picture>();
         }
 
         [Key]
@@ -30,16 +32,22 @@
         // What about post cover?
         public string Content { get; set; }
 
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
+
         public virtual ICollection<Comment> Comments
         {
             get { return this.comments; }
             set { this.comments = value; }
         }
 
-        public bool IsDeleted { get; set; }
+        public virtual ICollection<Picture> Pictures
+        {
+            get { return this.pictures; }
+            set { this.pictures = value; }
+        }
 
-        public DateTime? DeletedOn { get; set; }
-        
         // TODO Post also have Tags... Implement later?
     }
 }

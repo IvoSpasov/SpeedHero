@@ -19,5 +19,7 @@
         public virtual User Author { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+
+        public virtual ICollection<Picture> Pictures { get; set; }
     }
 }
