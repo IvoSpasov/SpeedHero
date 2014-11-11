@@ -1,5 +1,6 @@
 ﻿namespace SpeedHero.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
 
     using AutoMapper.QueryableExtensions;
@@ -28,8 +29,10 @@
 
         public ActionResult Index()
         {
+            // TODO Take only the latest posts
             var posts = this.posts
                 .All()
+                .Where(p => p.IsDeleted == false)
                 .Project()
                 .To<PostViewModel>();
 

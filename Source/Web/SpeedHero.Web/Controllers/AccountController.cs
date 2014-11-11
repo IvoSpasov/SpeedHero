@@ -16,6 +16,9 @@
     [Authorize]
     public class AccountController : Controller
     {
+        // Used for XSRF protection when adding external logins
+        private const string XsrfKey = "XsrfId";
+
         private ApplicationSignInManager signInManager;
         private ApplicationUserManager userManager;
 
@@ -416,8 +419,6 @@
         }
 
         #region Helpers
-        // Used for XSRF protection when adding external logins
-        private const string XsrfKey = "XsrfId";
 
         private IAuthenticationManager AuthenticationManager
         {
@@ -470,7 +471,7 @@
                 var properties = new AuthenticationProperties { RedirectUri = this.RedirectUri };
                 if (this.UserId != null)
                 {
-                    properties.Dictionary[XsrfKey] = this.UserId;
+                    properties.Dictionary[AccountController.XsrfKey] = this.UserId;
                 }
 
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, this.LoginProvider);
