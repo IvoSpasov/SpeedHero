@@ -1,14 +1,12 @@
 ﻿namespace SpeedHero.Data.Models
 {
-    public class Picture
+    public class TextPart
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Content { get; set; }
 
-        public string Path { get; set; }
-
-        public int SerialNumber { get; set; }
+        public int SerailNumber { get; set; }
 
         public int PostId { get; set; }
 

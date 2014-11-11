@@ -72,7 +72,7 @@
             {
                 this.posts.Add(createdPost);
                 this.posts.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Index", "Home");
             }
 
             return View();

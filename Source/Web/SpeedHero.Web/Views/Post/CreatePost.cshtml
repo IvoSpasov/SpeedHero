@@ -9,14 +9,12 @@
 @using (Html.BeginForm("CreatePost", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    @Html.LabelFor(p => p.Title)
+    @Html.LabelFor(p => p.Title) <br />
     @Html.EditorFor(p => p.Title)
     @Html.ValidationMessageFor(p => p.Title)
+    
+    
     <br />
-    @Html.LabelFor(p => p.Content)
-    @Html.EditorFor(p => p.Content)
-    @Html.ValidationMessageFor(p => p.Content)
-
     <label for="file">Upload Image:</label>
     <input type="file" name="file" id="file" />
     <br />

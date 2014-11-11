@@ -10,11 +10,13 @@
     {
         private ICollection<Comment> comments;
         private ICollection<Picture> pictures;
+        private ICollection<TextPart> textParts;
 
         public Post()
         {
             this.comments = new HashSet<Comment>();
             this.pictures = new HashSet<Picture>();
+            this.textParts = new HashSet<TextPart>();
         }
 
         [Key]
@@ -28,9 +30,8 @@
 
         public virtual User Author { get; set; }
 
-        // May be this should be a seperate class.. and how and where to hold the pictures?
-        // What about post cover?
-        public string Content { get; set; }
+        // TODO: Remove Content!
+        // public string Content { get; set; }
 
         public bool IsDeleted { get; set; }
 
@@ -46,6 +47,12 @@
         {
             get { return this.pictures; }
             set { this.pictures = value; }
+        }
+
+        public virtual ICollection<TextPart> Textparts
+        {
+            get { return this.textParts; }
+            set { this.textParts = value; }
         }
 
         // TODO Post also have Tags... Implement later?
