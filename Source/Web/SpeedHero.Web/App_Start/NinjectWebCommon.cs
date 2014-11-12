@@ -15,6 +15,7 @@ namespace SpeedHero.Web.App_Start
     using SpeedHero.Data;
     using SpeedHero.Data.Common.Repository;
     using SpeedHero.Data.Models;
+    using SpeedHero.Web.Infrastructure;
 
     public static class NinjectWebCommon 
     {
@@ -70,6 +71,7 @@ namespace SpeedHero.Web.App_Start
             kernel.Bind(typeof(IRepository<Post>)).To(typeof(DeletableEntityRepository<Post>));
             kernel.Bind(typeof(IDeletableEntityRepository<>)).To(typeof(DeletableEntityRepository<>));
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
+            kernel.Bind<ISanitizer>().To<HtmlSanitizerAdapter>();
         }        
     }
 }

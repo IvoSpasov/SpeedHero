@@ -14,14 +14,18 @@
     using SpeedHero.Web.ViewModels.Home;
     using SpeedHero.Web.InputModels.Posts;
     using SpeedHero.Web.ViewModels.Posts;
+using SpeedHero.Web.Infrastructure;
 
     public class PostController : Controller
     {
-        private IRepository<Post> posts;
+        private readonly IRepository<Post> posts;
+        private readonly ISanitizer sanitizer;
 
-        public PostController(IRepository<Post> posts)
+
+        public PostController(IRepository<Post> posts, ISanitizer sanitizer)
         {
             this.posts = posts;
+            this.sanitizer = sanitizer;
         }
 
         [HttpGet]
@@ -61,13 +65,13 @@
                 var post = new Post
                 {
                     Title = inputPost.Title,
-                    Content = inputPost.Content,
+                    Content = this.sanitizer.Sanitize(inputPost.Content),
                     AuthorId = currentUserId
                 };
 
                 this.posts.Add(post);
                 this.posts.SaveChanges();
-                return this.RedirectToAction("Index", "Home");
+                return this.RedirectToAction("ShowPost", new { id = post.Id });
             }
 
             return this.View(inputPost);
