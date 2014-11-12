@@ -12,6 +12,7 @@
     using SpeedHero.Data.Common.Repository;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.ViewModels.Home;
+    using SpeedHero.Web.InputModels.Posts;
 
     public class PostController : Controller
     {
@@ -42,51 +43,48 @@
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult CreatePost()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult CreatePost(Post currentPost, HttpPostedFileBase file, string textPart) // use Post or PostViewModel?
+        public ActionResult CreatePost(PostCreateInputModel inputPost)
         {
-            if (file != null && file.ContentLength > 0)
-            {
-                string path = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(file.FileName));
-                file.SaveAs(path);
- 
-                Picture currentPicture = new Picture
-                {
-                    Name = file.FileName,
-                    Path = "/Images/" + file.FileName,
-                    SerialNumber = 1
-                };
-                currentPost.Pictures.Add(currentPicture);
-            }
-
-
-            TextPart currentTextPart = new TextPart()
-            {
-                Content = textPart,
-                SerailNumber = 1
-            };
-
-            currentPost.TextParts.Add(currentTextPart);
-
-            // TODO Check if the user is authenticated
-            var currentUser = this.User.Identity.GetUserId();
-            currentPost.AuthorId = currentUser;
-
             if (ModelState.IsValid)
             {
-                this.posts.Add(currentPost);
+                var currentUserId = this.User.Identity.GetUserId();
+                var post = new Post
+                {
+                    Title = inputPost.Title,
+                    Content = inputPost.Content,
+                    AuthorId = currentUserId
+                };
+
+                this.posts.Add(post);
                 this.posts.SaveChanges();
-                //return RedirectToAction("Index", "Home");
-                // Redirect to edit page with post id with session...
+                return this.RedirectToAction("Index", "Home");
             }
 
-            return View();
+            return this.View(inputPost);
+
+                        
+            //if (file != null && file.ContentLength > 0)
+            //{
+            //    string path = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(file.FileName));
+            //    file.SaveAs(path);
+
+            //    Picture currentPicture = new Picture
+            //    {
+            //        Name = file.FileName,
+            //        Path = "/Images/" + file.FileName,
+            //        SerialNumber = 1
+            //    };
+            //    inputPost.Pictures.Add(currentPicture);
+            //}
         }
 
         [HttpGet]

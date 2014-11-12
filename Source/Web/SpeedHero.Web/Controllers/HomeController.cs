@@ -29,9 +29,6 @@
 
         public ActionResult Index()
         {
-            this.posts.Delete(24);
-            this.posts.SaveChanges();
-
             // TODO Take only the latest posts
             var posts = this.posts
                 .All()

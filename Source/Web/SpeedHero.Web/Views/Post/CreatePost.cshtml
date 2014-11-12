@@ -1,24 +1,26 @@
-﻿@model SpeedHero.Web.ViewModels.Home.PostViewModel
+﻿@model SpeedHero.Web.InputModels.Posts.PostCreateInputModel
 
 @{
     ViewBag.Title = "Create Post";
 }
 
-<h2>Create Post</h2>
+<h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("CreatePost", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("CreatePost", "Post", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
+    
+    @Html.ValidationSummary()
+    
     @Html.LabelFor(p => p.Title) <br />
-    @Html.EditorFor(p => p.Title)
-    @Html.ValidationMessageFor(p => p.Title)
-    <br />
-    <br />
-    <label for="file">Upload Cover Image:</label>
+    @Html.EditorFor(p => p.Title) <br />
+    @Html.LabelFor(p => p.Content) <br />
+    @Html.EditorFor(p => p.Content) <br />
+    
+    @*<label for="file">Upload Cover Image:</label>
     <input type="file" name="file" id="file" />
+    <br />*@
     <br />
     <input type="submit" value="Create" />
-    <br />
-    @Html.ValidationSummary()
 }
 
