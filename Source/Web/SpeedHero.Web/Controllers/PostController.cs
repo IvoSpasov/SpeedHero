@@ -49,7 +49,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreatePost(Post createdPost, HttpPostedFileBase file) // use Post or PostViewModel?
+        public ActionResult CreatePost(Post currentPost, HttpPostedFileBase file, string textPart) // use Post or PostViewModel?
         {
             if (file != null && file.ContentLength > 0)
             {
@@ -59,21 +59,58 @@
                 Picture currentPicture = new Picture
                 {
                     Name = file.FileName,
-                    Path = "/Images/" + file.FileName
+                    Path = "/Images/" + file.FileName,
+                    SerialNumber = 1
                 };
-                createdPost.Pictures.Add(currentPicture);
+                currentPost.Pictures.Add(currentPicture);
             }
+
+
+            TextPart currentTextPart = new TextPart()
+            {
+                Content = textPart,
+                SerailNumber = 1
+            };
+
+            currentPost.TextParts.Add(currentTextPart);
 
             // TODO Check if the user is authenticated
             var currentUser = this.User.Identity.GetUserId();
-            createdPost.AuthorId = currentUser;
+            currentPost.AuthorId = currentUser;
 
             if (ModelState.IsValid)
             {
-                this.posts.Add(createdPost);
+                this.posts.Add(currentPost);
                 this.posts.SaveChanges();
                 //return RedirectToAction("Index", "Home");
+                // Redirect to edit page with post id with session...
             }
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult EditPost(int id)
+        {
+            var currentPost = this.posts
+                .All()
+                .Where(p => p.Id == id)
+                .Project()
+                .To<PostViewModel>()
+                .FirstOrDefault();
+
+            return View(currentPost);
+        }
+
+        [HttpPost]
+        public ActionResult EditPost(int id, TextPart currentTextPart)
+        {
+            var currentPost = this.posts
+                .All()
+                .Where(p => p.Id == id)
+                .Project()
+                .To<PostViewModel>()
+                .FirstOrDefault();
 
             return View();
         }

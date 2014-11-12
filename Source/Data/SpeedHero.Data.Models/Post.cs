@@ -49,7 +49,7 @@
             set { this.pictures = value; }
         }
 
-        public virtual ICollection<TextPart> Textparts
+        public virtual ICollection<TextPart> TextParts
         {
             get { return this.textParts; }
             set { this.textParts = value; }

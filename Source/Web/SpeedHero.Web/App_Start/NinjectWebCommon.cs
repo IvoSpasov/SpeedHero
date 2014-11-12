@@ -14,6 +14,7 @@ namespace SpeedHero.Web.App_Start
 
     using SpeedHero.Data;
     using SpeedHero.Data.Common.Repository;
+    using SpeedHero.Data.Models;
 
     public static class NinjectWebCommon 
     {
@@ -66,8 +67,9 @@ namespace SpeedHero.Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<DbContext>().To<SpeedHeroDbContext>();
-            kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
+            kernel.Bind(typeof(IRepository<Post>)).To(typeof(DeletableEntityRepository<Post>));
             kernel.Bind(typeof(IDeletableEntityRepository<>)).To(typeof(DeletableEntityRepository<>));
+            kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
         }        
     }
 }

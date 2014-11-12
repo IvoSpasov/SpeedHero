@@ -30,7 +30,7 @@
         public override int SaveChanges()
         {
             this.ApplyAuditInfoRules();
-            this.ApplyDeletableEntityRules();
+            //this.ApplyDeletableEntityRules();
 
             return base.SaveChanges();
         }
@@ -60,21 +60,21 @@
             }
         }
 
-        private void ApplyDeletableEntityRules()
-        {
-            // Approach via @julielerman: http://bit.ly/123661P
-            foreach (
-                var entry in
-                    this.ChangeTracker.Entries()
-                        .Where(e => e.Entity is IDeletableEntity && (e.State == EntityState.Deleted)))
-            {
-                var entity = (IDeletableEntity)entry.Entity;
+        //private void ApplyDeletableEntityRules()
+        //{
+        //    // Approach via @julielerman: http://bit.ly/123661P
+        //    foreach (
+        //        var entry in
+        //            this.ChangeTracker.Entries()
+        //                .Where(e => e.Entity is IDeletableEntity && (e.State == EntityState.Deleted)))
+        //    {
+        //        var entity = (IDeletableEntity)entry.Entity;
 
-                // this is so that you don't actually delete anything from the db, but you have to check for the IsDeleted flag every time to get actual data
-                entity.DeletedOn = DateTime.Now;
-                entity.IsDeleted = true;
-                entry.State = EntityState.Modified;
-            }
-        }
+        //        // this is so that you don't actually delete anything from the db, but you have to check for the IsDeleted flag every time to get actual data
+        //        entity.DeletedOn = DateTime.Now;
+        //        entity.IsDeleted = true;
+        //        entry.State = EntityState.Modified;
+        //    }
+        //}
     }
 }
