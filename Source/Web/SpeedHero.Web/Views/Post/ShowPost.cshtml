@@ -6,8 +6,8 @@
 
 <h2>@Model.Title</h2>
 
-<div>by @Model.Author.UserName</div>
-<div>@Model.CreatedOn - @Model.Comments.Count Comments</div>
+<div>by @Html.DisplayFor(p => p.Author.UserName)</div>
+<div>@Html.DisplayFor(p => p.CreatedOn) - @Model.Comments.Count Comments</div>
 <div>@Html.Raw(Model.Content)</div>
 
 @foreach (var comment in Model.Comments)

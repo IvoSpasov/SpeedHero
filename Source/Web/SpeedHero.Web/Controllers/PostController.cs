@@ -1,7 +1,7 @@
 ﻿namespace SpeedHero.Web.Controllers
 {
-    using System.Linq;
     using System.IO;
+    using System.Linq;
     using System.Web;
     using System.Web.Mvc;
 
@@ -11,10 +11,10 @@
 
     using SpeedHero.Data.Common.Repository;
     using SpeedHero.Data.Models;
-    using SpeedHero.Web.ViewModels.Home;
+    using SpeedHero.Web.Infrastructure;
     using SpeedHero.Web.InputModels.Posts;
+    using SpeedHero.Web.ViewModels.Home;
     using SpeedHero.Web.ViewModels.Posts;
-using SpeedHero.Web.Infrastructure;
 
     public class PostController : Controller
     {

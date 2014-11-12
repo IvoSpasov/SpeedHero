@@ -5,4 +5,3 @@ This will be gallery style blog system for cars similar to http://www.speedhunte
 
 =========
 TODO:
-1. Change DateTime view with DistplayTemplates?
