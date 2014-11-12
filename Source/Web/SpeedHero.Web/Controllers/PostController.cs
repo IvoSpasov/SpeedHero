@@ -13,6 +13,7 @@
     using SpeedHero.Data.Models;
     using SpeedHero.Web.ViewModels.Home;
     using SpeedHero.Web.InputModels.Posts;
+    using SpeedHero.Web.ViewModels.Posts;
 
     public class PostController : Controller
     {
@@ -31,7 +32,7 @@
                 .Where(p => p.IsDeleted == false)
                 .Where(p => p.Id == id)
                 .Project()
-                .To<PostViewModel>()
+                .To<ShowPostViewModel>()
                 .FirstOrDefault();
 
             if (selectedPost == null)
@@ -52,7 +53,7 @@
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult CreatePost(PostCreateInputModel inputPost)
+        public ActionResult CreatePost(CreatePostInputModel inputPost)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +95,7 @@
                 .All()
                 .Where(p => p.Id == id)
                 .Project()
-                .To<PostViewModel>()
+                .To<IndexViewModel>()
                 .FirstOrDefault();
 
             return View(currentPost);
@@ -107,7 +108,7 @@
                 .All()
                 .Where(p => p.Id == id)
                 .Project()
-                .To<PostViewModel>()
+                .To<IndexViewModel>()
                 .FirstOrDefault();
 
             return View();

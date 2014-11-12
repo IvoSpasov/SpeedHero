@@ -1,4 +1,4 @@
-﻿@model SpeedHero.Web.InputModels.Posts.PostCreateInputModel
+﻿@model SpeedHero.Web.InputModels.Posts.CreatePostInputModel
 
 @{
     ViewBag.Title = "Create Post";
@@ -13,8 +13,7 @@
     @Html.ValidationSummary()
     
     @Html.LabelFor(p => p.Title) <br />
-    @Html.EditorFor(p => p.Title) <br />
-    @Html.LabelFor(p => p.Content) <br />
+    @Html.EditorFor(p => p.Title) <br /> <br />
     @Html.EditorFor(p => p.Content) <br />
     
     @*<label for="file">Upload Cover Image:</label>

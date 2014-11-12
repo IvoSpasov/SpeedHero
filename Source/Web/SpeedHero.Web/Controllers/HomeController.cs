@@ -34,7 +34,7 @@
                 .All()
                 .Where(p => p.IsDeleted == false)
                 .Project()
-                .To<PostViewModel>();
+                .To<IndexViewModel>();
 
             return this.View(posts);
         }

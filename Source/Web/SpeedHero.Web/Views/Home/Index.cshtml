@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SpeedHero.Web.ViewModels.Home.PostViewModel>
+﻿@model IEnumerable<SpeedHero.Web.ViewModels.Home.IndexViewModel>
 
 @{
     ViewBag.Title = "Home Page";
@@ -7,12 +7,12 @@
 <div>
     @foreach (var post in Model)
     {
-        if (@post.Pictures.FirstOrDefault().Path != null)
+        @*if (@post.Pictures.FirstOrDefault().Path != null)
         {
             <a href="~/Post/ShowPost/@post.Id">
                 <img src="@post.Pictures.FirstOrDefault().Path" width="220" />
             </a>
-        }
+        }*@
 
         <a href="~/Post/ShowPost/@post.Id"><h3>@post.Title</h3></a>
 

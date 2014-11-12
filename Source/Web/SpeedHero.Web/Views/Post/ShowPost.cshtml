@@ -1,22 +1,24 @@
-﻿@model SpeedHero.Web.ViewModels.Home.PostViewModel
+﻿@model SpeedHero.Web.ViewModels.Posts.ShowPostViewModel
 
 @{
-    ViewBag.Title = "ShowPost";
+    ViewBag.Title = "Show Post";
 }
 
 <h2>@Model.Title</h2>
+
 <div>by @Model.Author.UserName</div>
 <div>@Model.CreatedOn - @Model.Comments.Count Comments</div>
+<div>@Html.Raw(Model.Content)</div>
 
 @foreach (var comment in Model.Comments)
 {
     <div>@comment.Content</div>
 }
 
-@foreach (var picture in @Model.Pictures)
+@*@foreach (var picture in @Model.Pictures)
 {
 	<div>
         <img src="@picture.Path" />
     </div>	 
-}
+}*@
 
