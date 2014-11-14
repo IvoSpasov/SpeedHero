@@ -22,12 +22,17 @@
     
     @Html.LabelFor(p => p.Title) <br />
     @Html.EditorFor(p => p.Title) <br /> <br />
-
+    
+    @Html.LabelFor(p => p.CoverPhoto)
+    @(Html.Kendo().Upload()
+        .Name("CoverPhoto")
+        .Multiple(false))
+    <br />
+    
     @(Html.Kendo().Editor()
         .Name("Content")
-        //.Encode(true)
+        .Encode(true)
         .HtmlAttributes(new { style = "width: 100%; height:440px" })
-        //.Value("<p>Initial value</p>")
         .ImageBrowser(imageBrowser => imageBrowser
             .Image("~/Content/UserFiles/Images/{0}")
             .Read("Read", "ImageBrowser")
@@ -35,15 +40,7 @@
             .Destroy("Destroy", "ImageBrowser")
             .Upload("Upload", "ImageBrowser")
             .Thumbnail("Thumbnail", "ImageBrowser")))
-
-    
-    @*@Html.EditorFor(p => p.Content) <br />*@
-    
-    @*<label for="file">Upload Cover Image:</label>
-    <input type="file" name="file" id="file" />
-    <br />*@
     
     <br />
     <input type="submit" value="Create" />
 }
-

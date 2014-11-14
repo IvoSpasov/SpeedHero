@@ -11,9 +11,9 @@
 
     using SpeedHero.Data.Common.Repository;
     using SpeedHero.Data.Models;
+
     using SpeedHero.Web.Infrastructure;
     using SpeedHero.Web.InputModels.Posts;
-    using SpeedHero.Web.ViewModels.Home;
     using SpeedHero.Web.ViewModels.Posts;
 
     public class PostController : Controller
@@ -70,6 +70,16 @@
                     Content = this.sanitizer.Sanitize(content),
                     AuthorId = currentUserId
                 };
+                
+                if (inputPost.CoverPhoto != null)
+                {
+                    string picturesPath = "/Content/UserFiles/Images/";
+
+                    var cover = inputPost.CoverPhoto.FirstOrDefault();
+                    string path = Path.Combine(Server.MapPath(picturesPath), Path.GetFileName(cover.FileName));
+                    cover.SaveAs(path);
+                    post.CoverPhotoPath = picturesPath + cover.FileName;
+                }
 
                 this.posts.Add(post);
                 this.posts.SaveChanges();
@@ -77,47 +87,32 @@
             }
 
             return this.View(inputPost);
-
-                        
-            //if (file != null && file.ContentLength > 0)
-            //{
-            //    string path = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(file.FileName));
-            //    file.SaveAs(path);
-
-            //    Picture currentPicture = new Picture
-            //    {
-            //        Name = file.FileName,
-            //        Path = "/Images/" + file.FileName,
-            //        SerialNumber = 1
-            //    };
-            //    inputPost.Pictures.Add(currentPicture);
-            //}
         }
 
-        [HttpGet]
-        public ActionResult EditPost(int id)
-        {
-            var currentPost = this.posts
-                .All()
-                .Where(p => p.Id == id)
-                .Project()
-                .To<IndexViewModel>()
-                .FirstOrDefault();
+        //[HttpGet]
+        //public ActionResult EditPost(int id)
+        //{
+        //    var currentPost = this.posts
+        //        .All()
+        //        .Where(p => p.Id == id)
+        //        .Project()
+        //        .To<IndexViewModel>()
+        //        .FirstOrDefault();
 
-            return View(currentPost);
-        }
+        //    return View(currentPost);
+        //}
 
-        [HttpPost]
-        public ActionResult EditPost(int id, TextPart currentTextPart)
-        {
-            var currentPost = this.posts
-                .All()
-                .Where(p => p.Id == id)
-                .Project()
-                .To<IndexViewModel>()
-                .FirstOrDefault();
+        //[HttpPost]
+        //public ActionResult EditPost(int id)
+        //{
+        //    var currentPost = this.posts
+        //        .All()
+        //        .Where(p => p.Id == id)
+        //        .Project()
+        //        .To<IndexViewModel>()
+        //        .FirstOrDefault();
 
-            return View();
-        }
+        //    return View();
+        //}
     }
 }

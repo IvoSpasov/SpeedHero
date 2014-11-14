@@ -4,6 +4,7 @@
     background-image: url("/Content/Img/Background.jpg");
     background-repeat: no-repeat;
     background-position: top center;
+    background-attachment: fixed;
 }
 
 /* Set padding to keep content from hitting the edges */

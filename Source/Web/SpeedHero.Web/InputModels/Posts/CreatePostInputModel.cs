@@ -1,6 +1,8 @@
 ﻿namespace SpeedHero.Web.InputModels.Posts
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web;
     using System.Web.Mvc;
 
     using SpeedHero.Data.Models;
@@ -15,5 +17,8 @@
         [AllowHtml]
         //[UIHint("tinymce_full")]
         public string Content { get; set; }
+
+        [Required]
+        public IEnumerable<HttpPostedFileBase> CoverPhoto { get; set; }
     }
 }

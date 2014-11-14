@@ -14,10 +14,8 @@
 
         public DateTime CreatedOn { get; set; }
 
+        public string CoverPhotoPath { get; set; }
+
         public virtual ICollection<Comment> Comments { get; set; }
-
-        public virtual ICollection<Picture> Pictures { get; set; }
-
-        // only cover photo!
     }
 }
