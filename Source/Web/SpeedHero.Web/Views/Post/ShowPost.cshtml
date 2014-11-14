@@ -26,9 +26,25 @@
     </div>
 </div>
 
-
-@foreach (var comment in Model.Comments)
-{
-    <div>@comment.Content</div>
+@section styles{
+    @Styles.Render("~/Content/kendo")
 }
 
+@section scripts{
+    @Scripts.Render("~/bundles/kendo")
+}
+
+@Html.Partial("_CreateCommentPartialView", new SpeedHero.Web.InputModels.Comments.CreateCommentInputModel { PostId = Model.Id })
+
+@*@using AutoMapper.QueryableExtensions
+@Html.Partial("_ShowCommentsPartialView")*@
+
+@*the loading must be done with AJAX as well*@
+@foreach (var comment in Model.Comments.OrderByDescending(c => c.CreatedOn))
+{
+    <div class="row well">
+        @comment.Author.UserName
+        @comment.CreatedOn
+        <div>@Html.Raw(comment.Content)</div>
+    </div>
+}

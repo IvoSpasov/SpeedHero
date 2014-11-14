@@ -24,6 +24,10 @@
                         "~/Scripts/kendo/kendo.all.min.js",
                         "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/kendoEditor").Include(
+                        "~/Scripts/kendo/kendo.editor.min.js",
+                        "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/kendo/jquery.min.js"));
             //.Include("~/Scripts/jquery-{version}.js"));

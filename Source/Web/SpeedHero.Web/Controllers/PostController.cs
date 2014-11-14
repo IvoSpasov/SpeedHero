@@ -21,7 +21,6 @@
         private readonly IRepository<Post> posts;
         private readonly ISanitizer sanitizer;
 
-
         public PostController(IRepository<Post> posts, ISanitizer sanitizer)
         {
             this.posts = posts;
