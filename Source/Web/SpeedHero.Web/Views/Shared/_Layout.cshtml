@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - SpeedHero</title>
     @Styles.Render("~/Content/bootstrap")
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("styles", required: false)
-    @Styles.Render("~/Content/custom");
+    @Styles.Render("~/Content/custom")
 </head>
 <body>
     <div class="navbar navbar-default">
@@ -33,10 +33,15 @@
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - SpeedHero</p>
-        </footer>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - SpeedHero</p>
+            </footer>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/bootstrap")

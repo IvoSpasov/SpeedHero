@@ -14,7 +14,7 @@
     public class User : IdentityUser, IAuditInfo, IDeletableEntity
     {
         // TODO How is user avatar supported in MVC?
-        // all users may leave comments but not all may create posts. May be there should be another user?
+        // all users may leave comments but not all may create posts.
         private ICollection<Post> posts;
         private ICollection<Comment> comments;
 
@@ -25,6 +25,10 @@
             this.posts = new HashSet<Post>();
             this.comments = new HashSet<Comment>();
         }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

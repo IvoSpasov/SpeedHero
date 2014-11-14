@@ -1,14 +1,31 @@
 ﻿@model SpeedHero.Web.ViewModels.Posts.ShowPostViewModel
 
 @{
-    ViewBag.Title = "Show Post";
+    ViewBag.Title = Model.Title;
 }
 
-<h2>@Model.Title</h2>
+<div class="row">
+    <div class="col-md-12">
+        <h2>@Model.Title</h2>
+    </div>
+</div>
 
-<div>by @Html.DisplayFor(p => p.Author.UserName)</div>
-<div>@Html.DisplayFor(p => p.CreatedOn) - @Model.Comments.Count Comments</div>
-<div>@Html.Raw(Model.Content)</div>
+<div class="row">
+    <div class="col-md-12 text-right text-primary">
+        by @Html.DisplayFor(p => p.Author.UserName)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 text-right text-primary">
+        @Html.DisplayFor(p => p.CreatedOn) - @Model.Comments.Count Comments
+    </div>
+</div>
+<div class="row post-content">
+    <div class="col-md-12">
+        @Html.Raw(Model.Content)
+    </div>
+</div>
+
 
 @foreach (var comment in Model.Comments)
 {

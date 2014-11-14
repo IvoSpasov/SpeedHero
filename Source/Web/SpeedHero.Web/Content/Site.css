@@ -11,6 +11,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    background-color: rgba(0, 0, 0, 0.35);
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -27,12 +28,22 @@ textarea {
     max-width: 280px;
 }
 
-.container {
-    /*background-color: #121212;*/
-}
-
 .navbar-default {
     padding-top: 10px;
     background-color: transparent;
     border-color: transparent;
+}
+
+a:hover a:visited, a:link, a:active {
+    text-decoration: none;
+}
+
+.col-md-4 {
+    padding: 15px 15px;
+}
+
+.post-content {
+    font-size: 18px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }

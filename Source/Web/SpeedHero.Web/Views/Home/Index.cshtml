@@ -1,20 +1,20 @@
 ﻿@model IEnumerable<SpeedHero.Web.ViewModels.Home.IndexViewModel>
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
 }
 
-<div>
-    @foreach (var post in Model)
+@{
+    foreach (var post in Model)
     {
-        <a href="~/Post/ShowPost/@post.Id">
-            <h3>@post.Title</h3>
-        </a>
-
-        <div>@Html.DisplayFor(p => post.CreatedOn) - @post.Comments.Count Comments</div>
-
-        <a href="~/Post/ShowPost/@post.Id">
-            <img src="@post.CoverPhotoPath" width="300" />
-        </a>
+        <div class="col-md-4">
+            <a href="~/Post/ShowPost/@post.Id">
+                <img src="@post.CoverPhotoPath" width="350" />
+            </a>
+            <a href="~/Post/ShowPost/@post.Id">
+                <h3>@post.Title</h3>
+            </a>
+            @Html.DisplayFor(p => post.CreatedOn) - @post.Comments.Count Comments
+        </div>
     }
-</div>
+}

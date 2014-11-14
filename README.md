@@ -5,3 +5,4 @@ This will be gallery style blog system for cars similar to http://www.speedhunte
 
 =========
 TODO:
+Fix the routes.

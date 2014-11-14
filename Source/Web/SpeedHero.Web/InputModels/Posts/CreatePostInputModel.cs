@@ -19,6 +19,7 @@
         public string Content { get; set; }
 
         [Required]
+        [Display(Name = "Cover Photo")]
         public IEnumerable<HttpPostedFileBase> CoverPhoto { get; set; }
     }
 }
