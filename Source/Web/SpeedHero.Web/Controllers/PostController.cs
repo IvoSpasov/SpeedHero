@@ -62,10 +62,12 @@
             if (ModelState.IsValid)
             {
                 var currentUserId = this.User.Identity.GetUserId();
+                string content = HttpUtility.HtmlDecode(inputPost.Content);
+
                 var post = new Post
                 {
                     Title = inputPost.Title,
-                    Content = this.sanitizer.Sanitize(inputPost.Content),
+                    Content = this.sanitizer.Sanitize(content),
                     AuthorId = currentUserId
                 };
 

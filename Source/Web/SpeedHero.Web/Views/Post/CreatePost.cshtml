@@ -4,6 +4,14 @@
     ViewBag.Title = "Create Post";
 }
 
+@section styles{
+    @Styles.Render("~/Content/kendo")
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/kendo")
+}
+
 <h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm("CreatePost", "Post", FormMethod.Post))
@@ -14,11 +22,27 @@
     
     @Html.LabelFor(p => p.Title) <br />
     @Html.EditorFor(p => p.Title) <br /> <br />
-    @Html.EditorFor(p => p.Content) <br />
+
+    @(Html.Kendo().Editor()
+        .Name("Content")
+        //.Encode(true)
+        .HtmlAttributes(new { style = "width: 100%; height:440px" })
+        //.Value("<p>Initial value</p>")
+        .ImageBrowser(imageBrowser => imageBrowser
+            .Image("~/Content/UserFiles/Images/{0}")
+            .Read("Read", "ImageBrowser")
+            .Create("Create", "ImageBrowser")
+            .Destroy("Destroy", "ImageBrowser")
+            .Upload("Upload", "ImageBrowser")
+            .Thumbnail("Thumbnail", "ImageBrowser")))
+
+    
+    @*@Html.EditorFor(p => p.Content) <br />*@
     
     @*<label for="file">Upload Cover Image:</label>
     <input type="file" name="file" id="file" />
     <br />*@
+    
     <br />
     <input type="submit" value="Create" />
 }
