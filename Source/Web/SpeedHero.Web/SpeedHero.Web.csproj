@@ -188,6 +188,7 @@
     <Compile Include="Areas\AdministrationArea\Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageBrowserController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Global.asax.cs">
@@ -456,8 +457,8 @@
     <Content Include="Areas\AdministrationArea\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\AdministrationArea\Views\Home\Navigation.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
-    <Content Include="Img\Background.jpg" />
-    <Content Include="Img\Logo-Transparent.png" />
+    <Content Include="Content\Img\Background.jpg" />
+    <Content Include="Content\Img\Logo-Transparent.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
@@ -1275,6 +1276,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AdministrationArea\Models\" />
+    <Folder Include="Views\ImageBrowser\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
