@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace SpeedHero.Web.Areas.AdministrationArea
+namespace SpeedHero.Web.Areas.Administration
 {
     public class AdministrationAreaAreaRegistration : AreaRegistration 
     {
@@ -8,15 +8,15 @@ namespace SpeedHero.Web.Areas.AdministrationArea
         {
             get 
             {
-                return "AdministrationArea";
+                return "Administration";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "AdministrationArea_default",
-                "AdministrationArea/{controller}/{action}/{id}",
+                "Administration_default",
+                "Administration/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

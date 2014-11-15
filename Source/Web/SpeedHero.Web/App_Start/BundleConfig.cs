@@ -30,7 +30,7 @@
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/kendo/jquery.min.js"));
-            //.Include("~/Scripts/jquery-{version}.js"));
+            // .Include("~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

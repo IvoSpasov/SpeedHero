@@ -11,6 +11,8 @@
     public class CreatePostInputModel : IMapFrom<Post>
     {
         [Required]
+        [StringLength(100, MinimumLength = 5)]
+        [Display(Name = "Title")]
         public string Title { get; set; }
         
         [Required]

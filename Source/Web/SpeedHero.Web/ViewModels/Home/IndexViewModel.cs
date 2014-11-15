@@ -5,9 +5,11 @@
 
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Infrastructure.Mapping;
+    using System.Web.Mvc;
 
     public class IndexViewModel : IMapFrom<Post>
     {
+        [HiddenInput(DisplayValue = false)] // what is that for?
         public int Id { get; set; }
 
         public string Title { get; set; }

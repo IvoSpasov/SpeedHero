@@ -184,8 +184,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Areas\AdministrationArea\AdministrationAreaAreaRegistration.cs" />
-    <Compile Include="Areas\AdministrationArea\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Administration\AdministrationAreaAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\Base\AdminController.cs" />
+    <Compile Include="Areas\Administration\Controllers\PostController.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Base\AdministrationViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Posts\PostViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -453,12 +456,24 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\kendo\images\kendoui.ttf" />
     <Content Include="Content\kendo\images\kendoui.woff" />
-    <Content Include="Areas\AdministrationArea\Views\web.config">
+    <Content Include="Areas\Administration\Views\web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Areas\AdministrationArea\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\AdministrationArea\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\AdministrationArea\Views\Home\Navigation.cshtml" />
+    <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Administration\Views\Post\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Currency.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Email.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Integer.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Time.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Url.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Content\Img\Background.jpg" />
     <Content Include="Content\Img\Logo-Transparent.png" />
@@ -1280,7 +1295,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AdministrationArea\Models\" />
     <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>
