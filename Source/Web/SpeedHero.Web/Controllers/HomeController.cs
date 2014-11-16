@@ -29,6 +29,11 @@
 
         public ActionResult Index()
         {
+            if (this.posts == null)
+            {
+                return Content("no database");
+            }
+
             var posts = this.posts
                 .All()
                 .Where(p => p.IsDeleted == false)

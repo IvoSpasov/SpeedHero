@@ -15,6 +15,8 @@ namespace SpeedHero.Web.ViewModels.Posts
 
         public string Content { get; set; }
 
+        public string CoverPhotoPath { get; set; }
+
         public DateTime CreatedOn { get; set; }
         
         public virtual User Author { get; set; }
