@@ -1,0 +1,10 @@
+﻿@model ICollection<SpeedHero.Web.ViewModels.Comments.ShowCommentViewModel>
+
+@foreach (var comment in Model)
+{
+    <div class="row well">
+        @comment.Author.UserName
+        @comment.CreatedOn
+        <div>@Html.Raw(comment.Content)</div>
+    </div>
+}

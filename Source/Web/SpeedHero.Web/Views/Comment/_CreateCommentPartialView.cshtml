@@ -1,6 +1,12 @@
 ﻿@model SpeedHero.Web.InputModels.Comments.CreateCommentInputModel
 
-@using (Html.BeginForm("CreateComment", "Comment", new { PostId = Model.PostId }, FormMethod.Post, new { @role = "form" }))
+@using (Ajax.BeginForm("CreateComment", "Comment", new { PostId = Model.PostId },
+    new AjaxOptions
+    {
+        UpdateTargetId = "comment",
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "POST"
+    }, new { role = "form", id = "searchForm" }))
 {
     <div class="form-group">
         @(Html.Kendo().Editor()
@@ -12,3 +18,7 @@
         <input type="submit" value="Post comment" class="btn btn-primary" />
     </div>
 }
+
+<div id="comment">
+    
+</div>

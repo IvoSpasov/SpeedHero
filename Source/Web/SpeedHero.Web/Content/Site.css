@@ -61,3 +61,7 @@ table {
 table, .table {
     color: black;
 }
+
+.all-comments {
+    padding: 15px 15px 0;
+}

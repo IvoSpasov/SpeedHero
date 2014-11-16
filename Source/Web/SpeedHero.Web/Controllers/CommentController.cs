@@ -1,22 +1,39 @@
 ﻿namespace SpeedHero.Web.Controllers
 {
-    using Microsoft.AspNet.Identity;
-    using SpeedHero.Data.Common.Repository;
-    using SpeedHero.Data.Models;
-    using SpeedHero.Web.InputModels.Comments;
+    using System.Linq;
     using System.Web;
     using System.Web.Mvc;
 
+    using AutoMapper.QueryableExtensions;
+
+    using Microsoft.AspNet.Identity;
+
+    using SpeedHero.Data.Common.Repository;
+    using SpeedHero.Data.Models;
+    using SpeedHero.Web.InputModels.Comments;
+    using SpeedHero.Web.ViewModels.Comments;
+
     public class CommentController : Controller
     {
-        private IRepository<Comment> comments;
+        private readonly IRepository<Comment> comments;
 
         public CommentController(IRepository<Comment> comments)
         {
             this.comments = comments;
         }
 
-        // TODO Do it with AJAX!!!!!!!!!!!!!!
+        [HttpGet]
+        public ActionResult CreateComment(int postId)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var commentModel = new CreateCommentInputModel { PostId = postId };
+                return PartialView("_CreateCommentPartialView", commentModel);
+            }
+
+            return PartialView("_CommentsLoginPartialView");
+        }
+
         [HttpPost]
         public ActionResult CreateComment(CreateCommentInputModel inputComment)
         {
@@ -34,10 +51,31 @@
 
                 this.comments.Add(comment);
                 this.comments.SaveChanges();
+
+                //return this.PartialView("_ShowLastCommentPartialView", AutoMapper.Mapper.Map<ShowCommentViewModel>(comment));
                 return RedirectToAction("ShowPost", "Post", new { id = inputComment.PostId });
             }
 
-            return View(inputComment);
+            return View(inputComment); // error -> no such view.. fix it!
+        }
+
+        [HttpGet]
+        public ActionResult ShowComments(int postId)
+        {
+            var commentsForCurrentPost = this.comments
+                .All()
+                .Where(c => c.PostId == postId)
+                .OrderByDescending(c => c.CreatedOn)
+                .Project()
+                .To<ShowCommentViewModel>()
+                .ToList();
+
+            if (commentsForCurrentPost.Count != 0)
+            {
+                return PartialView("_ShowCommentsPartialView", commentsForCurrentPost);
+            }
+
+            return PartialView("_NoCommentsPartialView");
         }
     }
 }

@@ -8,9 +8,9 @@
     public class CreateCommentInputModel : IMapFrom<Comment>
     {
         [Required]
-        public string Content { get; set; }
+        public int PostId { get; set; }
 
         [Required]
-        public int PostId { get; set; }
+        public string Content { get; set; }
     }
 }

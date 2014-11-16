@@ -87,31 +87,5 @@
 
             return this.View(inputPost);
         }
-
-        //[HttpGet]
-        //public ActionResult EditPost(int id)
-        //{
-        //    var currentPost = this.posts
-        //        .All()
-        //        .Where(p => p.Id == id)
-        //        .Project()
-        //        .To<IndexViewModel>()
-        //        .FirstOrDefault();
-
-        //    return View(currentPost);
-        //}
-
-        //[HttpPost]
-        //public ActionResult EditPost(int id)
-        //{
-        //    var currentPost = this.posts
-        //        .All()
-        //        .Where(p => p.Id == id)
-        //        .Project()
-        //        .To<IndexViewModel>()
-        //        .FirstOrDefault();
-
-        //    return View();
-        //}
     }
 }

@@ -1166,7 +1166,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Post\ShowPost.cshtml" />
     <Content Include="Views\Post\CreatePost.cshtml" />
-    <Content Include="Views\Post\EditPost.cshtml" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.json" />
@@ -1290,12 +1289,15 @@
     <Content Include="Scripts\kendo\kendo.view.min.js.map" />
     <Content Include="Scripts\kendo\kendo.web.min.js.map" />
     <Content Include="Scripts\kendo\kendo.window.min.js.map" />
-    <Content Include="Views\Post\_CreateCommentPartialView.cshtml" />
-    <Content Include="Views\Post\_ShowCommentsPartialView.cshtml" />
+    <Content Include="Views\Comment\_CreateCommentPartialView.cshtml" />
+    <Content Include="Views\Comment\_ShowCommentsPartialView.cshtml" />
+    <Content Include="Views\Shared\_CommentsPartialView.cshtml" />
+    <Content Include="Views\Comment\_CommentsLoginPartialView.cshtml" />
+    <Content Include="Views\Comment\_NoCommentsPartialView.cshtml" />
+    <Content Include="Views\Comment\_ShowLastCommentPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
