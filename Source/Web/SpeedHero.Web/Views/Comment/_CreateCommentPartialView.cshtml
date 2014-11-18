@@ -3,7 +3,7 @@
 @using (Ajax.BeginForm("CreateComment", "Comment", new { PostId = Model.PostId },
     new AjaxOptions
     {
-        UpdateTargetId = "comment",
+        UpdateTargetId = "all-comments",
         InsertionMode = InsertionMode.Replace,
         HttpMethod = "POST"
     }, new { role = "form", id = "searchForm" }))
@@ -19,6 +19,6 @@
     </div>
 }
 
-<div id="comment">
+@*<div id="comment">
     
-</div>
+</div>*@

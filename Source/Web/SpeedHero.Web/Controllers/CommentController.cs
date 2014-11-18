@@ -31,7 +31,7 @@
                 return PartialView("_CreateCommentPartialView", commentModel);
             }
 
-            return PartialView("_CommentsLoginPartialView");
+            return this.PartialView("_CommentsLoginPartialView");
         }
 
         [HttpPost]
@@ -52,8 +52,9 @@
                 this.comments.Add(comment);
                 this.comments.SaveChanges();
 
-                //return this.PartialView("_ShowLastCommentPartialView", AutoMapper.Mapper.Map<ShowCommentViewModel>(comment));
-                return RedirectToAction("ShowPost", "Post", new { id = inputComment.PostId });
+                //return this.PartialView("_ShowCommentsPartialView", AutoMapper.Mapper.Map<ShowCommentViewModel>(comment));
+                //return RedirectToAction("ShowPost", "Post", new { id = inputComment.PostId });
+                return this.RedirectToAction("ShowComments", new { postId = inputComment.PostId });
             }
 
             return View(inputComment); // error -> no such view.. fix it!

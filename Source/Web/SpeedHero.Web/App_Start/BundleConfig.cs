@@ -32,6 +32,9 @@
                         "~/Scripts/kendo/jquery.min.js"));
             // .Include("~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jqueryAjax").Include(
+                        "~/Scripts/jquery.unobtrusive-ajax.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
