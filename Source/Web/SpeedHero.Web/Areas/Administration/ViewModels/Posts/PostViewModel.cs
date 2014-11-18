@@ -19,15 +19,17 @@
         [StringLength(100, MinimumLength = 5)]
         public string Title { get; set; }
 
+        [HiddenInput(DisplayValue = false)]
         public string AuthorId { get; set; }
 
-        // public virtual User Author { get; set; }
+        //public virtual User Author { get; set; }
 
         [Required]
+        [Display(Name = "Content")]
         public string Content { get; set; }
 
         public string CoverPhotoPath { get; set; }
 
-        // public virtual ICollection<Comment> Comments { get; set; }
+        //public virtual ICollection<Comment> Comments { get; set; }
     }
 }

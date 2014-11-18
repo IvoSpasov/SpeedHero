@@ -32,7 +32,6 @@
         {
             var selectedPost = this.posts
                 .All()
-                .Where(p => p.IsDeleted == false)
                 .Where(p => p.Id == id)
                 .Project()
                 .To<ShowPostViewModel>()

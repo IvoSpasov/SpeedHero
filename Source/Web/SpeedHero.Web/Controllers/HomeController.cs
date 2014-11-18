@@ -36,7 +36,6 @@
 
             var posts = this.posts
                 .All()
-                .Where(p => p.IsDeleted == false)
                 .OrderByDescending(p => p.CreatedOn)
                 .Take(12)
                 .Project()

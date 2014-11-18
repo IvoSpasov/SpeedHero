@@ -1,19 +1,22 @@
 ﻿namespace SpeedHero.Web.Areas.Administration.Controllers
 {
+    using System.Linq;
+    using System.Web.Mvc;
 
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using Kendo.Mvc.UI;
+
     using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.UI;
+
     using SpeedHero.Data.Common.Repository;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Areas.Administration.Controllers.Base;
-    using System.Web.Mvc;
     using SpeedHero.Web.Areas.Administration.ViewModels.Posts;
-    using AutoMapper;
 
     public class PostController : AdminController
     {
-        private IRepository<Post> posts;
+        private readonly IRepository<Post> posts;
 
         public PostController(IRepository<Post> posts)
         {
@@ -31,10 +34,11 @@
             var posts = this.posts
                 .All()
                 .Project()
-                .To<PostViewModel>()
-                .ToDataSourceResult(request);
+                .To<PostViewModel>();
 
-            return this.Json(posts);
+            DataSourceResult result = posts.ToDataSourceResult(request);
+
+            return this.Json(result);
         }
 
         [HttpPost]
@@ -43,10 +47,10 @@
             
             if (ModelState.IsValid && inputPost != null)
             {
-                var dbModel = Mapper.Map<Post>(inputPost);
-                this.posts.Add(dbModel);
+                var dbPostModel = Mapper.Map<Post>(inputPost);
+                this.posts.Add(dbPostModel);
                 this.posts.SaveChanges();
-                inputPost.Id = dbModel.Id;
+                inputPost.Id = dbPostModel.Id;
             }
 
             return Json(new[] { inputPost }.ToDataSourceResult(request, ModelState));

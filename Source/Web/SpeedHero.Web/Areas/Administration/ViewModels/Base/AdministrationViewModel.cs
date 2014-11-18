@@ -4,6 +4,9 @@
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
+    using SpeedHero.Web.Infrastructure.Mapping;
+    using SpeedHero.Data.Models;
+
     public abstract class AdministrationViewModel
     {
         [Display(Name = "Created On")]
@@ -14,7 +17,11 @@
         [HiddenInput(DisplayValue = false)]
         public DateTime? ModifiedOn { get; set; }
 
-        // Изтритите данни не се визуализират в администрацията ив уеб проекта! Те стоят за стаистика и разследване само в базата!
+        [Display(Name = "Deleted")]
+        [HiddenInput(DisplayValue = false)]
+        public bool IsDeleted { get; set; }
+
+        // Изтритите данни не се визуализират в администрацията и в уеб проекта! Те стоят за стаистика и разследване само в базата!
         // Прави се отделна администрация ако искаш да се виждат и изтритите данни
     }
 }

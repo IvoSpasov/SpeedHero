@@ -25,7 +25,7 @@
         @Html.DisplayFor(p => p.CreatedOn) - @Model.Comments.Count Comments
     </div>
 </div>
-<div class="row post-content">
+<div class="row margin-15">
     <div class="col-md-12">
         @Html.Raw(Model.Content)
     </div>
@@ -38,10 +38,11 @@
 @section scripts{
     @Scripts.Render("~/bundles/kendo")
     @Scripts.Render("~/bundles/jqueryAjax")
+    @Scripts.Render("~/bundles/jqueryForm")
 }
-
-@Html.Action("CreateComment", "Comment", new { postId = Model.Id })
-
-<div id="all-comments">
+<div class="row">
+    @Html.Action("CreateComment", "Comment", new { postId = Model.Id })
+</div>
+<div class="row" id="all-comments">
     @Html.Action("ShowComments", "Comment", new { postId = Model.Id })
 </div>

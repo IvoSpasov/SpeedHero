@@ -52,8 +52,6 @@
                 this.comments.Add(comment);
                 this.comments.SaveChanges();
 
-                //return this.PartialView("_ShowCommentsPartialView", AutoMapper.Mapper.Map<ShowCommentViewModel>(comment));
-                //return RedirectToAction("ShowPost", "Post", new { id = inputComment.PostId });
                 return this.RedirectToAction("ShowComments", new { postId = inputComment.PostId });
             }
 

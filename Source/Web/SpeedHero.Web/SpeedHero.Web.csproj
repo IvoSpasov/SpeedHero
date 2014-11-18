@@ -482,6 +482,9 @@
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.form.min.js" />
+    <Content Include="Scripts\jquery.form.min.js.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -1296,7 +1299,6 @@
     <Content Include="Views\Shared\_CommentsPartialView.cshtml" />
     <Content Include="Views\Comment\_CommentsLoginPartialView.cshtml" />
     <Content Include="Views\Comment\_NoCommentsPartialView.cshtml" />
-    <Content Include="Views\Comment\_ShowLastCommentPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
