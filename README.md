@@ -7,4 +7,5 @@ This will be gallery style blog system for cars similar to http://www.speedhunte
 
 TODO:
 - Fix the routes.
-- 1 Comments.
+- Clear comment form after adding a comment.
+- Proper validation. For the AJAX and comment input form.

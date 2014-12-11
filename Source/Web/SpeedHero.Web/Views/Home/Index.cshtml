@@ -14,7 +14,17 @@
             <a href="~/Post/ShowPost/@post.Id">
                 <h3>@post.Title</h3>
             </a>
-            @Html.DisplayFor(p => post.CreatedOn) - @post.Comments.Count Comments
+            @Html.DisplayFor(p => post.CreatedOn) - @post.Comments.Count
+            @{
+                if (post.Comments.Count == 1)
+                {
+                    @:Comment
+                }
+                else
+                {
+                    @:Comments                    
+                }
+            }
         </div>
     }
 }

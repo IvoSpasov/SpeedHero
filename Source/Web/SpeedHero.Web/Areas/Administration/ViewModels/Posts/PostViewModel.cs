@@ -20,8 +20,11 @@
         public string Title { get; set; }
 
         [HiddenInput(DisplayValue = false)]
+        [Display(Name = "Author Id")]
         public string AuthorId { get; set; }
 
+        //[Display(Name = "Author")]
+        //[HiddenInput(DisplayValue = false)]
         //public virtual User Author { get; set; }
 
         [Required]
@@ -30,6 +33,6 @@
 
         public string CoverPhotoPath { get; set; }
 
-        //public virtual ICollection<Comment> Comments { get; set; }
+        // public virtual ICollection<Comment> Comments { get; set; }
     }
 }

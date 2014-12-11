@@ -14,6 +14,7 @@
             cols.Bound(pr => pr.Id);//.ClientTemplate("<h1> #= Id # </h1>");
             cols.Bound(pr => pr.Title);
             cols.Bound(pr => pr.Content);
+            //cols.Bound(pr => pr.Author.UserName);
             cols.Bound(pr => pr.CreatedOn).Hidden();
             cols.Bound(pr => pr.ModifiedOn).Hidden();
             cols.Bound(pr => pr.IsDeleted).Hidden();
