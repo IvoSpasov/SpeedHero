@@ -66,10 +66,6 @@ table, .table {
     padding: 15px 15px 0;
 }
 
-.index-height {
-    height: 450px;
-}
-
 .margin-15 {
     margin-bottom: 15px;
     margin-top: 15px;
@@ -77,4 +73,8 @@ table, .table {
 
 .margin-bottom-15 {
     margin-bottom: 15px;
+}
+
+img {
+    max-width: 100%;
 }

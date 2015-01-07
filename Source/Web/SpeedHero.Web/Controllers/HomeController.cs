@@ -31,7 +31,7 @@
         {
             if (this.posts == null)
             {
-                return Content("no database");
+                return Content("no postst in database");
             }
 
             var posts = this.posts

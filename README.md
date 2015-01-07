@@ -9,3 +9,6 @@ TODO:
 - Fix the routes.
 - Clear comment form after adding a comment.
 - Proper validation. For the AJAX and comment input form.
+- Caching
+- Unit testing
+- 404 not found page

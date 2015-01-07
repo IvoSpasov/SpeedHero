@@ -14,6 +14,8 @@
     {
         protected void Application_Start()
         {
+            // We configure the application so that it uses the Razor engine only.
+            // Otherwise the performance will be twice as slow due to usage of WebFormViewEngine as well.
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
 
