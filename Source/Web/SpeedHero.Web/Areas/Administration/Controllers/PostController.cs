@@ -43,8 +43,7 @@
 
         [HttpPost]
         public ActionResult Create([DataSourceRequest]DataSourceRequest request, PostViewModel inputPost)
-        {
-            
+        {            
             if (ModelState.IsValid && inputPost != null)
             {
                 var dbPostModel = Mapper.Map<Post>(inputPost);

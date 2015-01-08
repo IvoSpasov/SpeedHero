@@ -58,7 +58,6 @@
 
             bundles.Add(new StyleBundle("~/Content/custom").Include(
                         "~/Content/site.css"));
-
         }
     }
 }

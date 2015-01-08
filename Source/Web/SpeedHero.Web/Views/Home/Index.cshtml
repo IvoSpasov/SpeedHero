@@ -18,10 +18,10 @@
             postsCounter++;
 
             <div class="col-md-4">
-                <a href="~/Post/ShowPost/@post.Id">
+                <a href="~/ShowPost/@post.Id">
                     <img src="@post.CoverPhotoPath" width="350" />
                 </a>
-                <a href="~/Post/ShowPost/@post.Id">
+                <a href="~/ShowPost/@post.Id">
                     <h3>@post.Title</h3>
                 </a>
                 @Html.DisplayFor(p => post.CreatedOn) - @post.Comments.Count

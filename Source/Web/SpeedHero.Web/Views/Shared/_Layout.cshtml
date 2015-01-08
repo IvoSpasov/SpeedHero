@@ -23,7 +23,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Create Post", "CreatePost", "Post")</li>
+                    <li>@Html.RouteLink("About", new { action = "About", area = "" })</li>
+                    <li>@Html.RouteLink("Create Post", new { action = "CreatePost", area = "" })</li>
+                    <li>@Html.ActionLink("Administration", "Index", "Post", new { area = "Administration" }, null)</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

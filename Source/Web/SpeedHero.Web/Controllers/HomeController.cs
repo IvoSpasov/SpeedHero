@@ -43,5 +43,10 @@
 
             return this.View(posts);
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }

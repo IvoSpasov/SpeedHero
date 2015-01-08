@@ -4,8 +4,9 @@
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
-    using SpeedHero.Web.Infrastructure.Mapping;
     using SpeedHero.Data.Models;
+
+    using SpeedHero.Web.Infrastructure.Mapping;
 
     public abstract class AdministrationViewModel
     {

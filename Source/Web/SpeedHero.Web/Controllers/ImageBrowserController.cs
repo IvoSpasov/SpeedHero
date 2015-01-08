@@ -34,6 +34,7 @@
                     CopyFolder(Server.MapPath(sourceFolder), path);
                 }
             }
+
             return virtualPath;
         }
 

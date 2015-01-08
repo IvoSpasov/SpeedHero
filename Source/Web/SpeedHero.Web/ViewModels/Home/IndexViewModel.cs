@@ -2,10 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Web.Mvc;
 
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Infrastructure.Mapping;
-    using System.Web.Mvc;
 
     public class IndexViewModel : IMapFrom<Post>
     {

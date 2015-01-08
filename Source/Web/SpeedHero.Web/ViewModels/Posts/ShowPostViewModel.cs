@@ -1,5 +1,4 @@
-﻿
-namespace SpeedHero.Web.ViewModels.Posts
+﻿namespace SpeedHero.Web.ViewModels.Posts
 {
     using System;
     using System.Collections.Generic;
