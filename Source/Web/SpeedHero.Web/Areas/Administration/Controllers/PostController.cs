@@ -25,7 +25,7 @@
 
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPost] // kendo sends data for filtering, paging, sorting
@@ -52,7 +52,7 @@
                 inputPost.Id = dbPostModel.Id;
             }
 
-            return Json(new[] { inputPost }.ToDataSourceResult(request, ModelState));
+            return this.Json(new[] { inputPost }.ToDataSourceResult(request, this.ModelState));
         }
 
         [HttpPost]
@@ -65,7 +65,7 @@
                 this.posts.SaveChanges();
             }
 
-            return Json(new[] { inputPost }.ToDataSourceResult(request, ModelState));
+            return this.Json(new[] { inputPost }.ToDataSourceResult(request, this.ModelState));
         }
 
         [HttpPost]
@@ -77,7 +77,7 @@
                 this.posts.SaveChanges();
             }
 
-            return Json(new[] { inputPost }.ToDataSourceResult(request, ModelState));
+            return this.Json(new[] { inputPost }.ToDataSourceResult(request, this.ModelState));
         }
     }
 }

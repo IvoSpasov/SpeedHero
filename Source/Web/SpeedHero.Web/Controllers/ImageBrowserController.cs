@@ -17,7 +17,7 @@
         {
             get
             {
-                return CreateUserFolder();
+                return this.CreateUserFolder();
             }
         }
 
@@ -31,7 +31,7 @@
                 Directory.CreateDirectory(path);
                 foreach (var sourceFolder in foldersToCopy)
                 {
-                    CopyFolder(Server.MapPath(sourceFolder), path);
+                    this.CopyFolder(Server.MapPath(sourceFolder), path);
                 }
             }
 
@@ -54,7 +54,7 @@
             foreach (var folder in Directory.EnumerateDirectories(source))
             {
                 var dest = Path.Combine(destination, Path.GetFileName(folder));
-                CopyFolder(folder, dest);
+                this.CopyFolder(folder, dest);
             }
         }
     }

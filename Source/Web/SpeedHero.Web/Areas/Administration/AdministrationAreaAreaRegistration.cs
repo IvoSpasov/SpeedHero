@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-
-namespace SpeedHero.Web.Areas.Administration
+﻿namespace SpeedHero.Web.Areas.Administration
 {
+    using System.Web.Mvc;
+
     public class AdministrationAreaAreaRegistration : AreaRegistration
     {
         public override string AreaName

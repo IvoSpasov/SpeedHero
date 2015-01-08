@@ -6,10 +6,10 @@ This will be gallery style blog system for cars. A post has photos and text desc
 =========
 
 TODO:
-- Fix the routes.
+- Add all posts page.
 - Clear comment form after adding a comment.
 - Proper validation. For the AJAX and comment input form.
-- Add "About" page.
 - Caching
 - Unit testing
 - 404 not found page
+- Think about better routes.

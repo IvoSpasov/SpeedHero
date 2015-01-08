@@ -28,7 +28,7 @@
             if (User.Identity.IsAuthenticated)
             {
                 var commentModel = new CreateCommentInputModel { PostId = postId };
-                return PartialView("_CreateCommentPartialView", commentModel);
+                return this.PartialView("_CreateCommentPartialView", commentModel);
             }
 
             return this.PartialView("_CommentsLoginPartialView");
@@ -55,7 +55,7 @@
                 return this.RedirectToAction("ShowComments", new { postId = inputComment.PostId });
             }
 
-            return View(inputComment); // error -> no such view.. fix it!
+            return this.View(inputComment); // error -> no such view.. fix it!
         }
 
         [HttpGet]
@@ -71,10 +71,10 @@
 
             if (commentsForCurrentPost.Count != 0)
             {
-                return PartialView("_ShowCommentsPartialView", commentsForCurrentPost);
+                return this.PartialView("_ShowCommentsPartialView", commentsForCurrentPost);
             }
 
-            return PartialView("_NoCommentsPartialView");
+            return this.PartialView("_NoCommentsPartialView");
         }
     }
 }

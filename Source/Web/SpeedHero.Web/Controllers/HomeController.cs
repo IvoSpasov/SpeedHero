@@ -31,7 +31,7 @@
         {
             if (this.posts == null)
             {
-                return Content("no postst in database");
+                return this.Content("no postst in database");
             }
 
             var posts = this.posts
@@ -46,7 +46,7 @@
 
         public ActionResult About()
         {
-            return View();
+            return this.View();
         }
     }
 }

@@ -42,14 +42,14 @@
                 this.HttpNotFound("Blog post not found");
             }
 
-            return View(selectedPost);
+            return this.View(selectedPost);
         }
 
         [HttpGet]
         [Authorize]
         public ActionResult CreatePost()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPost]
