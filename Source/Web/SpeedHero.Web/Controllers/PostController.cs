@@ -84,9 +84,11 @@
 
                 this.posts.Add(post);
                 this.posts.SaveChanges();
+                TempData["SuccessfullNewPost"] = "Well done! Your post was successfully created.";
                 return this.RedirectToAction("ShowPost", new { id = post.Id });
             }
 
+            ViewBag.ModelState = "Invalid";
             return this.View(inputPost);
         }
     }

@@ -6,11 +6,13 @@ This will be gallery style blog system for cars. A post has photos and text desc
 =========
 
 TODO:
+- Fix AJAX validation.
+- Clear comment input form after adding a comment.
+
 - Add all posts page.
-- Clear comment form after adding a comment.
-- Proper validation. For the AJAX and comment input form.
-- Add caching
-- Add unit tests.
-- 404 not found page.
-- Think about better routes.
 - Add user roles.
+- Add unit tests.
+
+- Think about better routes.
+- Think about other pages that can be cached other than the Index page.
+- Think about creating a custom 404 not found page if needed.

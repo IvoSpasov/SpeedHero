@@ -4,17 +4,27 @@
     ViewBag.Title = Model.Title;
 }
 
-<div class="row">
-        <img src="@Model.CoverPhotoPath" width="1170">
-    
-</div>
+@if (TempData["SuccessfullNewPost"] != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-dismissable alert-success">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>@TempData["SuccessfullNewPost"]</strong>
+            </div>
+        </div>
+    </div>
+}
 
+<div class="row">
+    <img src="@Model.CoverPhotoPath" width="1170">
+
+</div>
 <div class="row">
     <div class="col-md-12">
         <h2>@Model.Title</h2>
     </div>
 </div>
-
 <div class="row">
     <div class="col-md-12 text-right text-primary">
         by @Html.DisplayFor(p => p.Author.UserName)
@@ -40,6 +50,7 @@
     @Scripts.Render("~/bundles/jqueryAjax")
     @Scripts.Render("~/bundles/jqueryForm")
 }
+
 <div class="row">
     @Html.Action("CreateComment", "Comment", new { postId = Model.Id })
 </div>

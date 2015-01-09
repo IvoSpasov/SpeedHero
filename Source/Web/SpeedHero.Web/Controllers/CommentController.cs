@@ -35,6 +35,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateComment(CreateCommentInputModel inputComment)
         {
             if (ModelState.IsValid)
@@ -55,7 +56,13 @@
                 return this.RedirectToAction("ShowComments", new { postId = inputComment.PostId });
             }
 
-            return this.View(inputComment); // error -> no such view.. fix it!
+            // return this.PartialView("_CreateCommentPartialView", inputComment); // error -> no such view.. fix it!
+
+            // return this.RedirectToAction("ShowPost", "Post", new { id = inputComment.PostId });
+
+            // return this.RedirectToRoute("~/ShowPost/" + inputComment.PostId);
+
+            return this.RedirectToAction("ShowComments", new { postId = inputComment.PostId });
         }
 
         [HttpGet]

@@ -10,6 +10,9 @@
 
     }, new { role = "form", id = "searchForm" }))
     {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+        
         <div class="form-group">
             @(Html.Kendo().Editor()
             .Name("Content")

@@ -28,7 +28,7 @@
             this.posts = posts;
         }
 
-        //[OutputCache(Duration = CacheMinutes * 60)]
+        [OutputCache(Duration = CacheInMinutes * 60)]
         public ActionResult Index()
         {
             if (this.posts == null)
