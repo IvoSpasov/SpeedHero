@@ -9,7 +9,8 @@ TODO:
 - Add all posts page.
 - Clear comment form after adding a comment.
 - Proper validation. For the AJAX and comment input form.
-- Caching
-- Unit testing
-- 404 not found page
+- Add caching
+- Add unit tests.
+- 404 not found page.
 - Think about better routes.
+- Add user roles.

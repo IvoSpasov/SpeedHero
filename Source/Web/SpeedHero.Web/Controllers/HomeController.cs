@@ -7,10 +7,11 @@
 
     using SpeedHero.Data.Common.Repository;
     using SpeedHero.Data.Models;
-    using SpeedHero.Web.ViewModels.Home;    
+    using SpeedHero.Web.ViewModels.Home;
 
     public class HomeController : Controller
     {
+        private const int CacheInMinutes = 1;
         private IRepository<Post> posts;
 
         // This is no logner needed due to Ninject
@@ -27,6 +28,7 @@
             this.posts = posts;
         }
 
+        //[OutputCache(Duration = CacheMinutes * 60)]
         public ActionResult Index()
         {
             if (this.posts == null)

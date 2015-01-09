@@ -28,6 +28,7 @@
         }
 
         [HttpGet]
+        // [AllowAnonymous]
         public ActionResult ShowPost(int id)
         {
             var selectedPost = this.posts
@@ -47,6 +48,8 @@
 
         [HttpGet]
         [Authorize]
+        // [Authorize(Roles = "Admin", "Lecturer")]
+        // [Authorize(Users="Ivo")]
         public ActionResult CreatePost()
         {
             return this.View();

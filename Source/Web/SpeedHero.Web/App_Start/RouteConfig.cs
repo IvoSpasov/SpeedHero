@@ -18,15 +18,15 @@
                 namespaces: new[] { "SpeedHero.Web.Controllers" });
 
             routes.MapRoute(
-                name: "Static pages",
-                url: "{action}",
-                defaults: new { controller = "Home" },
+                name: "Show post",
+                url: "ShowPost/{id}",
+                defaults: new { controller = "Post", action = "ShowPost" },
                 namespaces: new[] { "SpeedHero.Web.Controllers" });
 
             routes.MapRoute(
-                name: "Show post",
-                url: "{action}/{id}",
-                defaults: new { controller = "Post" },
+                name: "Static pages",
+                url: "{action}",
+                defaults: new { controller = "Home" },
                 namespaces: new[] { "SpeedHero.Web.Controllers" });
 
             routes.MapRoute(
