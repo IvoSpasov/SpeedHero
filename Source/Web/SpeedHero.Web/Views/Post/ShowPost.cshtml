@@ -51,9 +51,6 @@
     @Scripts.Render("~/bundles/jqueryForm")
 }
 
-<div class="row">
+<div id="comments-section">
     @Html.Action("CreateComment", "Comment", new { postId = Model.Id })
-</div>
-<div class="row" id="all-comments">
-    @Html.Action("ShowComments", "Comment", new { postId = Model.Id })
 </div>

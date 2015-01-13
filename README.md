@@ -7,7 +7,6 @@ This will be gallery style blog system for cars. A post has photos and text desc
 
 TODO:
 - Fix AJAX validation.
-- Clear comment input form after adding a comment.
 
 - Add all posts page.
 - Add user roles.

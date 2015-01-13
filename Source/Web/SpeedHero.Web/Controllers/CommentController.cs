@@ -23,6 +23,7 @@
         }
 
         [HttpGet]
+        //[ChildActionOnly]
         public ActionResult CreateComment(int postId)
         {
             if (User.Identity.IsAuthenticated)
@@ -31,7 +32,7 @@
                 return this.PartialView("_CreateCommentPartialView", commentModel);
             }
 
-            return this.PartialView("_CommentsLoginPartialView");
+            return this.PartialView("_CommentsLoginPartialView", postId);
         }
 
         [HttpPost]
@@ -53,19 +54,14 @@
                 this.comments.Add(comment);
                 this.comments.SaveChanges();
 
-                return this.RedirectToAction("ShowComments", new { postId = inputComment.PostId });
+                return this.RedirectToAction("CreateComment", new { postId = inputComment.PostId });
             }
 
-            // return this.PartialView("_CreateCommentPartialView", inputComment); // error -> no such view.. fix it!
-
-            // return this.RedirectToAction("ShowPost", "Post", new { id = inputComment.PostId });
-
-            // return this.RedirectToRoute("~/ShowPost/" + inputComment.PostId);
-
-            return this.RedirectToAction("ShowComments", new { postId = inputComment.PostId });
+            return this.RedirectToAction("CreateComment", new { postId = inputComment.PostId });
         }
 
         [HttpGet]
+        //[ChildActionOnly]
         public ActionResult ShowComments(int postId)
         {
             var commentsForCurrentPost = this.comments
@@ -76,12 +72,12 @@
                 .To<ShowCommentViewModel>()
                 .ToList();
 
-            if (commentsForCurrentPost.Count != 0)
+            if (commentsForCurrentPost.Count == 0)
             {
-                return this.PartialView("_ShowCommentsPartialView", commentsForCurrentPost);
+                return this.PartialView("_NoCommentsPartialView");
             }
 
-            return this.PartialView("_NoCommentsPartialView");
+            return this.PartialView("_ShowCommentsPartialView", commentsForCurrentPost);
         }
     }
 }
