@@ -1,6 +1,6 @@
 ﻿namespace SpeedHero.Web.Infrastructure
 {
-    using Html;
+    using Ganss.XSS;
 
     public class HtmlSanitizerAdapter : ISanitizer
     {
