@@ -24,10 +24,15 @@
 
         [HttpGet]
         //[ChildActionOnly]
-        public ActionResult CreateComment(int postId)
+        public ActionResult CreateComment(int postId, bool isValidComment = true)
         {
             if (User.Identity.IsAuthenticated)
             {
+                if (isValidComment == false)
+                {
+                    ViewBag.Comment = "Invalid";
+                }
+
                 var commentModel = new CreateCommentInputModel { PostId = postId };
                 return this.PartialView("_CreateCommentPartialView", commentModel);
             }
@@ -57,7 +62,7 @@
                 return this.RedirectToAction("CreateComment", new { postId = inputComment.PostId });
             }
 
-            return this.RedirectToAction("CreateComment", new { postId = inputComment.PostId });
+            return this.RedirectToAction("CreateComment", new { postId = inputComment.PostId, isValidComment = false });
         }
 
         [HttpGet]

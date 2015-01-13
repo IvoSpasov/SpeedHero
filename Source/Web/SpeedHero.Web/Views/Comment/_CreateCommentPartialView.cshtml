@@ -2,6 +2,15 @@
 
 <div class="row">
     <div class="col-md-12">
+        @if (ViewBag.Comment == "Invalid")
+        {
+            <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>No text in the comment field</strong>
+            </div>
+        }
+    </div>
+    <div class="col-md-12">
         @using (Ajax.BeginForm("CreateComment", "Comment", new { PostId = Model.PostId },
     new AjaxOptions
     {
@@ -12,7 +21,6 @@
     }, new { role = "form", id = "searchForm" }))
         {
             @Html.AntiForgeryToken()
-            @Html.ValidationSummary()
 
             <div class="form-group">
                 @(Html.Kendo().Editor()
