@@ -27,8 +27,8 @@
             this.sanitizer = sanitizer;
         }
 
-        [HttpGet]
         // [AllowAnonymous]
+        [HttpGet]
         public ActionResult ShowPost(int id)
         {
             var selectedPost = this.posts
@@ -45,11 +45,11 @@
 
             return this.View(selectedPost);
         }
-
-        [HttpGet]
-        [Authorize]
+        
         // [Authorize(Roles = "Admin", "Lecturer")]
         // [Authorize(Users="Ivo")]
+        [HttpGet]
+        [Authorize]
         public ActionResult CreatePost()
         {
             return this.View();
@@ -84,7 +84,7 @@
 
                 this.posts.Add(post);
                 this.posts.SaveChanges();
-                TempData["SuccessfullNewPost"] = "Well done! Your post was successfully created.";
+                this.TempData["SuccessfullNewPost"] = "Well done! Your post was successfully created.";
                 return this.RedirectToAction("ShowPost", new { id = post.Id });
             }
 

@@ -13,6 +13,7 @@
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Areas.Administration.Controllers.Base;
     using SpeedHero.Web.Areas.Administration.ViewModels.Posts;
+    using System;
 
     public class PostController : AdminController
     {
@@ -43,7 +44,11 @@
 
         [HttpPost]
         public ActionResult Create([DataSourceRequest]DataSourceRequest request, PostViewModel inputPost)
-        {            
+        {
+            // invalid date from input post so I add it manually
+            inputPost.CreatedOn = DateTime.Now;       
+            
+
             if (ModelState.IsValid && inputPost != null)
             {
                 var dbPostModel = Mapper.Map<Post>(inputPost);

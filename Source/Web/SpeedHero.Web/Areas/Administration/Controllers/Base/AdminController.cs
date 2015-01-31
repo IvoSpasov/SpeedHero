@@ -3,6 +3,7 @@
     using System.Web.Mvc;
 
     // [Authorize(Roles = "Admin")] (for debbuging)
+    [Authorize]
     public abstract class AdminController : Controller
     {
     }

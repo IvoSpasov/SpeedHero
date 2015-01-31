@@ -22,8 +22,8 @@
             this.comments = comments;
         }
 
+        // [ChildActionOnly]
         [HttpGet]
-        //[ChildActionOnly]
         public ActionResult CreateComment(int postId, bool isValidComment = true)
         {
             if (User.Identity.IsAuthenticated)
@@ -65,8 +65,8 @@
             return this.RedirectToAction("CreateComment", new { postId = inputComment.PostId, isValidComment = false });
         }
 
+        // [ChildActionOnly]
         [HttpGet]
-        //[ChildActionOnly]
         public ActionResult ShowComments(int postId)
         {
             var commentsForCurrentPost = this.comments

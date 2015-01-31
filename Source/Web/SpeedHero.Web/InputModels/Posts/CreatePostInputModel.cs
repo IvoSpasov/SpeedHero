@@ -14,10 +14,10 @@
         [StringLength(100, MinimumLength = 5)]
         [Display(Name = "Title")]
         public string Title { get; set; }
-        
+
+        // [UIHint("tinymce_full")]
         [Required]
         [AllowHtml]
-        // [UIHint("tinymce_full")]
         public string Content { get; set; }
 
         [Required]
