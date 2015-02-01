@@ -23,11 +23,11 @@
                 defaults: new { controller = "Post", action = "ShowPost" },
                 namespaces: new[] { "SpeedHero.Web.Controllers" });
 
-            routes.MapRoute(
-                name: "Static pages",
-                url: "{action}",
-                defaults: new { controller = "Home" },
-                namespaces: new[] { "SpeedHero.Web.Controllers" });
+            //routes.MapRoute(
+            //    name: "Static pages",
+            //    url: "{action}",
+            //    defaults: new { controller = "Home" },
+            //    namespaces: new[] { "SpeedHero.Web.Controllers" });
 
             routes.MapRoute(
                 name: "Default",

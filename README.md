@@ -8,7 +8,6 @@ This will be gallery style blog system for cars. A post has photos and text desc
 TODO:
 - Fix administration.
 
-- Add all posts page.
 - Add user roles.
 - Add unit tests.
 

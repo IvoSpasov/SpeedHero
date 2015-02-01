@@ -1,0 +1,23 @@
+﻿@model IEnumerable<SpeedHero.Web.ViewModels.Home.IndexViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All posts</h2>
+
+@{
+    int counter = 0;
+    
+    foreach (var post in Model)
+    {
+        counter++;
+        
+        <div>
+            @counter
+            <a href="~/ShowPost/@post.Id">
+                @post.Title
+            </a>
+        </div>
+    }
+}
