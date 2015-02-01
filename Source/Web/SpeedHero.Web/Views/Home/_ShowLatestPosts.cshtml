@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SpeedHero.Web.ViewModels.Home.IndexViewModel>
+
+@{
+    int numberOfPostsPerRow = 3;
+    int allPosts = Model.Count();
+    int postsCounter = 0;
+
+    if (allPosts != 0)
+    {
+        @Html.Raw("<div class=\"row\">")
+
+        foreach (var post in Model)
+        {
+            postsCounter++;
+
+            <div class="col-md-4">
+                <a href="~/ShowPost/@post.Id">
+                    <img src="@post.CoverPhotoPath" width="350" />
+                </a>
+                <a href="~/ShowPost/@post.Id">
+                    <h3>@post.Title</h3>
+                </a>
+                @Html.DisplayFor(p => post.CreatedOn) - @post.Comments.Count
+                @{
+                    if (post.Comments.Count == 1)
+                    {
+                        @:Comment
+                    }
+                    else
+                    {
+                        @:Comments
+                    }
+                }
+            </div>
+
+            if (postsCounter % numberOfPostsPerRow == 0 &&
+                allPosts != postsCounter)
+            {
+                @Html.Raw("</div><div class=\"row\">")
+            }
+            else if (allPosts == postsCounter)
+            {
+                @Html.Raw("</div>")
+            }
+        }
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            There are no posts yet.
+        </div>
+    }
+}

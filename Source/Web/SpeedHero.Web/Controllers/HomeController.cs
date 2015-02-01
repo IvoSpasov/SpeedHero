@@ -28,8 +28,14 @@
             this.posts = posts;
         }
 
-        [OutputCache(Duration = CacheInMinutes * 60)]
         public ActionResult Index()
+        {
+            return this.View();
+        }
+
+        [OutputCache(Duration = CacheInMinutes * 60)]
+        [ChildActionOnly]
+        public ActionResult ShowLatestPosts()
         {
             if (this.posts == null)
             {
@@ -43,7 +49,7 @@
                 .Project()
                 .To<IndexViewModel>();
 
-            return this.View(posts);
+            return this.PartialView("_ShowLatestPosts", posts);
         }
 
         public ActionResult About()
