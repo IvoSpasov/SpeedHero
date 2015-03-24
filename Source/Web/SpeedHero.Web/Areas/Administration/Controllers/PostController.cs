@@ -46,8 +46,8 @@
         public ActionResult Create([DataSourceRequest]DataSourceRequest request, PostViewModel inputPost)
         {
             // invalid date from input post so I add it manually
-            inputPost.CreatedOn = DateTime.Now;       
-            
+            inputPost.CreatedOn = DateTime.Now;
+
 
             if (ModelState.IsValid && inputPost != null)
             {
@@ -63,10 +63,13 @@
         [HttpPost]
         public ActionResult Update([DataSourceRequest]DataSourceRequest request, PostViewModel inputPost)
         {
-            if (ModelState.IsValid && inputPost != null)
+            if (inputPost != null) //ModelState.IsValid && 
             {
-                var post = this.posts.GetById(inputPost.Id); // . Value if nullable
-                Mapper.Map(inputPost, post);
+                var post = this.posts.GetById(inputPost.Id);
+
+                //Mapper.Map(inputPost, post);
+                post.Title = inputPost.Title;
+                post.Content = inputPost.Content;
                 this.posts.SaveChanges();
             }
 
@@ -76,7 +79,7 @@
         [HttpPost]
         public ActionResult Destroy([DataSourceRequest]DataSourceRequest request, PostViewModel inputPost)
         {
-            if (ModelState.IsValid && inputPost != null)
+            if (inputPost != null) //ModelState.IsValid && 
             {
                 this.posts.Delete(inputPost.Id);
                 this.posts.SaveChanges();
