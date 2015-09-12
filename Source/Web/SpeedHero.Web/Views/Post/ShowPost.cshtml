@@ -17,7 +17,7 @@
 }
 
 <div class="row">
-    <img src="@Model.CoverPhotoPath" width="1170">
+    <img src="@Model.CoverPhotoPath" class="img-responsive">
 </div>
 <div class="row">
     <div class="col-md-12">
@@ -34,7 +34,7 @@
         @Html.DisplayFor(p => p.CreatedOn) - @Model.Comments.Count Comments
     </div>
 </div>
-<div class="row margin-15">
+<div class="row margin-15 content">
     <div class="col-md-12">
         @Html.Raw(Model.Content)
     </div>

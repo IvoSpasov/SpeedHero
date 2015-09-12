@@ -14,7 +14,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("CreatePost", "Post", FormMethod.Post, new { @role = "form" }))
+@using (Html.BeginForm("CreatePost", "Post", FormMethod.Post, new { @role = "form", @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
 
@@ -28,19 +28,22 @@
     }
 
     <div class="form-group">
-        @Html.LabelFor(p => p.Title, new { @class = "control-label" })
-        @Html.EditorFor(p => p.Title, new { htmlAttributes = new { @class = "form-control" }})
+        @Html.LabelFor(p => p.Title, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-8">
+            @Html.EditorFor(p => p.Title, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
     </div>
-
     <div class="form-group">
-        @Html.LabelFor(p => p.CoverPhoto, new { @class = "control-label" })
-        @(Html.Kendo().Upload()
+        @Html.LabelFor(p => p.CoverPhoto, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-8">
+            @(Html.Kendo().Upload()
             .Name("CoverPhoto")
             .Multiple(false))
+        </div>
     </div>
-
     <div class="form-group">
-        @(Html.Kendo().Editor()
+        <div class="col-sm-12">
+            @(Html.Kendo().Editor()
             .Name("Content")
             .Encode(true)
             .HtmlAttributes(new { style = "width: 100%; height:440px" })
@@ -51,8 +54,11 @@
                 .Destroy("Destroy", "ImageBrowser")
                 .Upload("Upload", "ImageBrowser")
                 .Thumbnail("Thumbnail", "ImageBrowser")))
+        </div>        
     </div>
     <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary" />
+        <div class="col-sm-12">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
     </div>
 }
