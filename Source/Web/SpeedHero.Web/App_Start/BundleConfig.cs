@@ -41,8 +41,8 @@
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                        "~/Scripts/bootstrap.min.js",
-                        "~/Scripts/respond.min.js"));
+                        "~/Scripts/bootstrap.min.js"));
+                        //"~/Scripts/respond.min.js"
         }
 
         private static void RegisterStyleBundles(BundleCollection bundles)
@@ -53,10 +53,11 @@
                         "~/Content/kendo/kendo.silver.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
+                        "~/Content/bootstrap.min.css",
                         "~/Content/bootstrap.cyborg.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/custom").Include(
-                        "~/Content/site.css"));
+                        "~/Content/styles.css"));
         }
     }
 }
