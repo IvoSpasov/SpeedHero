@@ -2,6 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <!-- This tag lets IE know which engine it should use to render the page.
+    Best practice is to select the latest and greatest-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- This tag is used to let know mobile browsers that the website is mobile compatible.-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - SpeedHero</title>
     @Styles.Render("~/Content/bootstrap")
@@ -10,7 +14,7 @@
     @Styles.Render("~/Content/custom")
 </head>
 <body>
-    <div class="navbar navbar-default">
+    <nav class="navbar navbar-default">
         <div class="container">
             <img src="/Content/Img/Logo-Transparent.png" class="img-responsive">
             <div class="navbar-header">
@@ -30,20 +34,22 @@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
-
-    <div class="container body-content">
-        @RenderBody()
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - SpeedHero</p>
-            </footer>
+    </nav>
+    <section>
+        <div class="container body-content">
+            @RenderBody()
         </div>
-    </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <hr />
+                    <p class="text-right">&copy; @DateTime.Now.Year - SpeedHero - by Ivo Spasov</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

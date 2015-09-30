@@ -12,25 +12,27 @@
             {
                 currentPostCounter++;
 
-                <section class="col-sm-4">
+                <div class="col-sm-4">
                     <a href="~/ShowPost/@post.Id">
                         <img src="@post.CoverPhotoPath" class="img-responsive center-block" />
                     </a>
                     <a href="~/ShowPost/@post.Id">
                         <h3>@post.Title</h3>
                     </a>
-                    @Html.DisplayFor(p => post.CreatedOn) - @post.Comments.Count
-                    @{
-                        if (post.Comments.Count == 1)
-                        {
-                            @:Comment
+                    <div>
+                        @Html.DisplayFor(p => post.CreatedOn) - @post.Comments.Count
+                        @{
+                            if (post.Comments.Count == 1)
+                            {
+                                @:Comment
+                            }
+                            else
+                            {
+                                @:Comments
+                            }
                         }
-                        else
-                        {
-                            @:Comments
-                        }
-                    }
-                </section>
+                    </div>
+                </div>
 
                 if (currentPostCounter % NumberOfPostsPerRow == 0)
                 {
