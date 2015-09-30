@@ -33,7 +33,7 @@
             return this.View();
         }
 
-        [OutputCache(Duration = CacheInMinutes * 60)]
+        //[OutputCache(Duration = CacheInMinutes * 60)]
         [ChildActionOnly]
         public ActionResult ShowLatestPosts()
         {
@@ -50,11 +50,6 @@
                 .To<IndexViewModel>();
 
             return this.PartialView("_ShowLatestPosts", posts);
-        }
-
-        public ActionResult About()
-        {
-            return this.View();
         }
     }
 }
