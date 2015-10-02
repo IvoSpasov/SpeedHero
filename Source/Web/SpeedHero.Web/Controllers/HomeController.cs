@@ -12,7 +12,7 @@
     public class HomeController : Controller
     {
         private const int CacheInMinutes = 1;
-        private readonly IDeletableEntityRepository<Post> postsRepository;
+        private readonly IGenericRepository<Post> postsRepository;
 
         // This is no logner needed due to Ninject
         // Poor man's dependency injection
