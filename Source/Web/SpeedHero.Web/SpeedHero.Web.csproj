@@ -224,8 +224,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="InputModels\Comments\CreateCommentInputModel.cs" />
-    <Compile Include="InputModels\Posts\CreatePostInputModel.cs" />
+    <Compile Include="ViewModels\Comments\CreateCommentViewModel.cs" />
+    <Compile Include="ViewModels\Posts\CreatePostViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />

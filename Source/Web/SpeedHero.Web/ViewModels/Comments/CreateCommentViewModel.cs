@@ -1,11 +1,11 @@
-﻿namespace SpeedHero.Web.InputModels.Comments
+﻿namespace SpeedHero.Web.ViewModels.Comments
 {
     using System.ComponentModel.DataAnnotations;
 
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Infrastructure.Mapping;
 
-    public class CreateCommentInputModel : IMapFrom<Comment>
+    public class CreateCommentViewModel : IMapFrom<Comment>
     {
         [Required]
         public int PostId { get; set; }

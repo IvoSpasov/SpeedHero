@@ -13,7 +13,7 @@
     using SpeedHero.Data.Models;
 
     using SpeedHero.Web.Infrastructure;
-    using SpeedHero.Web.InputModels.Posts;
+    using SpeedHero.Web.ViewModels.Posts;
     using SpeedHero.Web.ViewModels.Posts;
 
     public class PostController : Controller
@@ -58,7 +58,7 @@
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult CreatePost(CreatePostInputModel inputPost)
+        public ActionResult CreatePost(CreatePostViewModel inputPost)
         {
             if (ModelState.IsValid)
             {

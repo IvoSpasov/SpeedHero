@@ -1,4 +1,4 @@
-﻿namespace SpeedHero.Web.InputModels.Posts
+﻿namespace SpeedHero.Web.ViewModels.Posts
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -8,7 +8,7 @@
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Infrastructure.Mapping;
 
-    public class CreatePostInputModel : IMapFrom<Post>
+    public class CreatePostViewModel : IMapFrom<Post>
     {
         [Required]
         [StringLength(100, MinimumLength = 5)]

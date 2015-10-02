@@ -10,7 +10,7 @@
 
     using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
-    using SpeedHero.Web.InputModels.Comments;
+    using SpeedHero.Web.ViewModels.Comments;
     using SpeedHero.Web.ViewModels.Comments;
 
     public class CommentController : Controller
@@ -33,7 +33,7 @@
                     ViewBag.Comment = "Invalid";
                 }
 
-                var commentModel = new CreateCommentInputModel { PostId = postId };
+                var commentModel = new CreateCommentViewModel { PostId = postId };
                 return this.PartialView("_CreateCommentPartialView", commentModel);
             }
 
@@ -42,7 +42,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateComment(CreateCommentInputModel inputComment)
+        public ActionResult CreateComment(CreateCommentViewModel inputComment)
         {
             if (ModelState.IsValid)
             {
