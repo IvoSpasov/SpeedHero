@@ -11,19 +11,17 @@
 
     using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
-
     using SpeedHero.Web.Infrastructure;
-    using SpeedHero.Web.ViewModels.Posts;
     using SpeedHero.Web.ViewModels.Posts;
 
     public class PostController : Controller
     {
-        private readonly IGenericRepository<Post> posts;
+        private readonly IGenericRepository<Post> postsRepository;
         private readonly ISanitizer sanitizer;
 
-        public PostController(IGenericRepository<Post> posts, ISanitizer sanitizer)
+        public PostController(IDeletableEntityRepository<Post> postsDeletableRepository, ISanitizer sanitizer)
         {
-            this.posts = posts;
+            this.postsRepository = postsDeletableRepository;
             this.sanitizer = sanitizer;
         }
 
@@ -31,19 +29,16 @@
         [HttpGet]
         public ActionResult ShowPost(int id)
         {
-            var selectedPost = this.posts
-                .All()
-                .Where(p => p.Id == id)
-                .Project()
-                .To<ShowPostViewModel>()
-                .FirstOrDefault();
+            var selectedPost = this.postsRepository
+                .GetById(id);
 
             if (selectedPost == null)
             {
-                this.HttpNotFound("Blog post not found");
+                return this.HttpNotFound("Post not found");
             }
 
-            return this.View(selectedPost);
+            var mappedPost = AutoMapper.Mapper.Map<ShowPostViewModel>(selectedPost);
+            return this.View(mappedPost);
         }
         
         // [Authorize(Roles = "Admin", "Lecturer")]
@@ -82,8 +77,8 @@
                     post.CoverPhotoPath = picturesPath + cover.FileName;
                 }
 
-                this.posts.Add(post);
-                this.posts.SaveChanges();
+                this.postsRepository.Add(post);
+                this.postsRepository.SaveChanges();
                 this.TempData["SuccessfullNewPost"] = "Well done! Your post was successfully created.";
                 return this.RedirectToAction("ShowPost", new { id = post.Id });
             }
