@@ -1,4 +1,4 @@
-﻿namespace SpeedHero.Data.Common.Repository
+﻿namespace SpeedHero.Data.Common.Repositories
 {
     using System;
     using System.Data.Entity;

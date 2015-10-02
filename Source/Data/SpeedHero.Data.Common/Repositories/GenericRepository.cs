@@ -1,4 +1,4 @@
-﻿namespace SpeedHero.Data.Common.Repository
+﻿namespace SpeedHero.Data.Common.Repositories
 {
     using System;
     using System.ComponentModel.DataAnnotations;
@@ -6,7 +6,7 @@
     using System.Data.Entity.Infrastructure;
     using System.Linq;
 
-    public class GenericRepository<T> : IRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         public GenericRepository(DbContext context)
         {

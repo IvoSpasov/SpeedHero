@@ -5,14 +5,14 @@
 
     using AutoMapper.QueryableExtensions;
 
-    using SpeedHero.Data.Common.Repository;
+    using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.ViewModels.Home;
 
     public class HomeController : Controller
     {
         private const int CacheInMinutes = 1;
-        private IRepository<Post> posts;
+        private IGenericRepository<Post> posts;
 
         // This is no logner needed due to Ninject
         // Poor man's dependency injection 
@@ -23,7 +23,7 @@
         // }
 
         // This constructor can be used for unit testing (for instance)
-        public HomeController(IRepository<Post> posts)
+        public HomeController(IGenericRepository<Post> posts)
         {
             this.posts = posts;
         }

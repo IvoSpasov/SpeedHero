@@ -8,16 +8,16 @@
 
     using Microsoft.AspNet.Identity;
 
-    using SpeedHero.Data.Common.Repository;
+    using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.InputModels.Comments;
     using SpeedHero.Web.ViewModels.Comments;
 
     public class CommentController : Controller
     {
-        private readonly IRepository<Comment> comments;
+        private readonly IGenericRepository<Comment> comments;
 
-        public CommentController(IRepository<Comment> comments)
+        public CommentController(IGenericRepository<Comment> comments)
         {
             this.comments = comments;
         }

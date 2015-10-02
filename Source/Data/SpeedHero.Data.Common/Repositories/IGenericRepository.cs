@@ -1,9 +1,9 @@
-﻿namespace SpeedHero.Data.Common.Repository
+﻿namespace SpeedHero.Data.Common.Repositories
 {
     using System;
     using System.Linq;
 
-    public interface IRepository<T> : IDisposable where T : class
+    public interface IGenericRepository<T> : IDisposable where T : class
     {
         IQueryable<T> All();
 

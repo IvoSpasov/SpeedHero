@@ -1,6 +1,6 @@
 ﻿namespace SpeedHero.Web.Controllers
 {
-    using SpeedHero.Data.Common.Repository;
+    using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
     using System;
     using System.Collections.Generic;
@@ -12,9 +12,9 @@
 
     public class AllPostsController : Controller
     {
-        private IRepository<Post> allPosts;
+        private IGenericRepository<Post> allPosts;
 
-        public AllPostsController(IRepository<Post> allPosts)
+        public AllPostsController(IGenericRepository<Post> allPosts)
         {
             this.allPosts = allPosts;
         }

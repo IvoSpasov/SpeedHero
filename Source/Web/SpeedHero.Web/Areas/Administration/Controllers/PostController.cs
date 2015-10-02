@@ -9,7 +9,7 @@
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
 
-    using SpeedHero.Data.Common.Repository;
+    using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Areas.Administration.Controllers.Base;
     using SpeedHero.Web.Areas.Administration.ViewModels.Posts;
@@ -17,9 +17,9 @@
 
     public class PostController : AdminController
     {
-        private readonly IRepository<Post> posts;
+        private readonly IGenericRepository<Post> posts;
 
-        public PostController(IRepository<Post> posts)
+        public PostController(IGenericRepository<Post> posts)
         {
             this.posts = posts;
         }

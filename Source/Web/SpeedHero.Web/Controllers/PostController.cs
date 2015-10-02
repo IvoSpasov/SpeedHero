@@ -9,7 +9,7 @@
 
     using Microsoft.AspNet.Identity;
 
-    using SpeedHero.Data.Common.Repository;
+    using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
 
     using SpeedHero.Web.Infrastructure;
@@ -18,10 +18,10 @@
 
     public class PostController : Controller
     {
-        private readonly IRepository<Post> posts;
+        private readonly IGenericRepository<Post> posts;
         private readonly ISanitizer sanitizer;
 
-        public PostController(IRepository<Post> posts, ISanitizer sanitizer)
+        public PostController(IGenericRepository<Post> posts, ISanitizer sanitizer)
         {
             this.posts = posts;
             this.sanitizer = sanitizer;
