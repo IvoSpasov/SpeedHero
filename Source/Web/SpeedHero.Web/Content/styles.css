@@ -66,3 +66,7 @@ table, .table {
 .content img {
     max-width: 90%;
 }
+
+.alert {
+    margin-top: 20px;
+}

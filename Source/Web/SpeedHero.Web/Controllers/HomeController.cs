@@ -12,20 +12,19 @@
     public class HomeController : Controller
     {
         private const int CacheInMinutes = 1;
-        private IGenericRepository<Post> posts;
+        private readonly IDeletableEntityRepository<Post> postsRepository;
 
         // This is no logner needed due to Ninject
-        // Poor man's dependency injection 
-        // The MVC Needs empty constructor to work
+        // Poor man's dependency injection
         // public HomeController()
         //     : this(new GenericRepository<Post>(new SpeedHeroDbContext()))
         // {
         // }
 
-        // This constructor can be used for unit testing (for instance)
-        public HomeController(IGenericRepository<Post> posts)
+        // This constructor can be used for unit testing
+        public HomeController(IDeletableEntityRepository<Post> postsDeletableRepository)
         {
-            this.posts = posts;
+            this.postsRepository = postsDeletableRepository;
         }
 
         public ActionResult Index()
@@ -37,12 +36,7 @@
         [ChildActionOnly]
         public ActionResult ShowLatestPosts()
         {
-            if (this.posts == null)
-            {
-                return this.Content("no postst in database");
-            }
-
-            var posts = this.posts
+            var posts = this.postsRepository
                 .All()
                 .OrderByDescending(p => p.CreatedOn)
                 .Take(12)

@@ -9,7 +9,7 @@
 
     public class IndexViewModel : IMapFrom<Post>
     {
-        [HiddenInput(DisplayValue = false)] // what is that for?
+        [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
         public string Title { get; set; }

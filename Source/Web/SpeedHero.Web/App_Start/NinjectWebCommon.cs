@@ -68,7 +68,8 @@ namespace SpeedHero.Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<DbContext>().To<SpeedHeroDbContext>();
-            kernel.Bind(typeof(IGenericRepository<Post>)).To(typeof(DeletableEntityRepository<Post>));
+            kernel.Bind(typeof(IGenericRepository<Post>)).To(typeof(GenericRepository<Post>));
+            kernel.Bind(typeof(IDeletableEntityRepository<Post>)).To(typeof(DeletableEntityRepository<Post>));
             kernel.Bind(typeof(IDeletableEntityRepository<>)).To(typeof(DeletableEntityRepository<>));
             kernel.Bind(typeof(IGenericRepository<>)).To(typeof(GenericRepository<>));
             kernel.Bind<ISanitizer>().To<HtmlSanitizerAdapter>();
