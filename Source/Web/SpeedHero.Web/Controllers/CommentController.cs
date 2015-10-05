@@ -6,7 +6,6 @@
 
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-
     using Microsoft.AspNet.Identity;
 
     using SpeedHero.Data.Common.Repositories;
@@ -22,7 +21,7 @@
             this.commentsRepository = commentsGenericRepository;
         }
 
-        // [ChildActionOnly]
+        [ChildActionOnly]
         [HttpGet]
         public ActionResult CreateComment(int postId, bool isValidComment = true)
         {
@@ -65,25 +64,19 @@
             return this.RedirectToAction("CreateComment", new { postId = inputComment.PostId, isValidComment = false });
         }
 
-        // [ChildActionOnly]
+        [ChildActionOnly]
         [HttpGet]
         public ActionResult ShowComments(int postId)
         {
             Mapper.CreateMap<Comment, ShowCommentViewModel>()
-                .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(c => c.Author.UserName));                
+                .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(c => c.Author.UserName));
 
             var commentsForCurrentPost = this.commentsRepository
                 .All()
                 .Where(c => c.PostId == postId)
                 .OrderByDescending(c => c.CreatedOn)
                 .Project()
-                .To<ShowCommentViewModel>()
-                .ToList();
-
-            if (commentsForCurrentPost.Count == 0)
-            {
-                return this.PartialView("_NoCommentsPartialView");
-            }
+                .To<ShowCommentViewModel>();
 
             return this.PartialView("_ShowCommentsPartialView", commentsForCurrentPost);
         }
