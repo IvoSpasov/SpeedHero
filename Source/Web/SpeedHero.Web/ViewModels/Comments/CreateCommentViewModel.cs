@@ -2,10 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using SpeedHero.Data.Models;
-    using SpeedHero.Web.Infrastructure.Mapping;
-
-    public class CreateCommentViewModel : IMapFrom<Comment>
+    public class CreateCommentViewModel
     {
         [Required]
         public int PostId { get; set; }

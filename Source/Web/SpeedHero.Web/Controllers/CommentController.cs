@@ -23,15 +23,10 @@
 
         // [ChildActionOnly] It does not work with RedirectToAction.
         [HttpGet]
-        public ActionResult CreateComment(int postId, bool isValidComment = true)
+        public ActionResult CreateComment(int postId)
         {
             if (User.Identity.IsAuthenticated)
-            {
-                if (isValidComment == false)
-                {
-                    ViewBag.Comment = "Invalid";
-                }
-                                
+            {                                
                 return this.PartialView("_CreateCommentPartialView", postId);
             }
 
@@ -56,11 +51,13 @@
 
                 this.commentsRepository.Add(comment);
                 this.commentsRepository.SaveChanges();
-
-                return this.RedirectToAction("CreateComment", new { postId = inputComment.PostId });
+            }
+            else
+            {
+                TempData["invalidComment"] = "No text in the comment field";
             }
 
-            return this.RedirectToAction("CreateComment", new { postId = inputComment.PostId, isValidComment = false });
+            return this.RedirectToAction("CreateComment", new { postId = inputComment.PostId });
         }
 
         [ChildActionOnly]

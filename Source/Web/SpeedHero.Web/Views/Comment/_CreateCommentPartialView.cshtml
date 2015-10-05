@@ -1,39 +1,42 @@
 ﻿@model int
 
+@if (TempData["invalidComment"] != null)
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>@TempData["invalidComment"]</strong>
+            </div>
+        </div>
+    </div>
+}
+
 <div class="row">
     <div class="col-sm-12">
-        @if (ViewBag.Comment == "Invalid")
+        @using (Ajax.BeginForm("CreateComment",
+            "Comment",
+            new { PostId = Model }, 
+            new AjaxOptions
+            {
+                UpdateTargetId = "comments-section",
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "POST",
+
+            }, 
+            new { role = "form", id = "comments-form" }))
         {
-            <div class="alert alert-dismissable alert-danger">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>No text in the comment field</strong>
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                @(Html.Kendo().Editor()
+                        .Name("Content")
+                        .Encode(true))
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Post comment" class="btn btn-primary" />
             </div>
         }
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
-        @using (Ajax.BeginForm("CreateComment", "Comment", new { PostId = Model },
-        new AjaxOptions
-        {
-            UpdateTargetId = "comments-section",
-            InsertionMode = InsertionMode.Replace,
-            HttpMethod = "POST",
-
-        }, new { role = "form", id = "searchForm" }))
-            {
-                @Html.AntiForgeryToken()
-
-                <div class="form-group">
-                    @(Html.Kendo().Editor()
-                        .Name("Content")
-                        .Encode(true)
-                        .HtmlAttributes(new { style = "width: 80%; height:200px" }))
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Post comment" class="btn btn-primary" />
-                </div>
-            }
     </div>
 </div>
 

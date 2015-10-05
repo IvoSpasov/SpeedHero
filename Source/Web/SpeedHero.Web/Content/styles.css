@@ -36,12 +36,6 @@ a:hover a:visited, a:link, a:active {
     padding-bottom: 15px;
 }
 
-.well {
-    margin-left: 0;
-    margin-right: 0;
-    background-color: rgba(255, 255, 255, 0.10);
-}
-
 table {
     background-color: #fff;
 }
@@ -69,4 +63,9 @@ table, .table {
 
 .alert {
     margin-top: 20px;
+}
+
+table.k-editor-widget {
+    width: 80%;
+    height:200px;
 }
