@@ -1,7 +1,6 @@
 ﻿namespace SpeedHero.Web.ViewModels.Home
 {
     using System;
-    using System.Collections.Generic;
     using System.Web.Mvc;
 
     using SpeedHero.Data.Models;
@@ -18,6 +17,6 @@
 
         public string CoverPhotoPath { get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; }
+        public int NumberOfComments { get; set; }
     }
 }

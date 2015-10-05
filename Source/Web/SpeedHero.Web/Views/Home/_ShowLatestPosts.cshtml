@@ -20,9 +20,9 @@
                         <h3>@post.Title</h3>
                     </a>
                     <div>
-                        @Html.DisplayFor(p => post.CreatedOn) - @post.Comments.Count
+                        @Html.DisplayFor(p => post.CreatedOn) - @post.NumberOfComments
                         @{
-                            if (post.Comments.Count == 1)
+                            if (post.NumberOfComments == 1)
                             {
                                 @:Comment
                             }

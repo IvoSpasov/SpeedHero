@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Web.Mvc;
 
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
     using SpeedHero.Data.Common.Repositories;
@@ -36,6 +37,9 @@
         [ChildActionOnly]
         public ActionResult ShowLatestPosts()
         {
+            Mapper.CreateMap<Post, IndexViewModel>()
+                .ForMember(dto => dto.NumberOfComments, opt => opt.MapFrom(p => p.Comments.Count()));
+
             var posts = this.postsRepository
                 .All()
                 .OrderByDescending(p => p.CreatedOn)
