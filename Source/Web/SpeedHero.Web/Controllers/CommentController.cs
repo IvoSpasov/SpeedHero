@@ -4,6 +4,7 @@
     using System.Web;
     using System.Web.Mvc;
 
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
     using Microsoft.AspNet.Identity;
@@ -11,15 +12,14 @@
     using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.ViewModels.Comments;
-    using SpeedHero.Web.ViewModels.Comments;
 
     public class CommentController : Controller
     {
-        private readonly IGenericRepository<Comment> comments;
+        private readonly IGenericRepository<Comment> commentsRepository;
 
-        public CommentController(IGenericRepository<Comment> comments)
+        public CommentController(IGenericRepository<Comment> commentsGenericRepository)
         {
-            this.comments = comments;
+            this.commentsRepository = commentsGenericRepository;
         }
 
         // [ChildActionOnly]
@@ -56,8 +56,8 @@
                     AuthorId = currentUserId
                 };
 
-                this.comments.Add(comment);
-                this.comments.SaveChanges();
+                this.commentsRepository.Add(comment);
+                this.commentsRepository.SaveChanges();
 
                 return this.RedirectToAction("CreateComment", new { postId = inputComment.PostId });
             }
@@ -69,7 +69,10 @@
         [HttpGet]
         public ActionResult ShowComments(int postId)
         {
-            var commentsForCurrentPost = this.comments
+            Mapper.CreateMap<Comment, ShowCommentViewModel>()
+                .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(c => c.Author.UserName));                
+
+            var commentsForCurrentPost = this.commentsRepository
                 .All()
                 .Where(c => c.PostId == postId)
                 .OrderByDescending(c => c.CreatedOn)

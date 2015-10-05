@@ -1,14 +1,19 @@
 ﻿@model ICollection<SpeedHero.Web.ViewModels.Comments.ShowCommentViewModel>
 
-<div class="row">
-    <div class="col-md-12">
-        @foreach (var comment in Model)
-        {
-            <div class="row well">
-                @comment.Author.UserName
-                @comment.CreatedOn
-                @Html.Raw(comment.Content)
+@foreach (var comment in Model)
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Posted on: @comment.CreatedOn 
+                    <br />
+                    Author: @comment.AuthorName
+                </div>
+                <div class="panel-body">
+                    @Html.Raw(comment.Content)
+                </div>
             </div>
-        }
+        </div>
     </div>
-</div>
+}

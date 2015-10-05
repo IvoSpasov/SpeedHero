@@ -11,6 +11,6 @@
 
         public DateTime CreatedOn { get; set; }
 
-        public virtual User Author { get; set; }
+        public string AuthorName { get; set; }
     }
 }
