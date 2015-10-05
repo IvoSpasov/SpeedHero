@@ -1043,6 +1043,7 @@
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Views\Home\_ShowLatestPosts.cshtml" />
     <Content Include="Views\AllPosts\Index.cshtml" />
+    <Content Include="Views\Shared\_DateAndCommentsPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

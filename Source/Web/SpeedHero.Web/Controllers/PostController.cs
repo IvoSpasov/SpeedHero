@@ -5,8 +5,7 @@
     using System.Web;
     using System.Web.Mvc;
 
-    using AutoMapper.QueryableExtensions;
-
+    using AutoMapper;
     using Microsoft.AspNet.Identity;
 
     using SpeedHero.Data.Common.Repositories;
@@ -29,6 +28,10 @@
         [HttpGet]
         public ActionResult ShowPost(int id)
         {
+            Mapper.CreateMap<Post, ShowPostViewModel>()
+                .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(p => p.Author.UserName))
+                .ForMember(dto => dto.NumberOfComments, opt => opt.MapFrom(p => p.Comments.Count()));
+
             var selectedPost = this.postsRepository
                 .GetById(id);
 
@@ -37,7 +40,7 @@
                 return this.HttpNotFound("Post not found");
             }
 
-            var mappedPost = AutoMapper.Mapper.Map<ShowPostViewModel>(selectedPost);
+            var mappedPost = Mapper.Map<ShowPostViewModel>(selectedPost);
             return this.View(mappedPost);
         }
         
