@@ -21,7 +21,7 @@
             this.commentsRepository = commentsGenericRepository;
         }
 
-        [ChildActionOnly]
+        // [ChildActionOnly] It does not work with RedirectToAction.
         [HttpGet]
         public ActionResult CreateComment(int postId, bool isValidComment = true)
         {
@@ -31,9 +31,8 @@
                 {
                     ViewBag.Comment = "Invalid";
                 }
-
-                var commentModel = new CreateCommentViewModel { PostId = postId };
-                return this.PartialView("_CreateCommentPartialView", commentModel);
+                                
+                return this.PartialView("_CreateCommentPartialView", postId);
             }
 
             return this.PartialView("_CommentsLoginPartialView", postId);
