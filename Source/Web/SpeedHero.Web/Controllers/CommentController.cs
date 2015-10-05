@@ -26,7 +26,7 @@
         public ActionResult CreateComment(int postId)
         {
             if (User.Identity.IsAuthenticated)
-            {                                
+            {
                 return this.PartialView("_CreateCommentPartialView", postId);
             }
 
@@ -54,7 +54,7 @@
             }
             else
             {
-                TempData["invalidComment"] = "No text in the comment field";
+                TempData["invalidComment"] = "No text in the comment field.";
             }
 
             return this.RedirectToAction("CreateComment", new { postId = inputComment.PostId });

@@ -64,8 +64,3 @@ table, .table {
 .alert {
     margin-top: 20px;
 }
-
-table.k-editor-widget {
-    width: 80%;
-    height:200px;
-}

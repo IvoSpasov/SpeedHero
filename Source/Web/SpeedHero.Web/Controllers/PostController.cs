@@ -72,17 +72,16 @@
                 
                 if (inputPost.CoverPhoto != null)
                 {
-                    string picturesPath = "/Content/UserFiles/Images/";
-
+                    string picturePath = "/Content/UserFiles/Images/";
                     var cover = inputPost.CoverPhoto.FirstOrDefault();
-                    string path = Path.Combine(Server.MapPath(picturesPath), Path.GetFileName(cover.FileName));
+                    string path = Path.Combine(Server.MapPath(picturePath), Path.GetFileName(cover.FileName));
                     cover.SaveAs(path);
-                    post.CoverPhotoPath = picturesPath + cover.FileName;
+                    post.CoverPhotoPath = picturePath + cover.FileName;
                 }
 
                 this.postsRepository.Add(post);
                 this.postsRepository.SaveChanges();
-                this.TempData["SuccessfullNewPost"] = "Well done! Your post was successfully created.";
+                this.TempData["SuccessfullNewPost"] = "Your post was successfully created.";
                 return this.RedirectToAction("ShowPost", new { id = post.Id });
             }
 

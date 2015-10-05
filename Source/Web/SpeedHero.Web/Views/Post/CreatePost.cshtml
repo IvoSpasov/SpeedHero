@@ -4,14 +4,6 @@
     ViewBag.Title = "Create Post";
 }
 
-@section styles{
-    @Styles.Render("~/Content/kendo")
-}
-
-@section scripts{
-    @Scripts.Render("~/bundles/kendo")
-}
-
 <h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm("CreatePost", "Post", FormMethod.Post, new { @role = "form", @class = "form-horizontal" }))
@@ -61,4 +53,12 @@
             <input type="submit" value="Create" class="btn btn-primary" />
         </div>
     </div>
+}
+
+@section styles{
+    @Styles.Render("~/Content/kendo")
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/kendo")
 }

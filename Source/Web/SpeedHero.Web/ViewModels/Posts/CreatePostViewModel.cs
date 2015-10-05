@@ -5,10 +5,7 @@
     using System.Web;
     using System.Web.Mvc;
 
-    using SpeedHero.Data.Models;
-    using SpeedHero.Web.Infrastructure.Mapping;
-
-    public class CreatePostViewModel : IMapFrom<Post>
+    public class CreatePostViewModel
     {
         [Required]
         [StringLength(100, MinimumLength = 5)]
