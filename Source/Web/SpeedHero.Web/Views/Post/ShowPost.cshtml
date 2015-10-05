@@ -7,7 +7,7 @@
 @if (TempData["SuccessfullNewPost"] != null)
 {
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <div class="alert alert-dismissable alert-success">
                 <button type="button" class="close" data-dismiss="alert">×</button>
                 <strong>@TempData["SuccessfullNewPost"]</strong>
@@ -20,24 +20,38 @@
     <img src="@Model.CoverPhotoPath" class="img-responsive center-block">
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-sm-12">
         <h2>@Model.Title</h2>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12 text-right text-primary">
-        by @Html.DisplayFor(p => p.Author.UserName)
+    <div class="col-sm-12 text-right text-primary">
+        by @Html.DisplayFor(p => p.AuthorName)
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12 text-right text-primary">
-        @Html.DisplayFor(p => p.CreatedOn) - @Model.Comments.Count Comments
+    <div class="col-sm-12 text-right text-primary">
+        @Html.DisplayFor(p => p.CreatedOn) - @Model.NumberOfComments
+        @{
+            if (Model.NumberOfComments == 1)
+            {
+                @:Comment
+            }
+            else
+            {
+                @:Comments
+            }
+        }
     </div>
 </div>
 <div class="row margin-15 content">
-    <div class="col-md-12">
+    <div class="col-sm-12">
         @Html.Raw(Model.Content)
     </div>
+</div>
+
+<div id="comments-section">
+    @Html.Action("CreateComment", "Comment", new { postId = Model.Id })
 </div>
 
 @section styles{
@@ -49,7 +63,3 @@
     @Scripts.Render("~/bundles/jqueryAjax")
     @Scripts.Render("~/bundles/jqueryForm")
 }
-
-<div id="comments-section">
-    @Html.Action("CreateComment", "Comment", new { postId = Model.Id })
-</div>
