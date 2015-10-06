@@ -13,14 +13,12 @@
 
     public class User : IdentityUser, IAuditInfo, IDeletableEntity
     {
-        // TODO How is user avatar supported in MVC?
-        // all users may leave comments but not all may create posts.
         private ICollection<Post> posts;
         private ICollection<Comment> comments;
 
-        // This will prevent UserManager.CreateAsync from causing exception
         public User()
         {
+            // This will prevent UserManager.CreateAsync from causing exception
             this.CreatedOn = DateTime.Now;
             this.posts = new HashSet<Post>();
             this.comments = new HashSet<Comment>();
