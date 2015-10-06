@@ -35,7 +35,7 @@
             var posts = this.postsRepository
                 .All()
                 .Project()
-                .To<PostViewModel>();
+                .To<ShowPostsViewModel>();
 
             DataSourceResult result = posts.ToDataSourceResult(request);
 
@@ -61,12 +61,12 @@
         //}
 
         [HttpPost]
-        public ActionResult Update([DataSourceRequest]DataSourceRequest request, PostViewModel inputPost)
+        public ActionResult Update([DataSourceRequest]DataSourceRequest request, ShowPostsViewModel inputPost)
         {
             if (ModelState.IsValid) //ModelState.IsValid && inputPost != null
             {
                 var postInDatabase = this.postsRepository.GetById(inputPost.Id);
-                Mapper.CreateMap<PostViewModel, Post>();                                 
+                Mapper.CreateMap<ShowPostsViewModel, Post>();                                 
                 Mapper.Map(inputPost, postInDatabase);
 
                 //this.postsRepository.Update(postInDatabase);
@@ -78,7 +78,7 @@
         }
 
         [HttpPost]
-        public ActionResult Destroy([DataSourceRequest]DataSourceRequest request, PostViewModel inputPost)
+        public ActionResult Destroy([DataSourceRequest]DataSourceRequest request, ShowPostsViewModel inputPost)
         {
             if (inputPost != null) //ModelState.IsValid && 
             {

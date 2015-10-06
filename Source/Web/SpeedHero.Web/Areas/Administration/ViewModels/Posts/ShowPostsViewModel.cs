@@ -11,7 +11,7 @@
     using SpeedHero.Web.Areas.Administration.ViewModels.Base;
     using SpeedHero.Web.Infrastructure.Mapping;
 
-    public class PostViewModel : AdministrationViewModel, IMapFrom<Post>, IHaveCustomMappings
+    public class ShowPostsViewModel : AdministrationViewModel, IMapFrom<Post>, IHaveCustomMappings
     {
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
@@ -35,7 +35,7 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
-            Mapper.CreateMap<Post, PostViewModel>()
+            Mapper.CreateMap<Post, ShowPostsViewModel>()
                 .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(p => p.Author.UserName));
         }
     }
