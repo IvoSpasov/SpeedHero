@@ -1,4 +1,4 @@
-﻿namespace SpeedHero.Data.Common.Repositories
+﻿namespace SpeedHero.Data.Repositories
 {
     using System;
     using System.Data.Entity;
@@ -6,6 +6,7 @@
     using System.Linq;
 
     using SpeedHero.Data.Common.Models;
+    using SpeedHero.Data.Common.RepositoryInterfaces;
 
     public class DeletableEntityRepository<T> : GenericRepository<T>, IDeletableEntityRepository<T>
         where T : class, IDeletableEntity
