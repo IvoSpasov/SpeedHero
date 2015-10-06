@@ -5,7 +5,7 @@
 
     using SpeedHero.Data.Common.Models;
 
-    public class Comment : AuditInfo
+    public class Comment : DeletableEntity, IAuditInfo, IDeletableEntity
     {
         [Key]
         public int Id { get; set; }

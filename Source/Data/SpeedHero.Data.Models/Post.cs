@@ -6,7 +6,7 @@
 
     using SpeedHero.Data.Common.Models;
 
-    public class Post : AuditInfo, IDeletableEntity
+    public class Post : DeletableEntity, IAuditInfo, IDeletableEntity
     {
         private ICollection<Comment> comments;
 
@@ -22,17 +22,14 @@
         [Required]
         public string Title { get; set; }
 
+        [DataType(DataType.Html)]
+        public string Content { get; set; }
+
         public string AuthorId { get; set; }
 
         public virtual User Author { get; set; }
 
-        public string Content { get; set; }
-
         public string CoverPhotoPath { get; set; }
-
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
 
         public virtual ICollection<Comment> Comments
         {
