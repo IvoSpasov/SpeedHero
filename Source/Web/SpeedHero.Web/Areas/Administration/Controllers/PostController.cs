@@ -19,9 +19,9 @@
     {
         private readonly IGenericRepository<Post> postsRepository;
 
-        public PostController(IGenericRepository<Post> postsGenericRepository)
+        public PostController(IDeletableEntityRepository<Post> postsDeletableRepository)
         {
-            this.postsRepository = postsGenericRepository;
+            this.postsRepository = postsDeletableRepository;
         }
 
         public ActionResult Index()
