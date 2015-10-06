@@ -4,7 +4,6 @@
     using System.Web;
     using System.Web.Mvc;
 
-    using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Microsoft.AspNet.Identity;
 
@@ -64,9 +63,6 @@
         [HttpGet]
         public ActionResult ShowComments(int postId)
         {
-            Mapper.CreateMap<Comment, ShowCommentViewModel>()
-                .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(c => c.Author.UserName));
-
             var commentsForCurrentPost = this.commentsRepository
                 .All()
                 .Where(c => c.PostId == postId)

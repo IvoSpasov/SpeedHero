@@ -36,10 +36,6 @@
                 return this.HttpNotFound("Post not found");
             }
 
-            Mapper.CreateMap<Post, ShowPostViewModel>()
-                .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(p => p.Author.UserName))
-                .ForMember(dto => dto.NumberOfComments, opt => opt.MapFrom(p => p.Comments.Count()));
-
             var mappedPost = Mapper.Map<ShowPostViewModel>(selectedPost);
             return this.View(mappedPost);
         }
