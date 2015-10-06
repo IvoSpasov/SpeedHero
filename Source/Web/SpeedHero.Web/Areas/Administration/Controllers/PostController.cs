@@ -26,10 +26,6 @@
 
         public ActionResult Index()
         {
-            Mapper.CreateMap<Post, PostViewModel>()
-                .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(p => p.Author.UserName));
-
-
             return this.View();
         }
 
