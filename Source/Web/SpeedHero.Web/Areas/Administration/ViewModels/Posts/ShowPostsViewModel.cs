@@ -16,16 +16,15 @@
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
-        [Required]
         [Display(Name = "Title")]
-        [StringLength(100, MinimumLength = 5)]
+        [Required]
+        [StringLength(100, MinimumLength = 5)]        
         public string Title { get; set; }
 
         [Display(Name = "Author")]
         [HiddenInput(DisplayValue = false)]
         public string AuthorName { get; set; }
 
-        [Required]
         [HiddenInput(DisplayValue = false)]
         [Display(Name = "Content")]
         public string Content { get; set; }

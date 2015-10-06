@@ -61,20 +61,24 @@
         //}
 
         [HttpPost]
-        public ActionResult Update([DataSourceRequest]DataSourceRequest request, ShowPostsViewModel inputPost)
+        public ActionResult Update([DataSourceRequest]DataSourceRequest request, UpdatePostViewModel inputPost)
         {
-            if (ModelState.IsValid) //ModelState.IsValid && inputPost != null
+            Post postFromDatabase = null;
+
+            if (ModelState.IsValid)
             {
-                var postInDatabase = this.postsRepository.GetById(inputPost.Id);
-                Mapper.CreateMap<ShowPostsViewModel, Post>();                                 
-                Mapper.Map(inputPost, postInDatabase);
+                postFromDatabase = this.postsRepository.GetById(inputPost.Id);
+                Mapper.CreateMap<UpdatePostViewModel, Post>();                                 
+                Mapper.Map(inputPost, postFromDatabase);
 
                 //this.postsRepository.Update(postInDatabase);
 
-                this.postsRepository.SaveChanges();
+                this.postsRepository.SaveChanges();                
             }
 
-            return this.Json(new[] { inputPost }.ToDataSourceResult(request, this.ModelState));
+            var modifedPostForKendo = Mapper.Map<ShowPostsViewModel>(postFromDatabase);
+
+            return this.Json(new[] { modifedPostForKendo }.ToDataSourceResult(request, this.ModelState));
         }
 
         [HttpPost]
