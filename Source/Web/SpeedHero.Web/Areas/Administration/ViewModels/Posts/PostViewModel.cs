@@ -21,18 +21,16 @@
         [StringLength(100, MinimumLength = 5)]
         public string Title { get; set; }
 
-        [HiddenInput(DisplayValue = false)]
-        [Display(Name = "Author Id")]
-        public string AuthorId { get; set; }
-
         [Display(Name = "Author")]
         [HiddenInput(DisplayValue = false)]
         public string AuthorName { get; set; }
 
         [Required]
+        [HiddenInput(DisplayValue = false)]
         [Display(Name = "Content")]
         public string Content { get; set; }
 
+        [HiddenInput(DisplayValue = false)]
         public string CoverPhotoPath { get; set; }
 
         public void CreateMappings(IConfiguration configuration)

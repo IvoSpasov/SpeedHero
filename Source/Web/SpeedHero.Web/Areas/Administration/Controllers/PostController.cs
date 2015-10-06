@@ -1,5 +1,6 @@
 ﻿namespace SpeedHero.Web.Areas.Administration.Controllers
 {
+    using System;
     using System.Linq;
     using System.Web.Mvc;
 
@@ -13,7 +14,6 @@
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Areas.Administration.Controllers.Base;
     using SpeedHero.Web.Areas.Administration.ViewModels.Posts;
-    using System;
 
     public class PostController : AdminController
     {
@@ -42,34 +42,35 @@
             return this.Json(result);
         }
 
-        [HttpPost]
-        public ActionResult Create([DataSourceRequest]DataSourceRequest request, PostViewModel inputPost)
-        {
-            // invalid date from input post so I add it manually
-            inputPost.CreatedOn = DateTime.Now;
+        //[HttpPost]
+        //public ActionResult Create([DataSourceRequest]DataSourceRequest request, PostViewModel inputPost)
+        //{
+        //    // invalid date from input post so I add it manually
+        //    inputPost.CreatedOn = DateTime.Now;
 
 
-            if (ModelState.IsValid && inputPost != null)
-            {
-                var dbPostModel = Mapper.Map<Post>(inputPost);
-                this.postsRepository.Add(dbPostModel);
-                this.postsRepository.SaveChanges();
-                inputPost.Id = dbPostModel.Id;
-            }
+        //    if (ModelState.IsValid && inputPost != null)
+        //    {
+        //        var dbPostModel = Mapper.Map<Post>(inputPost);
+        //        this.postsRepository.Add(dbPostModel);
+        //        this.postsRepository.SaveChanges();
+        //        inputPost.Id = dbPostModel.Id;
+        //    }
 
-            return this.Json(new[] { inputPost }.ToDataSourceResult(request, this.ModelState));
-        }
+        //    return this.Json(new[] { inputPost }.ToDataSourceResult(request, this.ModelState));
+        //}
 
         [HttpPost]
         public ActionResult Update([DataSourceRequest]DataSourceRequest request, PostViewModel inputPost)
         {
-            if (inputPost != null) //ModelState.IsValid && 
+            if (ModelState.IsValid) //ModelState.IsValid && inputPost != null
             {
-                var post = this.postsRepository.GetById(inputPost.Id);
+                var postInDatabase = this.postsRepository.GetById(inputPost.Id);
+                Mapper.CreateMap<PostViewModel, Post>();                                 
+                Mapper.Map(inputPost, postInDatabase);
 
-                //Mapper.Map(inputPost, post);
-                post.Title = inputPost.Title;
-                post.Content = inputPost.Content;
+                //this.postsRepository.Update(postInDatabase);
+
                 this.postsRepository.SaveChanges();
             }
 

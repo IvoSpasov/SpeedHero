@@ -14,10 +14,10 @@
         {
             cols.Bound(pr => pr.Id);//.ClientTemplate("<h1> #= Id # </h1>");
             cols.Bound(pr => pr.Title);
-            cols.Bound(pr => pr.Content);
+            cols.Bound(pr => pr.Content).Hidden();
             cols.Bound(pr => pr.AuthorName);
             cols.Bound(pr => pr.CreatedOn);
-            cols.Bound(pr => pr.ModifiedOn);//.Hidden();
+            cols.Bound(pr => pr.ModifiedOn);
             cols.Command(com => com.Edit()).Title("Edit");
             cols.Command(com => com.Destroy()).Title("Delete");
         })
@@ -29,16 +29,16 @@
         {
             edit.Mode(GridEditMode.PopUp);
         })
-    .ToolBar(toolbar =>
-        {
-            toolbar.Create();
-        })
+    //.ToolBar(toolbar =>
+    //    {
+    //        toolbar.Create();
+    //    })
     .DataSource(data =>
         data
             .Ajax()
             .Model(m => m.Id(p => p.Id))
             .Read(read => read.Action("Read", ControllerName))
-            .Create(cr => cr.Action("Create", ControllerName))
+            //.Create(cr => cr.Action("Create", ControllerName))
             .Update(up => up.Action("Update", ControllerName))
             .Destroy(destr => destr.Action("Destroy", ControllerName))
     ))
