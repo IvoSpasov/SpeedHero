@@ -15,7 +15,7 @@
 
     public class PostController : Controller
     {
-        private readonly IGenericRepository<Post> postsRepository;
+        private readonly IDeletableEntityRepository<Post> postsRepository;
         private readonly ISanitizer sanitizer;
 
         public PostController(IDeletableEntityRepository<Post> postsDeletableRepository, ISanitizer sanitizer)
@@ -28,10 +28,6 @@
         [HttpGet]
         public ActionResult ShowPost(int id)
         {
-            Mapper.CreateMap<Post, ShowPostViewModel>()
-                .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(p => p.Author.UserName))
-                .ForMember(dto => dto.NumberOfComments, opt => opt.MapFrom(p => p.Comments.Count()));
-
             var selectedPost = this.postsRepository
                 .GetById(id);
 
@@ -40,10 +36,14 @@
                 return this.HttpNotFound("Post not found");
             }
 
+            Mapper.CreateMap<Post, ShowPostViewModel>()
+                .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(p => p.Author.UserName))
+                .ForMember(dto => dto.NumberOfComments, opt => opt.MapFrom(p => p.Comments.Count()));
+
             var mappedPost = Mapper.Map<ShowPostViewModel>(selectedPost);
             return this.View(mappedPost);
         }
-        
+
         // [Authorize(Roles = "Admin", "Lecturer")]
         // [Authorize(Users="Ivo")]
         [HttpGet]
@@ -69,7 +69,7 @@
                     Content = this.sanitizer.Sanitize(content),
                     AuthorId = currentUserId
                 };
-                
+
                 if (inputPost.CoverPhoto != null)
                 {
                     string picturePath = "/Content/UserFiles/Images/";

@@ -25,6 +25,17 @@
             return base.All();
         }
 
+        public override T GetById(int id)
+        {
+            T entity =  base.GetById(id);
+            if (entity.IsDeleted)
+            {
+                return null;
+            }
+
+            return entity;
+        }
+
         public override void Delete(T entity)
         {
             entity.IsDeleted = true;
