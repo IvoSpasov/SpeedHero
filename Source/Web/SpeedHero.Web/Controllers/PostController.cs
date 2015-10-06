@@ -8,7 +8,7 @@
     using AutoMapper;
     using Microsoft.AspNet.Identity;
 
-    using SpeedHero.Data.Common.RepositoryInterfaces;
+    using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Infrastructure;
     using SpeedHero.Web.ViewModels.Posts;

@@ -12,9 +12,8 @@ namespace SpeedHero.Web.App_Start
     using Ninject.Web.Common;
 
     using SpeedHero.Data;
-    using SpeedHero.Data.Common.RepositoryInterfaces;
+    using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
-    using SpeedHero.Data.Repositories;
     using SpeedHero.Web.Infrastructure;
 
 
