@@ -1,4 +1,4 @@
-﻿namespace SpeedHero.Data.Common.Repositories
+﻿namespace SpeedHero.Data.Common.RepositoryInterfaces
 {
     using System.Linq;
 

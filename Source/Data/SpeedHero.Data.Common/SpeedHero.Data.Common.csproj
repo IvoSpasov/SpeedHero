@@ -54,10 +54,8 @@
     <Compile Include="Models\IDeletableEntity.cs" />
     <Compile Include="Models\IOrderable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\DeletableEntityRepository.cs" />
-    <Compile Include="Repositories\GenericRepository.cs" />
-    <Compile Include="Repositories\IDeletableEntityRepository.cs" />
-    <Compile Include="Repositories\IGenericRepository.cs" />
+    <Compile Include="RepositoryInterfaces\IDeletableEntityRepository.cs" />
+    <Compile Include="RepositoryInterfaces\IGenericRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

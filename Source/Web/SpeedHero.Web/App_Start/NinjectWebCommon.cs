@@ -8,14 +8,15 @@ namespace SpeedHero.Web.App_Start
     using System.Web;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
     using Ninject;
     using Ninject.Web.Common;
 
     using SpeedHero.Data;
-    using SpeedHero.Data.Common.Repositories;
+    using SpeedHero.Data.Common.RepositoryInterfaces;
     using SpeedHero.Data.Models;
+    using SpeedHero.Data.Repositories;
     using SpeedHero.Web.Infrastructure;
+
 
     public static class NinjectWebCommon 
     {

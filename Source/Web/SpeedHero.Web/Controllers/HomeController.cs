@@ -6,7 +6,7 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
-    using SpeedHero.Data.Common.Repositories;
+    using SpeedHero.Data.Common.RepositoryInterfaces;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.ViewModels.Home;
 
