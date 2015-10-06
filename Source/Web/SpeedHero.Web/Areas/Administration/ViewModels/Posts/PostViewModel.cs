@@ -23,9 +23,9 @@
         [Display(Name = "Author Id")]
         public string AuthorId { get; set; }
 
-        // [Display(Name = "Author")]
+        [Display(Name = "Author")]
         // [HiddenInput(DisplayValue = false)]
-        // public virtual User Author { get; set; }
+        public string AuthorName { get; set; }
 
         [Required]
         [Display(Name = "Content")]

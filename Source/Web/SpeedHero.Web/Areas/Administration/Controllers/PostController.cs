@@ -17,22 +17,26 @@
 
     public class PostController : AdminController
     {
-        private readonly IGenericRepository<Post> posts;
+        private readonly IGenericRepository<Post> postsRepository;
 
-        public PostController(IGenericRepository<Post> posts)
+        public PostController(IGenericRepository<Post> postsGenericRepository)
         {
-            this.posts = posts;
+            this.postsRepository = postsGenericRepository;
         }
 
         public ActionResult Index()
         {
+            Mapper.CreateMap<Post, PostViewModel>()
+                .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(p => p.Author.UserName));
+
+
             return this.View();
         }
 
         [HttpPost] // kendo sends data for filtering, paging, sorting
         public ActionResult Read([DataSourceRequest]DataSourceRequest request)
         {
-            var posts = this.posts
+            var posts = this.postsRepository
                 .All()
                 .Project()
                 .To<PostViewModel>();
@@ -52,8 +56,8 @@
             if (ModelState.IsValid && inputPost != null)
             {
                 var dbPostModel = Mapper.Map<Post>(inputPost);
-                this.posts.Add(dbPostModel);
-                this.posts.SaveChanges();
+                this.postsRepository.Add(dbPostModel);
+                this.postsRepository.SaveChanges();
                 inputPost.Id = dbPostModel.Id;
             }
 
@@ -65,12 +69,12 @@
         {
             if (inputPost != null) //ModelState.IsValid && 
             {
-                var post = this.posts.GetById(inputPost.Id);
+                var post = this.postsRepository.GetById(inputPost.Id);
 
                 //Mapper.Map(inputPost, post);
                 post.Title = inputPost.Title;
                 post.Content = inputPost.Content;
-                this.posts.SaveChanges();
+                this.postsRepository.SaveChanges();
             }
 
             return this.Json(new[] { inputPost }.ToDataSourceResult(request, this.ModelState));
@@ -81,8 +85,8 @@
         {
             if (inputPost != null) //ModelState.IsValid && 
             {
-                this.posts.Delete(inputPost.Id);
-                this.posts.SaveChanges();
+                this.postsRepository.Delete(inputPost.Id);
+                this.postsRepository.SaveChanges();
             }
 
             return this.Json(new[] { inputPost }.ToDataSourceResult(request, this.ModelState));
