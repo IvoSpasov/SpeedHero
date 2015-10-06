@@ -1,7 +1,6 @@
 ﻿namespace SpeedHero.Web.Areas.Administration.ViewModels.Posts
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
@@ -24,7 +23,7 @@
         public string AuthorId { get; set; }
 
         [Display(Name = "Author")]
-        // [HiddenInput(DisplayValue = false)]
+        [HiddenInput(DisplayValue = false)]
         public string AuthorName { get; set; }
 
         [Required]
@@ -32,7 +31,5 @@
         public string Content { get; set; }
 
         public string CoverPhotoPath { get; set; }
-
-        // public virtual ICollection<Comment> Comments { get; set; }
     }
 }
