@@ -220,6 +220,7 @@
     <Compile Include="Areas\Administration\Controllers\Base\AdminController.cs" />
     <Compile Include="Areas\Administration\Controllers\PostController.cs" />
     <Compile Include="Areas\Administration\ViewModels\Base\AdministrationViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Posts\DeletePostViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Posts\ShowPostsViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Posts\UpdatePostViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
