@@ -30,7 +30,6 @@
         public override int SaveChanges()
         {
             this.ApplyAuditInfoRules();
-            this.ApplyDeletableEntityRules();
             return base.SaveChanges();
         }
 
@@ -59,6 +58,7 @@
             }
         }
 
+        // Don't use this method with DeletableEntityRepository
         private void ApplyDeletableEntityRules()
         {
             // Approach via @julielerman: http://bit.ly/123661P
@@ -69,7 +69,7 @@
             {
                 var entity = (IDeletableEntity)entry.Entity;
 
-                // this is so that you don't actually delete anything from the db, but you have to check for the IsDeleted flag every time to get actual data
+                // You don't actually delete anything from the db, but you have to check for the IsDeleted flag every time to get actual data
                 entity.DeletedOn = DateTime.Now;
                 entity.IsDeleted = true;
                 entry.State = EntityState.Modified;
