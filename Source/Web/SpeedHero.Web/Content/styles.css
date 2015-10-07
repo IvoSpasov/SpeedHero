@@ -36,14 +36,6 @@ a:hover a:visited, a:link, a:active {
     padding-bottom: 15px;
 }
 
-table {
-    background-color: #fff;
-}
-
-table, .table {
-    color: black;
-}
-
 .all-comments {
     padding: 15px 15px 0;
 }
@@ -64,3 +56,20 @@ table, .table {
 .alert {
     margin-top: 20px;
 }
+
+
+/*fixing kendo grid (Start)*/
+table.k-button {
+
+}
+
+table a.k-button{
+    color: #515967;
+    text-decoration: none;
+}
+
+table {
+    background-color: #fff;
+    color: #515967;
+}
+/*fixing kendo grid (End)*/
