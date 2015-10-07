@@ -42,23 +42,6 @@
             return this.Json(result);
         }
 
-        //[HttpPost]
-        //public ActionResult Create([DataSourceRequest]DataSourceRequest request, PostViewModel inputPost)
-        //{
-        //    // invalid date from input post so I add it manually
-        //    inputPost.CreatedOn = DateTime.Now;
-
-        //    if (ModelState.IsValid && inputPost != null)
-        //    {
-        //        var dbPostModel = Mapper.Map<Post>(inputPost);
-        //        this.postsRepository.Add(dbPostModel);
-        //        this.postsRepository.SaveChanges();
-        //        inputPost.Id = dbPostModel.Id;
-        //    }
-
-        //    return this.Json(new[] { inputPost }.ToDataSourceResult(request, this.ModelState));
-        //}
-
         [HttpPost]
         public ActionResult Update([DataSourceRequest]DataSourceRequest request, UpdatePostViewModel inputPost)
         {
@@ -69,9 +52,6 @@
                 postFromDatabase = this.postsRepository.GetById(inputPost.Id);
                 Mapper.CreateMap<UpdatePostViewModel, Post>();                                 
                 Mapper.Map(inputPost, postFromDatabase);
-
-                //this.postsRepository.Update(postInDatabase);
-
                 this.postsRepository.SaveChanges();                
             }
 
