@@ -12,7 +12,7 @@
     .Name("PostGrid")
     .Columns(cols =>
         {
-            cols.Bound(pr => pr.Id);//.ClientTemplate("<h1> #= Id # </h1>");
+            cols.Bound(pr => pr.Id);
             cols.Bound(pr => pr.Title);
             cols.Bound(pr => pr.Content).Hidden();
             cols.Bound(pr => pr.AuthorName);
@@ -38,7 +38,6 @@
             .Ajax()
             .Model(m => m.Id(p => p.Id))
             .Read(read => read.Action("Read", ControllerName))
-            //.Create(cr => cr.Action("Create", ControllerName))
             .Update(up => up.Action("Update", ControllerName))
             .Destroy(destr => destr.Action("Destroy", ControllerName))
     ))
