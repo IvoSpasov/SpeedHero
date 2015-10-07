@@ -17,7 +17,7 @@
 
     public class PostController : AdminController
     {
-        private readonly IGenericRepository<Post> postsRepository;
+        private readonly IDeletableEntityRepository<Post> postsRepository;
 
         public PostController(IDeletableEntityRepository<Post> postsDeletableRepository)
         {
@@ -81,9 +81,9 @@
         }
 
         [HttpPost]
-        public ActionResult Destroy([DataSourceRequest]DataSourceRequest request, ShowPostsViewModel inputPost)
+        public ActionResult Destroy([DataSourceRequest]DataSourceRequest request, DeletePostViewModel inputPost)
         {
-            if (inputPost != null) //ModelState.IsValid && 
+            if (ModelState.IsValid)
             {
                 this.postsRepository.Delete(inputPost.Id);
                 this.postsRepository.SaveChanges();
