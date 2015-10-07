@@ -48,7 +48,6 @@
         //    // invalid date from input post so I add it manually
         //    inputPost.CreatedOn = DateTime.Now;
 
-
         //    if (ModelState.IsValid && inputPost != null)
         //    {
         //        var dbPostModel = Mapper.Map<Post>(inputPost);

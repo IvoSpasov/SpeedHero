@@ -53,7 +53,7 @@
             }
             else
             {
-                TempData["invalidComment"] = "No text in the comment field.";
+                this.TempData["invalidComment"] = "No text in the comment field.";
             }
 
             return this.RedirectToAction("CreateComment", new { postId = inputComment.PostId });

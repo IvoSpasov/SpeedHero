@@ -1,4 +1,4 @@
-﻿namespace SpeedHero.Web
+﻿namespace SpeedHero.Web.App_Start
 {
     using System.Web.Mvc;
 

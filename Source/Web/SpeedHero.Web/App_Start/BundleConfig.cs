@@ -1,4 +1,4 @@
-﻿namespace SpeedHero.Web
+﻿namespace SpeedHero.Web.App_Start
 {
     using System.Web;
     using System.Web.Optimization;
@@ -42,7 +42,6 @@
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.min.js"));
-                        //"~/Scripts/respond.min.js"
         }
 
         private static void RegisterStyleBundles(BundleCollection bundles)
