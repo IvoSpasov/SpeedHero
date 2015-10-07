@@ -36,11 +36,11 @@
             return entity;
         }
 
+        // You don't actually delete anything from the db, but you have to check for the IsDeleted flag every time you get actual data.
         public override void Delete(T entity)
         {
             entity.IsDeleted = true;
             entity.DeletedOn = DateTime.Now;
-
             DbEntityEntry entry = this.Context.Entry(entity);
             entry.State = EntityState.Modified;
         }
@@ -48,6 +48,16 @@
         public void ActualDelete(T entity)
         {
             base.Delete(entity);
+        }
+
+        public void ActualDelete(int id)
+        {
+            var entity = this.GetById(id);
+
+            if (entity != null)
+            {
+                base.Delete(entity);
+            }
         }
     }
 }
