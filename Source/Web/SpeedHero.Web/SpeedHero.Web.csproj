@@ -568,6 +568,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <None Include="Properties\PublishProfiles\ivo_localhost.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -926,7 +927,6 @@
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Comment\_CreateCommentPartialView.cshtml" />
     <Content Include="Views\Comment\_ShowCommentsPartialView.cshtml" />
-    <Content Include="Views\Shared\_CommentsPartialView.cshtml" />
     <Content Include="Views\Comment\_CommentsLoginPartialView.cshtml" />
     <Content Include="Scripts\kendo\jquery.min.map" />
     <Content Include="Scripts\kendo\kendo.all.min.js.map" />
