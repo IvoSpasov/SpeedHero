@@ -6,10 +6,12 @@
 
     public abstract class AdministrationViewModel
     {
+        [DataType(DataType.Date)]
         [Display(Name = "Created on")]
         [HiddenInput(DisplayValue = false)]
         public DateTime CreatedOn { get; set; }
 
+        [DataType(DataType.Date)]
         [Display(Name = "Last modified on")]
         [HiddenInput(DisplayValue = false)]
         public DateTime? ModifiedOn { get; set; }
