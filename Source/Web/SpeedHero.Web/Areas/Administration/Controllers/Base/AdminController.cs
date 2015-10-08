@@ -1,9 +1,10 @@
 ﻿namespace SpeedHero.Web.Areas.Administration.Controllers.Base
-{
+{    
     using System.Web.Mvc;
 
-    // [Authorize(Roles = "Admin")] (for debbuging)
-    [Authorize]
+    using SpeedHero.Common;
+
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public abstract class AdminController : Controller
     {
     }

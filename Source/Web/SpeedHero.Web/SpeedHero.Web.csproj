@@ -233,6 +233,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PrincipalExtensions.cs" />
     <Compile Include="ViewModels\Comments\CreateCommentViewModel.cs" />
     <Compile Include="ViewModels\Posts\CreatePostViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
@@ -1071,6 +1072,10 @@
     <ProjectReference Include="..\..\Data\SpeedHero.Data\SpeedHero.Data.csproj">
       <Project>{f7aa3411-38cb-4f5e-ac84-5f3b2e7a46a5}</Project>
       <Name>SpeedHero.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SpeedHero.Common\SpeedHero.Common.csproj">
+      <Project>{4d8b9d2a-8280-4b19-9aec-807b6020c6da}</Project>
+      <Name>SpeedHero.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\SpeedHero.Web.Infrastructure\SpeedHero.Web.Infrastructure.csproj">
       <Project>{dd67ad55-0488-454c-aaaf-d492146cc17b}</Project>

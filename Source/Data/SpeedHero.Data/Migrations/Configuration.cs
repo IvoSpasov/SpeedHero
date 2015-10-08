@@ -1,11 +1,13 @@
 namespace SpeedHero.Data.Migrations
 {
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using SpeedHero.Common;
-    using SpeedHero.Data.Models;
     using System.Data.Entity.Migrations;
     using System.Linq;
+
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+
+    using SpeedHero.Common;
+    using SpeedHero.Data.Models;
 
     public sealed class Configuration : DbMigrationsConfiguration<SpeedHeroDbContext>
     {
