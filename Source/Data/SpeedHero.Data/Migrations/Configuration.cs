@@ -44,12 +44,14 @@ namespace SpeedHero.Data.Migrations
 
         protected void SeedUsersWithRoles(SpeedHeroDbContext context)
         {
+            const string AdminUserName = "admin";
+            const string AdminEmail = "admin@admin.com";
             var userStore = new UserStore<User>(context);
             var userManager = new UserManager<User>(userStore); // to access user table but in different way than context
 
-            if (!context.Users.Any(u => u.UserName == "admin@admin.com"))
+            if (!context.Users.Any(u => u.UserName == AdminUserName))
             {
-                var user = new User { UserName = "admin@admin.com", Email = "admin@admin.com" };
+                var user = new User { UserName = AdminUserName, Email = AdminEmail };
                 userManager.Create(user, "123456");
                 userManager.AddToRole(user.Id, GlobalConstants.AdministratorRoleName);
             }
