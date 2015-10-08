@@ -181,5 +181,6 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
-Images
+
+/Source/Web/SpeedHero.Web/Content/UserFiles/Images
 /Source/Web/SpeedHero.Web/Libraries
