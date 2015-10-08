@@ -6,8 +6,8 @@
 
     public class ImageBrowserController : EditorImageBrowserController
     {
-        private const string contentFolderRoot = "~/Content/";
-        private const string prettyName = "Images/";
+        private const string ContentFolderRoot = "~/Content/";
+        private const string PrettyName = "Images/";
         private static readonly string[] foldersToCopy = new[] { "~/Content/shared/" };
 
         /// <summary>
@@ -23,7 +23,7 @@
 
         private string CreateUserFolder()
         {
-            var virtualPath = Path.Combine(contentFolderRoot, "UserFiles", prettyName);
+            var virtualPath = Path.Combine(ContentFolderRoot, "UserFiles", PrettyName);
 
             var path = Server.MapPath(virtualPath);
             if (!Directory.Exists(path))
