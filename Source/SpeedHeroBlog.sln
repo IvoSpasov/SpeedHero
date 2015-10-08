@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31010.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{75858AB3-6885-4500-ADBA-4D40BFDC6EFB}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedHero.Data.Models", "Data\SpeedHero.Data.Models\SpeedHero.Data.Models.csproj", "{50722DD9-0D29-478A-83FA-965B76150943}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedHero.Web.Infrastructure", "Web\SpeedHero.Web.Infrastructure\SpeedHero.Web.Infrastructure.csproj", "{DD67AD55-0488-454C-AAAF-D492146CC17B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedHero.Common", "SpeedHero.Common\SpeedHero.Common.csproj", "{4D8B9D2A-8280-4B19-9AEC-807B6020C6DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{DD67AD55-0488-454C-AAAF-D492146CC17B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD67AD55-0488-454C-AAAF-D492146CC17B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD67AD55-0488-454C-AAAF-D492146CC17B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D8B9D2A-8280-4B19-9AEC-807B6020C6DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D8B9D2A-8280-4B19-9AEC-807B6020C6DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D8B9D2A-8280-4B19-9AEC-807B6020C6DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D8B9D2A-8280-4B19-9AEC-807B6020C6DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

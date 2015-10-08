@@ -65,6 +65,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SpeedHero.Common\SpeedHero.Common.csproj">
+      <Project>{4d8b9d2a-8280-4b19-9aec-807b6020c6da}</Project>
+      <Name>SpeedHero.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SpeedHero.Data.Common\SpeedHero.Data.Common.csproj">
       <Project>{50a73845-1c38-4645-8243-652851380cb3}</Project>
       <Name>SpeedHero.Data.Common</Name>
