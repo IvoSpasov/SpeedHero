@@ -7,7 +7,8 @@
 
     using AutoMapper;
     using Microsoft.AspNet.Identity;
-
+    
+    using SpeedHero.Common;
     using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Infrastructure;
@@ -24,8 +25,8 @@
             this.sanitizer = sanitizer;
         }
 
-        // [AllowAnonymous]
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult ShowPost(int id)
         {
             var selectedPost = this.postsRepository
@@ -39,18 +40,16 @@
             var mappedPost = Mapper.Map<ShowPostViewModel>(selectedPost);
             return this.View(mappedPost);
         }
-
-        // [Authorize(Roles = "Admin", "Lecturer")]
-        // [Authorize(Users="Ivo")]
+        
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public ActionResult CreatePost()
         {
             return this.View();
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         [ValidateAntiForgeryToken]
         public ActionResult CreatePost(CreatePostViewModel inputPost)
         {
