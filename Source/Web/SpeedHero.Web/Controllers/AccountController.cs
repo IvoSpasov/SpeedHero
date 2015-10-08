@@ -6,9 +6,11 @@
     using System.Web.Mvc;
 
     using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
 
+    using SpeedHero.Data;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.App_Start;
     using SpeedHero.Web.ViewModels.Account;
@@ -24,6 +26,7 @@
 
         public AccountController()
         {
+            this.UserManager = new ApplicationUserManager(new UserStore<User>(new SpeedHeroDbContext()));
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -158,9 +161,19 @@
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            if (this.userManager.FindByEmail(model.Email) != null)
+            {
+                this.ModelState.AddModelError("Email", "Email is already used");
+            }
+
+            if (this.userManager.FindByEmail(model.UserName) != null)
+            {
+                this.ModelState.AddModelError("UserName", "User name is already registered");
+            }
+
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.UserName, Email = model.Email };
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -171,6 +184,7 @@
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
                     return this.RedirectToAction("Index", "Home");
                 }
 
