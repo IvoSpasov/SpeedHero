@@ -21,6 +21,7 @@
         }
 
         // [ChildActionOnly] It does not work with RedirectToAction.
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult CreateComment(int postId)
         {
@@ -32,6 +33,7 @@
             return this.PartialView("_CommentsLoginPartialView", postId);
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateComment(CreateCommentViewModel inputComment)
@@ -59,6 +61,7 @@
             return this.RedirectToAction("CreateComment", new { postId = inputComment.PostId });
         }
 
+        [AllowAnonymous]
         [ChildActionOnly]
         [HttpGet]
         public ActionResult ShowComments(int postId)

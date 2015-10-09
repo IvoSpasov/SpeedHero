@@ -23,14 +23,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Home", "", "", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", string.Empty, string.Empty, new { area = string.Empty }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("All Posts", "Index", "AllPosts", new { area = "" }, null)</li>*@
                     @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
                     {
-                        <li>@Html.RouteLink("Create Post", new { action = "CreatePost", area = "" })</li>
+                        <li>@Html.RouteLink("Create Post", new { action = "CreatePost", area = string.Empty })</li>
                         <li>@Html.ActionLink("Administration", "Index", "Post", new { area = "Administration" }, null)</li>
                     }                    
                 </ul>
