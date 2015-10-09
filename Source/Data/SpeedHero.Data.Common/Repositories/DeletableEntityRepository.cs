@@ -28,7 +28,7 @@
         public override T GetById(int id)
         {
             T entity = base.GetById(id);
-            if (entity.IsDeleted)
+            if (entity == null || entity.IsDeleted)
             {
                 return null;
             }
