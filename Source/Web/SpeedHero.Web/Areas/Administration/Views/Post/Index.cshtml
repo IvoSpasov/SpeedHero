@@ -16,6 +16,7 @@
             cols.Bound(pr => pr.Title);
             cols.Bound(pr => pr.Content).Hidden();
             cols.Bound(pr => pr.AuthorName);
+            cols.Bound(pr => pr.CoverPhotoPath).Hidden();
             cols.Bound(pr => pr.CreatedOn);
             cols.Bound(pr => pr.ModifiedOn);
             cols.Command(com => com.Edit()).Title("Edit");

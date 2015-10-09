@@ -13,6 +13,7 @@
 
     public class ShowPostsViewModel : AdministrationViewModel, IMapFrom<Post>, IHaveCustomMappings
     {
+        // Client side validation (Kendo)
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
@@ -25,11 +26,12 @@
         [HiddenInput(DisplayValue = false)]
         public string AuthorName { get; set; }
 
-        [HiddenInput(DisplayValue = false)]
+        [Required]
         [Display(Name = "Content")]
         public string Content { get; set; }
 
-        [HiddenInput(DisplayValue = false)]
+        [Required]
+        [Display(Name = "Cover photo path")]
         public string CoverPhotoPath { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
