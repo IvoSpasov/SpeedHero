@@ -9,16 +9,16 @@
 
 @(Html.Kendo()
     .Grid<ShowPostsViewModel>()
-    .Name("PostsGrid")
+    .Name("posts-grid")
     .Columns(cols =>
         {
-            cols.Bound(pr => pr.Id);
-            cols.Bound(pr => pr.Title);
-            cols.Bound(pr => pr.Content).Hidden();
-            cols.Bound(pr => pr.AuthorName);
-            cols.Bound(pr => pr.CoverPhotoPath).Hidden();
-            cols.Bound(pr => pr.CreatedOn);
-            cols.Bound(pr => pr.ModifiedOn);
+            cols.Bound(p => p.Id);
+            cols.Bound(p => p.Title);
+            cols.Bound(p => p.Content).Hidden();
+            cols.Bound(p => p.AuthorName);
+            cols.Bound(p => p.CoverPhotoPath).Hidden();
+            cols.Bound(p => p.CreatedOn);
+            cols.Bound(p => p.ModifiedOn);
             cols.Command(com => com.Edit()).Title("Edit");
             cols.Command(com => com.Destroy()).Title("Delete");
         })
@@ -34,8 +34,7 @@
     //    {
     //        toolbar.Create();
     //    })
-    .DataSource(data =>
-        data
+    .DataSource(data => data
             .Ajax()
             .Model(m => m.Id(p => p.Id))
             .Read(read => read.Action("Read", ControllerName))

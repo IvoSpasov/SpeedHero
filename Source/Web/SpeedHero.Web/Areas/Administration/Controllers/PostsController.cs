@@ -6,7 +6,6 @@
 
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
 
