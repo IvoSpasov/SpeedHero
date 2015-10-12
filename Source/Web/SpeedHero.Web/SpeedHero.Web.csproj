@@ -218,7 +218,7 @@
     <Compile Include="Areas\Administration\AdministrationAreaAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\Base\AdminController.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Administration\Controllers\PostController.cs" />
+    <Compile Include="Areas\Administration\Controllers\PostsController.cs" />
     <Compile Include="Areas\Administration\ViewModels\Base\AdministrationViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Posts\DeletePostViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Posts\ShowPostsViewModel.cs" />
@@ -545,7 +545,7 @@
     </Content>
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Administration\Views\Post\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Posts\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Currency.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Date.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\DateTime.cshtml" />

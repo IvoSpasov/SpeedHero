@@ -15,11 +15,11 @@
     using SpeedHero.Web.Areas.Administration.Controllers.Base;
     using SpeedHero.Web.Areas.Administration.ViewModels.Posts;
 
-    public class PostController : AdminController
+    public class PostsController : AdminController
     {
         private readonly IDeletableEntityRepository<Post> postsRepository;
 
-        public PostController(IDeletableEntityRepository<Post> postsDeletableRepository)
+        public PostsController(IDeletableEntityRepository<Post> postsDeletableRepository)
         {
             this.postsRepository = postsDeletableRepository;
         }

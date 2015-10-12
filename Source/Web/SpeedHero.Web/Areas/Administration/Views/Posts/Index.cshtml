@@ -2,14 +2,14 @@
 
 @{
     ViewBag.Title = "Administration";
-    const string ControllerName = "Post";
+    const string ControllerName = "Posts";
 }
 
 <h2>@ViewBag.Title</h2>
 
 @(Html.Kendo()
     .Grid<ShowPostsViewModel>()
-    .Name("PostGrid")
+    .Name("PostsGrid")
     .Columns(cols =>
         {
             cols.Bound(pr => pr.Id);
