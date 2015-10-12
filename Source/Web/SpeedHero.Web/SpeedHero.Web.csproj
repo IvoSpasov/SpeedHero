@@ -217,7 +217,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\Base\AdminController.cs" />
-    <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
     <Compile Include="Areas\Administration\Controllers\PostsController.cs" />
     <Compile Include="Areas\Administration\ViewModels\Base\AdministrationViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Posts\DeletePostViewModel.cs" />
@@ -568,7 +567,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Areas\Administration\Views\Home\Index.cshtml" />
     <None Include="Properties\PublishProfiles\ivo_localhost.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

@@ -17,7 +17,7 @@
             context.MapRoute(
                 name: "Administration_default",
                 url: "Administration/{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+                defaults: new { action = "Index", id = UrlParameter.Optional });
         }
     }
 }
