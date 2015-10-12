@@ -1,0 +1,26 @@
+﻿@using SpeedHero.Web.Areas.Administration.ViewModels.Users
+
+@{
+    ViewBag.Title = "Users";
+    const string ControllerName = "Users";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@(Html.Kendo()
+    .Grid<ShowUsersViewModel>()
+    .Name("users-grid")
+    .Columns(cols => 
+        {
+            cols.Bound(u => u.Id);
+            cols.Bound(u => u.UserName);
+            cols.Bound(u => u.FirstName);
+            cols.Bound(u => u.LastName);
+            cols.Bound(u => u.Email);
+            cols.Bound(u => u.PasswordHash);
+        })
+    .Pageable(p => p.Refresh(true))
+    .DataSource(data => data
+            .Ajax()
+            .Model(m => m.Id(u => u.Id))
+            .Read(read => read.Action("Read", ControllerName))))
