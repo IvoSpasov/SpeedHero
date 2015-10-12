@@ -10,17 +10,18 @@
 @(Html.Kendo()
     .Grid<ShowUsersViewModel>()
     .Name("users-grid")
-    .Columns(cols => 
+    .Columns(columns => 
         {
-            cols.Bound(u => u.Id);
-            cols.Bound(u => u.UserName);
-            cols.Bound(u => u.FirstName);
-            cols.Bound(u => u.LastName);
-            cols.Bound(u => u.Email);
-            cols.Bound(u => u.PasswordHash);
+            columns.Bound(u => u.Id);
+            columns.Bound(u => u.UserName);
+            columns.Bound(u => u.FirstName);
+            columns.Bound(u => u.LastName);
+            columns.Bound(u => u.Email);
+            columns.Bound(u => u.PasswordHash);
         })
     .Pageable(p => p.Refresh(true))
     .DataSource(data => data
             .Ajax()
             .Model(m => m.Id(u => u.Id))
-            .Read(read => read.Action("Read", ControllerName))))
+            .Read(read => read.Action("Read", ControllerName)))
+)

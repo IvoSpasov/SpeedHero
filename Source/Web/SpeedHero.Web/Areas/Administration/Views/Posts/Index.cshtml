@@ -10,17 +10,17 @@
 @(Html.Kendo()
     .Grid<ShowPostsViewModel>()
     .Name("posts-grid")
-    .Columns(cols =>
+    .Columns(columns =>
         {
-            cols.Bound(p => p.Id);
-            cols.Bound(p => p.Title);
-            cols.Bound(p => p.Content).Hidden();
-            cols.Bound(p => p.AuthorName);
-            cols.Bound(p => p.CoverPhotoPath).Hidden();
-            cols.Bound(p => p.CreatedOn);
-            cols.Bound(p => p.ModifiedOn);
-            cols.Command(com => com.Edit()).Title("Edit");
-            cols.Command(com => com.Destroy()).Title("Delete");
+            columns.Bound(p => p.Id);
+            columns.Bound(p => p.Title);
+            columns.Bound(p => p.Content).Hidden();
+            columns.Bound(p => p.AuthorName);
+            columns.Bound(p => p.CoverPhotoPath).Hidden();
+            columns.Bound(p => p.CreatedOn);
+            columns.Bound(p => p.ModifiedOn);
+            columns.Command(com => com.Edit()).Title("Edit");
+            columns.Command(com => com.Destroy()).Title("Delete");
         })
     .Pageable(p => p.Refresh(true))
     .Sortable()
@@ -40,4 +40,5 @@
             .Read(read => read.Action("Read", ControllerName))
             .Update(up => up.Action("Update", ControllerName))
             .Destroy(destr => destr.Action("Destroy", ControllerName))
-    ))
+            .PageSize(20))
+)
