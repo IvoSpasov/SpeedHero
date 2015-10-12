@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
@@ -30,14 +31,23 @@
 
         public DateTime CreatedOn { get; set; }
 
+        /// <summary>
+        /// Specifies whether or not the CreatedOn property should be automatically set.
+        /// </summary>
+        [NotMapped]
         public bool PreserveCreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
 
         // for fast db search
-        [Index] 
+        [Index]
+        [Display(Name = "Deleted?")]
+        [Editable(false)]
         public bool IsDeleted { get; set; }
 
+        [Display(Name = "Deletion date")]
+        [Editable(false)]
+        [DataType(DataType.DateTime)]
         public DateTime? DeletedOn { get; set; }
 
         public virtual ICollection<Post> Posts
