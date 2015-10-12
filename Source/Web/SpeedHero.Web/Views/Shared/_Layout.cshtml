@@ -27,11 +27,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("All Posts", "Index", "AllPosts", new { area = "" }, null)</li>*@
                     @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
                     {
-                        <li>@Html.RouteLink("Create Post", new { action = "CreatePost", area = string.Empty })</li>
-                        <li>@Html.ActionLink("Administration", "Index", "Post", new { area = "Administration" }, null)</li>
+                        <li>@Html.RouteLink("Create Post", "Create Post")</li>
+                        <li>@Html.ActionLink("Administration", string.Empty, string.Empty, new { area = "Administration" }, null)</li>
                     }                    
                 </ul>
                 @Html.Partial("_LoginPartial")
