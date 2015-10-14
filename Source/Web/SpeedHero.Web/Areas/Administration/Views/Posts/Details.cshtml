@@ -4,13 +4,25 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h3 class="text-center">@Html.DisplayFor(p => p.Title)</h3>
 
 <dl class="dl-horizontal">
     <dt>@Html.DisplayNameFor(p => p.Id)</dt>
     <dd>@Html.DisplayFor(p => p.Id)</dd>
     <dt>@Html.DisplayNameFor(p => p.Title)</dt>
     <dd>@Html.DisplayFor(p => p.Title)</dd>
+    <dt>@Html.DisplayNameFor(p => p.AuthorName)</dt>
+    <dd>@Html.DisplayFor(p => p.AuthorName)</dd>
+    <dt>@Html.DisplayNameFor(p => p.CoverPhotoPath)</dt>
+    <dd>@Html.DisplayFor(p => p.CoverPhotoPath)</dd>
+    <dt>Cover photo</dt>
+    <dd><img src="@Model.CoverPhotoPath" /></dd>
     <dt>@Html.DisplayNameFor(p => p.Content)</dt>
-    <dd>@Html.DisplayFor(p => p.Content)</dd>
+    <dd>@Html.Raw(Model.Content)</dd>
 </dl>
+
+@Html.ActionLink("Back", "Index", "Posts", new { area = "Administration" }, new { @class = "btn btn-primary"})
+
+<script>
+    $('.container img').addClass('img-responsive center-block');
+</script>
