@@ -19,7 +19,7 @@
         public string Title { get; set; }
 
         [Required]
-        [AllowHtml]
+        //[AllowHtml]
         public string Content { get; set; }
 
         [Display(Name = "New cover photo")]

@@ -14,7 +14,6 @@
 
         // [UIHint("tinymce_full")]
         [Required]
-        [AllowHtml]
         public string Content { get; set; }
 
         [Required]

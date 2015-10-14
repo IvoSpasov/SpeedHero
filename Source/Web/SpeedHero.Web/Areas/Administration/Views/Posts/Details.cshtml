@@ -22,6 +22,7 @@
 </dl>
 
 @Html.ActionLink("Back", "Index", "Posts", new { area = "Administration" }, new { @class = "btn btn-primary"})
+@Html.ActionLink("Edit", "Edit", "Posts", new { area = "Administration", id = Model.Id }, new { @class = "btn btn-primary" })
 
 <script>
     $('.container img').addClass('img-responsive center-block');
