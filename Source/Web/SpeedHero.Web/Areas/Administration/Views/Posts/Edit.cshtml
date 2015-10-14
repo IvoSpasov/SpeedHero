@@ -1,12 +1,12 @@
-﻿@model SpeedHero.Web.ViewModels.Posts.CreatePostViewModel
+﻿@model SpeedHero.Web.Areas.Administration.ViewModels.Posts.EditPostViewModel
 
 @{
-    ViewBag.Title = "Create Post";
+    ViewBag.Title = "Edit post";
 }
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("CreatePost", "Post", FormMethod.Post, new { @role = "form", @class = "form-horizontal" }))
+@using (Html.BeginForm("Edit", "Posts", FormMethod.Post, new { @role = "form", @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
 
@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(p => p.CoverPhoto, new { @class = "control-label col-sm-2" })
+        @Html.LabelFor(p => p.NewCoverPhoto, new { @class = "control-label col-sm-2" })
         <div class="col-sm-8">
             @(Html.Kendo().Upload()
             .Name("CoverPhoto")
@@ -46,19 +46,16 @@
                 .Destroy("Destroy", "ImageBrowser")
                 .Upload("Upload", "ImageBrowser")
                 .Thumbnail("Thumbnail", "ImageBrowser")))
-        </div>        
+        </div>
     </div>
     <div class="form-group">
         <div class="col-sm-12">
-            <input type="submit" value="Create" class="btn btn-primary" />
+            @Html.ActionLink("Back", "Index", "Posts", new { area = "Administration" }, new { @class = "btn btn-primary" })
+            <input type="submit" value="Save" class="btn btn-primary" />
         </div>
     </div>
 }
 
-@section styles{
-    @Styles.Render("~/Content/kendo")
-}
-
-@section scripts{
-    @Scripts.Render("~/bundles/kendo")
-}
+<script>
+    $('.k-textbox').removeClass('k-textbox').addClass('form-control text-box single-line');
+</script>

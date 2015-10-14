@@ -1,6 +1,7 @@
 ﻿namespace SpeedHero.Web.Areas.Administration.Controllers
 {
     using System;
+    using System.IO;
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
@@ -52,6 +53,7 @@
                 postFromDatabase = this.postsRepository.GetById(inputPost.Id);
                 Mapper.CreateMap<UpdatePostViewModel, Post>();                                 
                 Mapper.Map(inputPost, postFromDatabase);
+                this.postsRepository.Update(postFromDatabase);
                 this.postsRepository.SaveChanges();                
             }
 
@@ -89,6 +91,53 @@
 
             var mappedPost = Mapper.Map<PostDetailsViewModel>(post);
             return View(mappedPost);
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var post = this.postsRepository
+                .GetById(id.Value);
+
+            if (post == null)
+            {
+                return this.HttpNotFound("Post not found");
+            }
+
+            var mappedPost = Mapper.Map<EditPostViewModel>(post);
+            return View(mappedPost);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(EditPostViewModel inputPost)
+        {
+            if (ModelState.IsValid)
+            {
+                var postFromDatabase = this.postsRepository.GetById(inputPost.Id);
+                Mapper.CreateMap<EditPostViewModel, Post>();
+                Mapper.Map(inputPost, postFromDatabase);
+
+                if (inputPost.NewCoverPhoto != null)
+                {
+                    string picturePath = "/Content/UserFiles/Images/";
+                    var cover = inputPost.NewCoverPhoto.FirstOrDefault();
+                    string path = Path.Combine(Server.MapPath(picturePath), Path.GetFileName(cover.FileName));
+                    cover.SaveAs(path);
+                    postFromDatabase.CoverPhotoPath = picturePath + cover.FileName;
+                }
+
+                this.postsRepository.Update(postFromDatabase);
+                this.postsRepository.SaveChanges();
+
+                return this.RedirectToAction("Index");
+            }
+
+            return this.View(inputPost);
         }
     }
 }

@@ -220,6 +220,7 @@
     <Compile Include="Areas\Administration\Controllers\PostsController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
     <Compile Include="Areas\Administration\ViewModels\Base\AdministrationViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Posts\EditPostViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Posts\DeletePostViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Posts\PostDetailsViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Posts\ShowPostsViewModel.cs" />
@@ -572,6 +573,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Areas\Administration\Views\Users\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Posts\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\Posts\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\ivo_localhost.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
