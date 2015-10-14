@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Net;
     using System.Web.Mvc;
 
     using AutoMapper;
@@ -71,12 +72,20 @@
             return this.Json(new[] { inputPost }.ToDataSourceResult(request, this.ModelState));
         }
 
-        public ActionResult Details(int postId)
+        public ActionResult Details(int? id)
         {
-            var post = this.postsRepository
-                .GetById(postId);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-            // check for invalid id
+            var post = this.postsRepository
+                .GetById(id.Value);
+
+            if (post == null)
+            {
+                return this.HttpNotFound("Post not found");
+            }
 
             var mappedPost = Mapper.Map<PostDetailsViewModel>(post);
             return View(mappedPost);

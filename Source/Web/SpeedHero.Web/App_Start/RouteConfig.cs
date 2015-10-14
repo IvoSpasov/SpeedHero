@@ -20,7 +20,7 @@
             routes.MapRoute(
                 name: "Show post",
                 url: "ShowPost/{id}",
-                defaults: new { controller = "Post", action = "ShowPost" },
+                defaults: new { controller = "Post", action = "ShowPost", id = UrlParameter.Optional },
                 namespaces: new[] { "SpeedHero.Web.Controllers" });
 
             routes.MapRoute(

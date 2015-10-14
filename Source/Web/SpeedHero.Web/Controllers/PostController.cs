@@ -2,6 +2,7 @@
 {
     using System.IO;
     using System.Linq;
+    using System.Net;
     using System.Web;
     using System.Web.Mvc;
 
@@ -27,10 +28,15 @@
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult ShowPost(int id)
+        public ActionResult ShowPost(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             var selectedPost = this.postsRepository
-                .GetById(id);
+                .GetById(id.Value);
 
             if (selectedPost == null)
             {
