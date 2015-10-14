@@ -34,12 +34,12 @@
         [HttpPost]
         public ActionResult Read([DataSourceRequest]DataSourceRequest request)
         {
-            var posts = this.usersRepository
+            var users = this.usersRepository
                 .All()
                 .Project()
                 .To<ShowUsersViewModel>();
 
-            DataSourceResult result = posts.ToDataSourceResult(request);
+            DataSourceResult result = users.ToDataSourceResult(request);
 
             return this.Json(result);
         }

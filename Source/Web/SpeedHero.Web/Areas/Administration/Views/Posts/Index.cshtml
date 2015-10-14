@@ -19,6 +19,7 @@
             columns.Bound(p => p.CoverPhotoPath).Hidden();
             columns.Bound(p => p.CreatedOn);
             columns.Bound(p => p.ModifiedOn);
+            columns.Template(@<text></text>).ClientTemplate(@Html.ActionLink("Details", "Details", ControllerName, new { postId = "#=Id#" }, new { @class = "k-button" }).ToString());
             columns.Command(com => com.Edit()).Title("Edit");
             columns.Command(com => com.Destroy()).Title("Delete");
         })

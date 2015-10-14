@@ -70,5 +70,16 @@
 
             return this.Json(new[] { inputPost }.ToDataSourceResult(request, this.ModelState));
         }
+
+        public ActionResult Details(int postId)
+        {
+            var post = this.postsRepository
+                .GetById(postId);
+
+            // check for invalid id
+
+            var mappedPost = Mapper.Map<PostDetailsViewModel>(post);
+            return View(mappedPost);
+        }
     }
 }

@@ -25,11 +25,11 @@
         [DataType(DataType.Html)]
         public string Content { get; set; }
 
+        public string CoverPhotoPath { get; set; }
+
         public string AuthorId { get; set; }
 
-        public virtual User Author { get; set; }
-
-        public string CoverPhotoPath { get; set; }
+        public virtual User Author { get; set; }        
 
         public virtual ICollection<Comment> Comments
         {

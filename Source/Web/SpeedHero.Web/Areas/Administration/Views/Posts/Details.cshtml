@@ -1,0 +1,16 @@
+﻿@model SpeedHero.Web.Areas.Administration.ViewModels.Posts.PostDetailsViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<dl class="dl-horizontal">
+    <dt>@Html.DisplayNameFor(p => p.Id)</dt>
+    <dd>@Html.DisplayFor(p => p.Id)</dd>
+    <dt>@Html.DisplayNameFor(p => p.Title)</dt>
+    <dd>@Html.DisplayFor(p => p.Title)</dd>
+    <dt>@Html.DisplayNameFor(p => p.Content)</dt>
+    <dd>@Html.DisplayFor(p => p.Content)</dd>
+</dl>
