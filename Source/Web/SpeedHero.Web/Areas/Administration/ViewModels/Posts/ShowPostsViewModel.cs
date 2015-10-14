@@ -26,14 +26,6 @@
         [HiddenInput(DisplayValue = false)]
         public string AuthorName { get; set; }
 
-        [Required]
-        [Display(Name = "Content")]
-        public string Content { get; set; }
-
-        [Required]
-        [Display(Name = "Cover photo path")]
-        public string CoverPhotoPath { get; set; }
-
         public void CreateMappings(IConfiguration configuration)
         {
             Mapper.CreateMap<Post, ShowPostsViewModel>()
