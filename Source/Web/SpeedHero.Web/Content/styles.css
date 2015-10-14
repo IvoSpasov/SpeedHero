@@ -57,19 +57,14 @@ a:hover a:visited, a:link, a:active {
     margin-top: 20px;
 }
 
-
 /*fixing kendo grid (Start)*/
-table.k-button {
-
-}
-
-table a.k-button{
-    color: #515967;
-    text-decoration: none;
-}
-
-table {
+div.k-grid table {
     background-color: #fff;
     color: #515967;
+}
+
+div.k-grid table a {
+    color: #515967;
+    text-decoration: none;
 }
 /*fixing kendo grid (End)*/
