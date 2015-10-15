@@ -1,16 +1,15 @@
 ﻿namespace SpeedHero.Web.Controllers
 {
     using System.Linq;
-    using System.Web;
     using System.Web.Mvc;
-
+    
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Microsoft.AspNet.Identity;
 
     using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.ViewModels.Comments;
-    using AutoMapper;
 
     public class CommentController : Controller
     {

@@ -1,8 +1,6 @@
 ﻿namespace SpeedHero.Web.Areas.Administration.ViewModels.Posts
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
     using System.Web.Mvc;
 
     using AutoMapper;
@@ -28,7 +26,7 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
-            Mapper.CreateMap<Post, ShowPostsViewModel>()
+            configuration.CreateMap<Post, ShowPostsViewModel>()
                 .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(p => p.Author.UserName));
         }
     }

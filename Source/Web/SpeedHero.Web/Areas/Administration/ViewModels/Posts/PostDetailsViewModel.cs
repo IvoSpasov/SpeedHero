@@ -23,7 +23,7 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
-            Mapper.CreateMap<Post, PostDetailsViewModel>()
+            configuration.CreateMap<Post, PostDetailsViewModel>()
                 .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(p => p.Author.UserName));
         }
     }
