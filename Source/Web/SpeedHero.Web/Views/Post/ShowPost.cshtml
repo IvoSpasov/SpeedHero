@@ -59,7 +59,11 @@
 {
     <div class="row">
         <div class="col-sm-12">
-            @Html.ActionLink("Edit post", "Edit", "Posts", new { area = "Administration", id = Model.Id, returnUrl = "/ShowPost/" + Model.Id }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Edit post",
+            "Edit",
+            "Posts",
+            new { area = "Administration", id = Model.Id, returnUrl = @Url.RouteUrl("Show post", new { id = Model.Id }) },
+            new { @class = "btn btn-primary" })
         </div>
     </div>
 }
