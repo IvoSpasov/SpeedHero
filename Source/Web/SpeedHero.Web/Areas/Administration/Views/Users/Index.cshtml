@@ -17,9 +17,11 @@
             columns.Bound(u => u.FirstName);
             columns.Bound(u => u.LastName);
             columns.Bound(u => u.Email);
-            columns.Bound(u => u.PasswordHash);
+            columns.Bound(u => u.PasswordHash).Hidden();
+            columns.Bound(u => u.CreatedOn);
         })
     .Pageable(p => p.Refresh(true))
+    .ColumnMenu()
     .DataSource(data => data
             .Ajax()
             .Model(m => m.Id(u => u.Id))
