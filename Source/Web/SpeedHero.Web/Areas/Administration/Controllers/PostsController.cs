@@ -123,6 +123,7 @@
                 Mapper.CreateMap<EditPostViewModel, Post>();
                 Mapper.Map(inputPost, postFromDatabase);
 
+                // TODO add to separate method and class
                 if (inputPost.NewCoverPhoto != null)
                 {
                     string picturePath = "/Content/UserFiles/Images/";
@@ -132,8 +133,6 @@
                     postFromDatabase.CoverPhotoPath = picturePath + cover.FileName;
                 }
 
-                string content = HttpUtility.HtmlDecode(inputPost.Content);
-                postFromDatabase.Content = content;
                 this.postsRepository.Update(postFromDatabase);
                 this.postsRepository.SaveChanges();
 
