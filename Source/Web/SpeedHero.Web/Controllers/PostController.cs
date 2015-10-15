@@ -66,10 +66,9 @@
                 // This is to remind me if I don't use kendo Editor and the content needs decoding/encoding before saving to DB.
                 //string content = HttpUtility.HtmlDecode(inputPost.Content);
 
-                var currentUserId = this.User.Identity.GetUserId();
                 Mapper.CreateMap<CreatePostViewModel, Post>();
                 var newPost = Mapper.Map<Post>(inputPost);
-                newPost.AuthorId = currentUserId;
+                newPost.AuthorId = this.User.Identity.GetUserId();
                 newPost.CoverPhotoPath = this.CreateCoverPhotoPath(inputPost.CoverPhoto);
                 this.postsRepository.Add(newPost);
                 this.postsRepository.SaveChanges();

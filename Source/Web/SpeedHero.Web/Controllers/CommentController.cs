@@ -10,6 +10,7 @@
     using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.ViewModels.Comments;
+    using AutoMapper;
 
     public class CommentController : Controller
     {
@@ -40,16 +41,9 @@
         {
             if (ModelState.IsValid)
             {
-                var currentUserId = this.User.Identity.GetUserId();
-                string content = HttpUtility.HtmlDecode(inputComment.Content);
-
-                var comment = new Comment
-                {
-                    Content = content,
-                    PostId = inputComment.PostId,
-                    AuthorId = currentUserId
-                };
-
+                Mapper.CreateMap<CreateCommentViewModel, Comment>();
+                var comment = Mapper.Map<Comment>(inputComment);
+                comment.AuthorId = this.User.Identity.GetUserId();
                 this.commentsRepository.Add(comment);
                 this.commentsRepository.SaveChanges();
             }
