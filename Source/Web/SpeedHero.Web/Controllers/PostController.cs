@@ -14,18 +14,15 @@
     using SpeedHero.Common;
     using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
-    using SpeedHero.Web.Infrastructure;
     using SpeedHero.Web.ViewModels.Posts;
 
     public class PostController : Controller
     {
         private readonly IDeletableEntityRepository<Post> postsRepository;
-        private readonly ISanitizer sanitizer;
 
-        public PostController(IDeletableEntityRepository<Post> postsDeletableRepository, ISanitizer sanitizer)
+        public PostController(IDeletableEntityRepository<Post> postsDeletableRepository)
         {
             this.postsRepository = postsDeletableRepository;
-            this.sanitizer = sanitizer;
         }
 
         [HttpGet]
