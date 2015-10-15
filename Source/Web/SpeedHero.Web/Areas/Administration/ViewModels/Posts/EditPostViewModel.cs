@@ -22,6 +22,10 @@
         [AllowHtml]
         public string Content { get; set; }
 
+        [Required]
+        [Display(Name = "Cover photo path")]
+        public string CoverPhotoPath { get; set; }
+
         [Display(Name = "New cover photo")]
         public IEnumerable<HttpPostedFileBase> NewCoverPhoto { get; set; }
     }
