@@ -61,7 +61,7 @@
             if (ModelState.IsValid)
             {
                 // This is to remind me if I don't use kendo Editor and the content needs decoding/encoding before saving to DB.
-                //string content = HttpUtility.HtmlDecode(inputPost.Content);
+                // string content = HttpUtility.HtmlDecode(inputPost.Content);
 
                 Mapper.CreateMap<CreatePostViewModel, Post>();
                 var newPost = Mapper.Map<Post>(inputPost);

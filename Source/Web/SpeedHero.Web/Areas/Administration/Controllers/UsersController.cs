@@ -1,6 +1,5 @@
 ﻿namespace SpeedHero.Web.Areas.Administration.Controllers
 {
-
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -28,7 +27,7 @@
         // GET: Administration/Users
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPost]

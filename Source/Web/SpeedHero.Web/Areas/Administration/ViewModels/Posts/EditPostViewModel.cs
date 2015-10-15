@@ -8,7 +8,7 @@
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Infrastructure.Mapping;
 
-    public class EditPostViewModel: IMapFrom<Post>
+    public class EditPostViewModel : IMapFrom<Post>
     {
         [Required]
         public int Id { get; set; }

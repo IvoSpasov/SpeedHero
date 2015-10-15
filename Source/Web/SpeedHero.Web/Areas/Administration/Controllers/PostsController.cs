@@ -90,7 +90,7 @@
             }
 
             var mappedPost = Mapper.Map<PostDetailsViewModel>(post);
-            return View(mappedPost);
+            return this.View(mappedPost);
         }
 
         public ActionResult Edit(int? id)
@@ -109,7 +109,7 @@
             }
 
             var mappedPost = Mapper.Map<EditPostViewModel>(post);
-            return View(mappedPost);
+            return this.View(mappedPost);
         }
 
         [HttpPost]

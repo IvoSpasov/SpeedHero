@@ -1,6 +1,5 @@
 ﻿namespace SpeedHero.Web.App_Start
 {
-    using System.Web;
     using System.Web.Optimization;
 
     public class BundleConfig
