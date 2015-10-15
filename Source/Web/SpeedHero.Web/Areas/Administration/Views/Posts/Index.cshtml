@@ -18,7 +18,7 @@
             columns.Bound(p => p.CreatedOn);
             columns.Bound(p => p.ModifiedOn);
             columns.Template(@<text></text>).ClientTemplate(@Html.ActionLink("Details", "Details", ControllerName, new { id = "#=Id#" }, new { @class = "k-button" }).ToString());
-            columns.Template(@<text></text>).ClientTemplate(@Html.ActionLink("Full edit", "Edit", ControllerName, new { id = "#=Id#" }, new { @class = "k-button" }).ToString());
+            columns.Template(@<text></text>).ClientTemplate(@Html.ActionLink("Full edit", "Edit", ControllerName, new { id = "#=Id#", returnUrl = "/Administration/Posts/" }, new { @class = "k-button" }).ToString());
             columns.Command(com => com.Edit()).Title("Title edit");
             columns.Command(com => com.Destroy()).Title("Delete");
         })

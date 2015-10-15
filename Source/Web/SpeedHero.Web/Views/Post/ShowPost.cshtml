@@ -1,4 +1,5 @@
 ﻿@model SpeedHero.Web.ViewModels.Posts.ShowPostViewModel
+@using SpeedHero.Common
 
 @{
     ViewBag.Title = Model.Title;
@@ -53,6 +54,15 @@
 <div id="comments-section">
     @Html.Action("CreateComment", "Comment", new { postId = Model.Id })
 </div>
+
+@if (User.IsInRole(GlobalConstants.AdministratorRoleName))
+{
+    <div class="row">
+        <div class="col-sm-12">
+            @Html.ActionLink("Edit post", "Edit", "Posts", new { area = "Administration", id = Model.Id, returnUrl = "/ShowPost/" + Model.Id }, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+}
 
 @section styles{
     @Styles.Render("~/Content/kendo")

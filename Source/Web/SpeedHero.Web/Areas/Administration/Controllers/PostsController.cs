@@ -93,7 +93,7 @@
             return this.View(mappedPost);
         }
 
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, string returnUrl)
         {
             if (id == null)
             {
@@ -108,13 +108,14 @@
                 return this.HttpNotFound("Post not found");
             }
 
+            ViewBag.ReturnUrl = returnUrl;
             var mappedPost = Mapper.Map<EditPostViewModel>(post);
             return this.View(mappedPost);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(EditPostViewModel inputPost)
+        public ActionResult Edit(EditPostViewModel inputPost, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -135,7 +136,7 @@
                 this.postsRepository.Update(postFromDatabase);
                 this.postsRepository.SaveChanges();
 
-                return this.RedirectToAction("Index");
+                return this.Redirect(returnUrl);
             }
 
             return this.View(inputPost);
