@@ -1,5 +1,7 @@
 ﻿namespace SpeedHero.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Net;
@@ -8,7 +10,7 @@
 
     using AutoMapper;
     using Microsoft.AspNet.Identity;
-    
+
     using SpeedHero.Common;
     using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
@@ -46,7 +48,7 @@
             var mappedPost = Mapper.Map<ShowPostViewModel>(selectedPost);
             return this.View(mappedPost);
         }
-        
+
         [HttpGet]
         [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public ActionResult CreatePost()
@@ -61,33 +63,36 @@
         {
             if (ModelState.IsValid)
             {
+                // This is to remind me if I don't use kendo Editor and the content needs decoding/encoding before saving to DB.
+                //string content = HttpUtility.HtmlDecode(inputPost.Content);
+
                 var currentUserId = this.User.Identity.GetUserId();
-                string content = HttpUtility.HtmlDecode(inputPost.Content);
-
-                var post = new Post
-                {
-                    Title = inputPost.Title,
-                    Content = this.sanitizer.Sanitize(content),
-                    AuthorId = currentUserId
-                };
-
-                if (inputPost.CoverPhoto != null)
-                {
-                    string picturePath = "/Content/UserFiles/Images/";
-                    var cover = inputPost.CoverPhoto.FirstOrDefault();
-                    string path = Path.Combine(Server.MapPath(picturePath), Path.GetFileName(cover.FileName));
-                    cover.SaveAs(path);
-                    post.CoverPhotoPath = picturePath + cover.FileName;
-                }
-
-                this.postsRepository.Add(post);
+                Mapper.CreateMap<CreatePostViewModel, Post>();
+                var newPost = Mapper.Map<Post>(inputPost);
+                newPost.AuthorId = currentUserId;
+                newPost.CoverPhotoPath = this.CreateCoverPhotoPath(inputPost.CoverPhoto);
+                this.postsRepository.Add(newPost);
                 this.postsRepository.SaveChanges();
                 this.TempData["SuccessfullNewPost"] = "Your post was successfully created.";
-                return this.RedirectToAction("ShowPost", new { id = post.Id });
+                return this.RedirectToAction("ShowPost", new { id = newPost.Id });
             }
 
             ViewBag.ModelState = "Invalid";
             return this.View(inputPost);
+        }
+
+        private string CreateCoverPhotoPath(IEnumerable<HttpPostedFileBase> coverPhoto)
+        {
+            if (coverPhoto == null)
+            {
+                throw new ArgumentNullException("Invalid cover photo");
+            }
+
+            string picturePath = "/Content/UserFiles/Images/";
+            var cover = coverPhoto.FirstOrDefault();
+            string path = Path.Combine(Server.MapPath(picturePath), Path.GetFileName(cover.FileName));
+            cover.SaveAs(path);
+            return picturePath + cover.FileName;
         }
     }
 }

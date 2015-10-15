@@ -37,7 +37,7 @@
         <div class="col-sm-12">
             @(Html.Kendo().Editor()
             .Name("Content")
-            .Encode(true)
+            .Encode(false)
             .HtmlAttributes(new { style = "width: 100%; height:700px" })
             .ImageBrowser(imageBrowser => imageBrowser
                 .Image("~/Content/UserFiles/Images/{0}")

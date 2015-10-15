@@ -12,8 +12,8 @@
         [Display(Name = "Title")]
         public string Title { get; set; }
 
-        // [UIHint("tinymce_full")]
         [Required]
+        [AllowHtml]
         public string Content { get; set; }
 
         [Required]
