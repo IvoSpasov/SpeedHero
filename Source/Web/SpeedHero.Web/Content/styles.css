@@ -47,6 +47,14 @@ a:hover a:visited, a:link, a:active {
 .padding-left-0 {
     padding-left: 0;
 }
+
+.text-size-30 {
+    font-size: 30px;
+}
+
+.text-color-white {
+    color: #fff;
+}
 /*custom classes (end)*/
 
 /*fixing kendo grid (start)*/
@@ -55,8 +63,8 @@ div.k-grid table {
     color: #515967;
 }
 
-div.k-grid table a {
-    color: #515967;
-    text-decoration: none;
-}
+    div.k-grid table a {
+        color: #515967;
+        text-decoration: none;
+    }
 /*fixing kendo grid (end)*/

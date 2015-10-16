@@ -8,13 +8,22 @@
 
 @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
 {
-    <div class="row">
-        <div class="col-sm-12">
-            @Html.ActionLink("Edit post",
-            "Edit",
-            "Posts",
-            new { area = Constants.AdministrationAreaName, id = Model.Id, returnUrl = @Url.RouteUrl("Show post", new { id = Model.Id }) },
-            new { @class = "btn btn-default btn-block margin-15" })
+    <div class="row margin-15">
+        <div class="col-sm-6">
+            @Html.ActionLink(
+                "Edit post",
+                "Edit",
+                "Posts",
+                new { area = Constants.AdministrationAreaName, id = Model.Id, returnUrl = @Url.RouteUrl("Show post", new { id = Model.Id }) },
+                new { @class = "btn btn-default btn-block" })
+        </div>
+        <div class="col-sm-6 padding-left-0">
+            @Html.ActionLink(
+                "Details", 
+                "Details", 
+                "Posts", 
+                new { area = Constants.AdministrationAreaName, id = Model.Id }, 
+                new { @class = "btn btn-default btn-block" })
         </div>
     </div>
 }

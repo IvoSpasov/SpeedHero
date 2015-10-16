@@ -44,6 +44,7 @@
                 .GetById(id.Value);
             var mappedComment = AutoMapper.Mapper.Map<EditCommentViewModel>(comment);
 
+            ViewBag.PostId = comment.PostId;
             return this.View(mappedComment);
         }
 
