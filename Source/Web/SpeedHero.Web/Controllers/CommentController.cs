@@ -13,11 +13,11 @@
 
     public class CommentController : Controller
     {
-        private readonly IGenericRepository<Comment> commentsRepository;
+        private readonly IDeletableEntityRepository<Comment> commentsRepository;
 
-        public CommentController(IGenericRepository<Comment> commentsGenericRepository)
+        public CommentController(IDeletableEntityRepository<Comment> commentsDeletableRepository)
         {
-            this.commentsRepository = commentsGenericRepository;
+            this.commentsRepository = commentsDeletableRepository;
         }
 
         // [ChildActionOnly] It does not work with RedirectToAction.

@@ -65,5 +65,14 @@
 
             return this.View(inputComment);
         }
+
+        public ActionResult Delete(int? id)
+        {
+            var commentFromDatabase = this.commentsRepository.GetById(id.Value);
+            this.commentsRepository.Delete(id.Value);
+            this.commentsRepository.SaveChanges();
+
+            return this.RedirectToAction("Details", "Posts", new { id = commentFromDatabase.PostId });
+        }
     }
 }

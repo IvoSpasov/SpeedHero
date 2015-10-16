@@ -13,6 +13,7 @@
         </div>
         <div class="col-sm-2">
             @Html.ActionLink("Edit", "Edit", "Comments", new { id = comment.Id }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Delete", "Delete", "Comments", new { id = comment.Id }, new { @class = "btn btn-primary" })
         </div>
     </div>
 }
