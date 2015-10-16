@@ -12,7 +12,7 @@
             </dl>            
         </div>
         <div class="col-sm-2">
-            <a href="#" class="btn btn-primary">Edit comment</a>
+            @Html.ActionLink("Edit", "Edit", "Comments", new { id = comment.Id }, new { @class = "btn btn-primary" })
         </div>
     </div>
 }
