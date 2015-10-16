@@ -1,4 +1,5 @@
-﻿@model SpeedHero.Web.Areas.Administration.ViewModels.Posts.PostDetailsViewModel
+﻿@using SpeedHero.Web.Helpers
+@model SpeedHero.Web.Areas.Administration.ViewModels.Posts.PostDetailsViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -21,11 +22,11 @@
     <dd>@Html.Raw(Model.Content)</dd>
 </dl>
 
-@Html.ActionLink("Back", "Index", "Posts", new { area = "Administration" }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Back", "Index", "Posts", new { area = Constants.AdministrationAreaName }, new { @class = "btn btn-primary" })
 @Html.ActionLink("Edit",
         "Edit", 
         "Posts",
-        new { area = "Administration", id = Model.Id, returnUrl = @Url.Action("Details", "Posts", new { area = "Administration", id = Model.Id }) }, 
+        new { area = Constants.AdministrationAreaName, id = Model.Id, returnUrl = @Url.Action("Details", "Posts", new { area = Constants.AdministrationAreaName, id = Model.Id }) }, 
         new { @class = "btn btn-primary" })
 
 <script>

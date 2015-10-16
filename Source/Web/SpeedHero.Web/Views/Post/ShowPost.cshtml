@@ -1,5 +1,6 @@
-﻿@model SpeedHero.Web.ViewModels.Posts.ShowPostViewModel
-@using SpeedHero.Common
+﻿@using SpeedHero.Common
+@using SpeedHero.Web.Helpers
+@model SpeedHero.Web.ViewModels.Posts.ShowPostViewModel
 
 @{
     ViewBag.Title = Model.Title;
@@ -62,7 +63,7 @@
             @Html.ActionLink("Edit post",
             "Edit",
             "Posts",
-            new { area = "Administration", id = Model.Id, returnUrl = @Url.RouteUrl("Show post", new { id = Model.Id }) },
+            new { area = Constants.AdministrationAreaName, id = Model.Id, returnUrl = @Url.RouteUrl("Show post", new { id = Model.Id }) },
             new { @class = "btn btn-primary" })
         </div>
     </div>

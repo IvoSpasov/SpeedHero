@@ -1,4 +1,5 @@
-﻿@using SpeedHero.Web.Areas.Administration.ViewModels.Posts
+﻿@using SpeedHero.Web.Helpers
+@using SpeedHero.Web.Areas.Administration.ViewModels.Posts
 
 @{
     ViewBag.Title = "Posts";
@@ -28,8 +29,8 @@
                 .ClientTemplate(@Html.ActionLink(
                     "Full edit", 
                     "Edit", 
-                    ControllerName, 
-                    new { id = "#=Id#", returnUrl = @Url.Action("Index", ControllerName, new { area = "Administration" }) }, 
+                    ControllerName,
+                    new { id = "#=Id#", returnUrl = @Url.Action("Index", ControllerName, new { area = Constants.AdministrationAreaName }) }, 
                     new { @class = "k-button" }).ToString());
             columns.Command(com => com.Edit()).Title("Title edit");
             columns.Command(com => com.Destroy()).Title("Delete");

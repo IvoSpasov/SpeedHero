@@ -2,13 +2,15 @@
 {
     using System.Web.Mvc;
 
+    using SpeedHero.Web.Helpers;
+
     public class AdministrationAreaAreaRegistration : AreaRegistration
     {
         public override string AreaName
         {
             get
             {
-                return "Administration";
+                return Constants.AdministrationAreaName;
             }
         }
 
@@ -16,7 +18,7 @@
         {
             context.MapRoute(
                 name: "Administration_default",
-                url: "Administration/{controller}/{action}/{id}",
+                url: Constants.AdministrationAreaName + "/{controller}/{action}/{id}",
                 defaults: new { action = "Index", id = UrlParameter.Optional });
         }
     }
