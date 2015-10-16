@@ -22,13 +22,19 @@
     <dd>@Html.Raw(Model.Content)</dd>
 </dl>
 
-@Html.ActionLink("Back", "Index", "Posts", new { area = Constants.AdministrationAreaName }, new { @class = "btn btn-primary" })
-@Html.ActionLink("Edit",
-        "Edit", 
+<div class="row margin-bottom-15">
+    <div class="col-sm-3">
+        @Html.ActionLink("Back", "Index", "Posts", new { area = Constants.AdministrationAreaName }, new { @class = "btn btn-default btn-block" })
+    </div>
+    <div class="col-sm-3 padding-left-0">
+        @Html.ActionLink("Edit",
+        "Edit",
         "Posts",
-        new { area = Constants.AdministrationAreaName, id = Model.Id, returnUrl = @Url.Action("Details", "Posts", new { area = Constants.AdministrationAreaName, id = Model.Id }) }, 
-        new { @class = "btn btn-primary" })
+        new { area = Constants.AdministrationAreaName, id = Model.Id, returnUrl = @Url.Action("Details", "Posts", new { area = Constants.AdministrationAreaName, id = Model.Id }) },
+        new { @class = "btn btn-primary btn-block" })
+    </div>
+</div>
 
 <script>
-    $('.container img').addClass('img-responsive center-block');
+    $('.container img').addClass('img-responsive center-block').removeAttr('style width');
 </script>

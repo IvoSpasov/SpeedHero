@@ -6,6 +6,19 @@
     ViewBag.Title = Model.Title;
 }
 
+@if (User.IsInRole(GlobalConstants.AdministratorRoleName))
+{
+    <div class="row">
+        <div class="col-sm-12">
+            @Html.ActionLink("Edit post",
+            "Edit",
+            "Posts",
+            new { area = Constants.AdministrationAreaName, id = Model.Id, returnUrl = @Url.RouteUrl("Show post", new { id = Model.Id }) },
+            new { @class = "btn btn-default btn-block margin-15" })
+        </div>
+    </div>
+}
+
 @if (TempData["SuccessfullNewPost"] != null)
 {
     <div class="row">
@@ -56,19 +69,6 @@
     @Html.Action("CreateComment", "Comment", new { postId = Model.Id })
 </div>
 
-@if (User.IsInRole(GlobalConstants.AdministratorRoleName))
-{
-    <div class="row">
-        <div class="col-sm-12">
-            @Html.ActionLink("Edit post",
-            "Edit",
-            "Posts",
-            new { area = Constants.AdministrationAreaName, id = Model.Id, returnUrl = @Url.RouteUrl("Show post", new { id = Model.Id }) },
-            new { @class = "btn btn-primary" })
-        </div>
-    </div>
-}
-
 @section styles{
     @Styles.Render("~/Content/kendo")
 }
@@ -78,3 +78,7 @@
     @Scripts.Render("~/bundles/jqueryAjax")
     @*@Scripts.Render("~/bundles/jqueryForm")*@
 }
+
+<script>
+    $('.content img').addClass('center-block max-width-90').removeAttr('style width');
+</script>
