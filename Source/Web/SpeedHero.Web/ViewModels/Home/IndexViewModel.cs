@@ -23,7 +23,7 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Post, IndexViewModel>()
-                .ForMember(dto => dto.NumberOfComments, opt => opt.MapFrom(p => p.Comments.Count()));
+                .ForMember(dto => dto.NumberOfComments, opt => opt.MapFrom(p => p.Comments.Where(c => !c.IsDeleted).Count()));
         }
     }
 }
