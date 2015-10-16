@@ -1,0 +1,18 @@
+﻿@model IEnumerable<SpeedHero.Web.Areas.Administration.ViewModels.Comments.ShowCommentsViewModel>
+
+<h2>Comments</h2>
+
+@foreach (var comment in Model)
+{
+    <div class="row">
+        <div class="col-sm-10">
+            <dl class="dl-horizontal">
+                <dt>Content</dt>
+                <dd>@Html.Raw(comment.Content)</dd>
+            </dl>            
+        </div>
+        <div class="col-sm-2">
+            <a href="#" class="btn btn-primary">Edit comment</a>
+        </div>
+    </div>
+}
