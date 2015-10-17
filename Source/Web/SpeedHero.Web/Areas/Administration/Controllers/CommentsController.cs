@@ -58,7 +58,7 @@
                 return this.HttpNotFound("Comment not found");
             }
 
-            var mappedComment = AutoMapper.Mapper.Map<EditCommentViewModel>(comment);
+            var mappedComment = Mapper.Map<EditCommentViewModel>(comment);
 
             ViewBag.PostId = comment.PostId;
             return this.View(mappedComment);

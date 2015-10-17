@@ -6,8 +6,9 @@
 
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Infrastructure.Mapping;
+    using SpeedHero.Web.Areas.Administration.ViewModels.Base;
 
-    public class PostDetailsViewModel : IMapFrom<Post>, IHaveCustomMappings
+    public class PostDetailsViewModel : AdministrationViewModel, IMapFrom<Post>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -18,7 +19,7 @@
         [Display(Name = "Cover photo path")]
         public string CoverPhotoPath { get; set; }
 
-        [Display(Name = "Author name")]
+        [Display(Name = "Author")]
         public string AuthorName { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
