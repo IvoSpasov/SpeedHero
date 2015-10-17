@@ -1,6 +1,7 @@
 ﻿namespace SpeedHero.Web.Areas.Administration.Controllers
 {
     using System.Linq;
+    using System.Net;
     using System.Web.Mvc;
 
     using AutoMapper;
@@ -26,9 +27,13 @@
             return View();
         }
 
-        // TODO check for invalid id and so on
         public ActionResult ShowAllInPost(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             var comments = this.commentsRepository
                 .All()
                 .Where(c => c.PostId == id.Value)
@@ -40,8 +45,19 @@
 
         public ActionResult Edit(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             var comment = this.commentsRepository
                 .GetById(id.Value);
+
+            if (comment == null)
+            {
+                return this.HttpNotFound("Comment not found");
+            }
+
             var mappedComment = AutoMapper.Mapper.Map<EditCommentViewModel>(comment);
 
             ViewBag.PostId = comment.PostId;
