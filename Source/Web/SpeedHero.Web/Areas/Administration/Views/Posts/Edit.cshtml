@@ -32,10 +32,10 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(p => p.NewCoverPhoto, new { @class = "control-label col-sm-2" })
+        @Html.LabelFor(p => p.Files, new { @class = "control-label col-sm-2" })
         <div class="col-sm-8">
             @(Html.Kendo().Upload()
-            .Name("CoverPhoto")
+            .Name("Files")
             .Multiple(false))
         </div>
     </div>

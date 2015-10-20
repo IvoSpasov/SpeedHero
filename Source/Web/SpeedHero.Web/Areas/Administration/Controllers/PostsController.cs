@@ -15,6 +15,9 @@
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Areas.Administration.Controllers.Base;
     using SpeedHero.Web.Areas.Administration.ViewModels.Posts;
+    using System.Collections.Generic;
+    using System.Web;
+    using SpeedHero.Web.Helpers;
 
     public class PostsController : AdminController
     {
@@ -51,10 +54,10 @@
             if (ModelState.IsValid)
             {
                 postFromDatabase = this.postsRepository.GetById(inputPost.Id);
-                Mapper.CreateMap<UpdatePostViewModel, Post>();                                 
+                Mapper.CreateMap<UpdatePostViewModel, Post>();
                 Mapper.Map(inputPost, postFromDatabase);
                 this.postsRepository.Update(postFromDatabase);
-                this.postsRepository.SaveChanges();                
+                this.postsRepository.SaveChanges();
             }
 
             var modifedPostForKendo = Mapper.Map<ShowPostsViewModel>(postFromDatabase);
@@ -123,14 +126,10 @@
                 Mapper.CreateMap<EditPostViewModel, Post>();
                 Mapper.Map(inputPost, postFromDatabase);
 
-                // TODO add to separate method and class
-                if (inputPost.NewCoverPhoto != null)
+                if (inputPost.Files != null)
                 {
-                    string picturePath = "/Content/UserFiles/Images/";
-                    var cover = inputPost.NewCoverPhoto.FirstOrDefault();
-                    string path = Path.Combine(Server.MapPath(picturePath), Path.GetFileName(cover.FileName));
-                    cover.SaveAs(path);
-                    postFromDatabase.CoverPhotoPath = picturePath + cover.FileName;
+                    postFromDatabase.CoverPhotoPath = WebConstants.ImagesPath + this.GetCoverPhotoName(inputPost.Files);
+                    this.SavePhoto(inputPost.Files, WebConstants.ImagesPath);
                 }
 
                 this.postsRepository.Update(postFromDatabase);
@@ -140,6 +139,36 @@
             }
 
             return this.View(inputPost);
+        }
+
+        protected void SavePhoto(IEnumerable<HttpPostedFileBase> files, string path)
+        {
+            if (files == null)
+            {
+                throw new ArgumentNullException("No collection of files");
+            }
+            if (string.IsNullOrEmpty(path))
+            {
+                throw new ArgumentNullException("No path in which to save the files");
+            }
+
+            var coverPhoto = files.FirstOrDefault();
+
+            // Some browsers send file names with full path. We only care about the file name.
+            var fileName = Path.GetFileName(coverPhoto.FileName);
+            var destinationPath = Path.Combine(Server.MapPath(path), fileName);
+            coverPhoto.SaveAs(destinationPath);
+        }
+
+        protected string GetCoverPhotoName(IEnumerable<HttpPostedFileBase> files)
+        {
+            if (files == null)
+            {
+                throw new ArgumentNullException("No collection of files");
+            }
+
+            var coverPhoto = files.FirstOrDefault();
+            return coverPhoto.FileName;
         }
     }
 }

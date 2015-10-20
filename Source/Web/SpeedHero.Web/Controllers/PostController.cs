@@ -15,6 +15,8 @@
     using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.ViewModels.Posts;
+    using SpeedHero.Web.Helpers;
+    //sing SpeedHero.Web.Helpers;
 
     public class PostController : Controller
     {
@@ -66,7 +68,8 @@
                 Mapper.CreateMap<CreatePostViewModel, Post>();
                 var newPost = Mapper.Map<Post>(inputPost);
                 newPost.AuthorId = this.User.Identity.GetUserId();
-                newPost.CoverPhotoPath = this.CreateCoverPhotoPath(inputPost.CoverPhoto);
+                newPost.CoverPhotoPath = WebConstants.ImagesPath + this.GetCoverPhotoName(inputPost.Files);
+                this.SavePhoto(inputPost.Files, WebConstants.ImagesPath);
                 this.postsRepository.Add(newPost);
                 this.postsRepository.SaveChanges();
                 this.TempData["SuccessfullNewPost"] = "Your post was successfully created.";
@@ -77,18 +80,36 @@
             return this.View(inputPost);
         }
 
-        private string CreateCoverPhotoPath(IEnumerable<HttpPostedFileBase> coverPhoto)
+        // TODO check if it's a picture or not
+
+        protected void SavePhoto(IEnumerable<HttpPostedFileBase> files, string path)
         {
-            if (coverPhoto == null)
+            if (files == null)
             {
-                throw new ArgumentNullException("Invalid cover photo");
+                throw new ArgumentNullException("No collection of files");
+            }
+            if (string.IsNullOrEmpty(path))
+            {
+                throw new ArgumentNullException("No path in which to save the files");
             }
 
-            string picturePath = "/Content/UserFiles/Images/";
-            var cover = coverPhoto.FirstOrDefault();
-            string path = Path.Combine(Server.MapPath(picturePath), Path.GetFileName(cover.FileName));
-            cover.SaveAs(path);
-            return picturePath + cover.FileName;
+            var coverPhoto = files.FirstOrDefault();
+
+            // Some browsers send file names with full path. We only care about the file name.
+            var fileName = Path.GetFileName(coverPhoto.FileName);
+            var destinationPath = Path.Combine(Server.MapPath(path), fileName);
+            coverPhoto.SaveAs(destinationPath);
+        }
+
+        protected string GetCoverPhotoName(IEnumerable<HttpPostedFileBase> files)
+        {
+            if (files == null)
+            {
+                throw new ArgumentNullException("No collection of files");
+            }
+
+            var coverPhoto = files.FirstOrDefault();
+            return coverPhoto.FileName;
         }
     }
 }

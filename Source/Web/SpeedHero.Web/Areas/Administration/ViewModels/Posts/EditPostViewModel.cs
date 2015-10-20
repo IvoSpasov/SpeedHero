@@ -27,6 +27,6 @@
         public string CoverPhotoPath { get; set; }
 
         [Display(Name = "New cover photo")]
-        public IEnumerable<HttpPostedFileBase> NewCoverPhoto { get; set; }
+        public IEnumerable<HttpPostedFileBase> Files { get; set; }
     }
 }
