@@ -1,9 +1,11 @@
 ﻿namespace SpeedHero.Web.Areas.Administration.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Net;
+    using System.Web;
     using System.Web.Mvc;
 
     using AutoMapper;
@@ -15,8 +17,6 @@
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Areas.Administration.Controllers.Base;
     using SpeedHero.Web.Areas.Administration.ViewModels.Posts;
-    using System.Collections.Generic;
-    using System.Web;
     using SpeedHero.Web.Helpers;
 
     public class PostsController : AdminController
@@ -128,7 +128,7 @@
 
                 if (inputPost.Files != null)
                 {
-                    postFromDatabase.CoverPhotoPath = WebConstants.ImagesPath + this.GetCoverPhotoName(inputPost.Files);
+                    inputPost.CoverPhotoPath = WebConstants.ImagesPath + this.GetCoverPhotoName(inputPost.Files);
                     this.SavePhoto(inputPost.Files, WebConstants.ImagesPath);
                 }
 
@@ -147,6 +147,7 @@
             {
                 throw new ArgumentNullException("No collection of files");
             }
+
             if (string.IsNullOrEmpty(path))
             {
                 throw new ArgumentNullException("No path in which to save the files");

@@ -1,11 +1,11 @@
 ﻿namespace SpeedHero.Web.Areas.Administration.ViewModels.Users
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
 
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Areas.Administration.ViewModels.Base;
     using SpeedHero.Web.Infrastructure.Mapping;
-    using System.ComponentModel.DataAnnotations;
 
     public class ShowUsersViewModel : AdministrationViewModel, IMapFrom<User>
     {

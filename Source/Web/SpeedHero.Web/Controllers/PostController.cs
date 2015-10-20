@@ -14,9 +14,8 @@
     using SpeedHero.Common;
     using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
-    using SpeedHero.Web.ViewModels.Posts;
     using SpeedHero.Web.Helpers;
-    //sing SpeedHero.Web.Helpers;
+    using SpeedHero.Web.ViewModels.Posts;
 
     public class PostController : Controller
     {
@@ -81,13 +80,13 @@
         }
 
         // TODO check if it's a picture or not
-
         protected void SavePhoto(IEnumerable<HttpPostedFileBase> files, string path)
         {
             if (files == null)
             {
                 throw new ArgumentNullException("No collection of files");
             }
+
             if (string.IsNullOrEmpty(path))
             {
                 throw new ArgumentNullException("No path in which to save the files");

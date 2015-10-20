@@ -5,8 +5,8 @@
     using AutoMapper;
 
     using SpeedHero.Data.Models;
-    using SpeedHero.Web.Infrastructure.Mapping;
     using SpeedHero.Web.Areas.Administration.ViewModels.Base;
+    using SpeedHero.Web.Infrastructure.Mapping;
 
     public class PostDetailsViewModel : AdministrationViewModel, IMapFrom<Post>, IHaveCustomMappings
     {

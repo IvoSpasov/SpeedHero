@@ -9,8 +9,8 @@
 
     using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
-    using SpeedHero.Web.Areas.Administration.ViewModels.Comments;
     using SpeedHero.Web.Areas.Administration.Controllers.Base;
+    using SpeedHero.Web.Areas.Administration.ViewModels.Comments;
 
     public class CommentsController : AdminController
     {
@@ -24,7 +24,7 @@
         // GET: Administration/Comments
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         public ActionResult ShowAllInPost(int? id)
