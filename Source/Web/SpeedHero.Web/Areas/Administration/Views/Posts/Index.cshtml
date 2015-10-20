@@ -30,7 +30,7 @@
                     "Full edit", 
                     "Edit", 
                     ControllerName,
-                    new { id = "#=Id#", returnUrl = @Url.Action("Index", ControllerName, new { area = Constants.AdministrationAreaName }) }, 
+                    new { id = "#=Id#", returnUrl = @Url.Action("Index", ControllerName, new { area = WebConstants.AdministrationAreaName }) }, 
                     new { @class = "k-button" }).ToString());
             columns.Command(com => com.Edit()).Title("Title edit");
             columns.Command(com => com.Destroy()).Title("Delete");

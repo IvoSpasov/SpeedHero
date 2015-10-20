@@ -239,7 +239,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\WebConstants.cs" />
     <Compile Include="ViewModels\Comments\CreateCommentViewModel.cs" />
     <Compile Include="ViewModels\Posts\CreatePostViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
@@ -904,6 +904,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\KendoUpload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

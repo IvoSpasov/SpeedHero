@@ -10,7 +10,7 @@
         {
             get
             {
-                return Constants.AdministrationAreaName;
+                return WebConstants.AdministrationAreaName;
             }
         }
 
@@ -18,7 +18,7 @@
         {
             context.MapRoute(
                 name: "Administration_default",
-                url: Constants.AdministrationAreaName + "/{controller}/{action}/{id}",
+                url: WebConstants.AdministrationAreaName + "/{controller}/{action}/{id}",
                 defaults: new { action = "Index", id = UrlParameter.Optional });
         }
     }
