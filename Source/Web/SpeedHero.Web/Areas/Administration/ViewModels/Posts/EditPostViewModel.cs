@@ -1,6 +1,5 @@
 ﻿namespace SpeedHero.Web.Areas.Administration.ViewModels.Posts
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Web;
     using System.Web.Mvc;
@@ -27,6 +26,6 @@
         public string CoverPhotoPath { get; set; }
 
         [Display(Name = "New cover photo")]
-        public IEnumerable<HttpPostedFileBase> Files { get; set; }
+        public HttpPostedFileBase File { get; set; }
     }
 }

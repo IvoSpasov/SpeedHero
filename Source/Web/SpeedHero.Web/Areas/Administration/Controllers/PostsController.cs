@@ -126,10 +126,17 @@
                 Mapper.CreateMap<EditPostViewModel, Post>();
                 Mapper.Map(inputPost, postFromDatabase);
 
-                if (inputPost.Files != null)
+                if (inputPost.File != null)
                 {
-                    inputPost.CoverPhotoPath = WebConstants.ImagesPath + this.GetCoverPhotoName(inputPost.Files);
-                    this.SavePhoto(inputPost.Files, WebConstants.ImagesPath);
+                    if (!CheckIsFileAnImage(inputPost.File))
+                    {
+                        ModelState.AddModelError("Cover photo", "Cover photo must be of type \"jpeg\" or \"png\".");
+                        ViewBag.ModelState = "Invalid";
+                        return this.View(inputPost);
+                    }
+
+                    postFromDatabase.CoverPhotoPath = WebConstants.ImagesPath + inputPost.File.FileName;
+                    this.SaveCoverPhoto(inputPost.File, WebConstants.ImagesPath);
                 }
 
                 this.postsRepository.Update(postFromDatabase);
@@ -138,14 +145,35 @@
                 return this.Redirect(returnUrl);
             }
 
+            ViewBag.ModelState = "Invalid";
             return this.View(inputPost);
         }
 
-        protected void SavePhoto(IEnumerable<HttpPostedFileBase> files, string path)
+        private bool CheckIsFileAnImage(HttpPostedFileBase file)
         {
-            if (files == null)
+            if (file == null)
             {
-                throw new ArgumentNullException("No collection of files");
+                throw new ArgumentNullException("No file");
+            }
+
+            var allowedFileTypes = new List<string> { "image/jpeg", "image/png" };
+
+            foreach (var type in allowedFileTypes)
+            {
+                if (file.ContentType == type)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void SaveCoverPhoto(HttpPostedFileBase coverPhoto, string path)
+        {
+            if (coverPhoto == null)
+            {
+                throw new ArgumentNullException("No cover photo");
             }
 
             if (string.IsNullOrEmpty(path))
@@ -153,23 +181,10 @@
                 throw new ArgumentNullException("No path in which to save the files");
             }
 
-            var coverPhoto = files.FirstOrDefault();
-
             // Some browsers send file names with full path. We only care about the file name.
-            var fileName = Path.GetFileName(coverPhoto.FileName);
-            var destinationPath = Path.Combine(Server.MapPath(path), fileName);
+            var coverPhotoName = Path.GetFileName(coverPhoto.FileName);
+            var destinationPath = Path.Combine(Server.MapPath(path), coverPhotoName);
             coverPhoto.SaveAs(destinationPath);
-        }
-
-        protected string GetCoverPhotoName(IEnumerable<HttpPostedFileBase> files)
-        {
-            if (files == null)
-            {
-                throw new ArgumentNullException("No collection of files");
-            }
-
-            var coverPhoto = files.FirstOrDefault();
-            return coverPhoto.FileName;
         }
     }
 }
