@@ -59,7 +59,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult CreatePost(CreatePostViewModel inputPost)
         {
-            if (inputPost.File != null && !CheckIsFileAnImage(inputPost.File))
+            if (inputPost.File != null && !this.CheckIsFileAnImage(inputPost.File))
             {
                 ModelState.AddModelError("Cover photo", "Cover photo must be of type \"jpeg\" or \"png\".");
             }

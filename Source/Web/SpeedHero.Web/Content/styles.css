@@ -68,3 +68,9 @@ div.k-grid table {
         text-decoration: none;
     }
 /*fixing kendo grid (end)*/
+
+/*for Kendo Upload button*/
+
+.k-upload .k-button {
+    margin: 0 0 0 0;
+}

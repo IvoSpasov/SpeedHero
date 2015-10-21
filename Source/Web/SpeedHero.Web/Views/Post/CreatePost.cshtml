@@ -25,14 +25,28 @@
             @Html.EditorFor(p => p.Title, new { htmlAttributes = new { @class = "form-control" } })
         </div>
     </div>
+
     <div class="form-group">
-        @Html.LabelFor(p => p.File, new { @class = "control-label col-sm-2" })
+        @Html.Label("Cover photo", new { @class = "control-label col-sm-2" })
         <div class="col-sm-8">
+            @Html.EditorFor(p => p.CoverPhotoUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "paste the photo URL here or browse it on your pc" } })
+        </div>
+        <div class="col-sm-2">
             @(Html.Kendo().Upload()
-            .Name("File")
-            .Multiple(false))
+                .Name("File")
+                .Multiple(false)
+                .Messages(m => m.Select("Browse")))
         </div>
     </div>
+
+    @*<div class="form-group">
+            @Html.LabelFor(p => p.File, new { @class = "control-label col-sm-2" })
+            <div class="col-sm-8">
+                @(Html.Kendo().Upload()
+                .Name("File")
+                .Multiple(false))
+            </div>
+        </div>*@
     <div class="form-group">
         <div class="col-sm-12">
             @(Html.Kendo().Editor()

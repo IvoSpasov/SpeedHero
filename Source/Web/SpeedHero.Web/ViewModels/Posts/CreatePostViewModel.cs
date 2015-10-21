@@ -15,6 +15,10 @@
         [AllowHtml]
         public string Content { get; set; }
 
+
+        [Display(Name = "Cover photo url")]
+        public string CoverPhotoUrl { get; set; }
+
         [Required]
         [Display(Name = "Cover photo")]
         public HttpPostedFileBase File { get; set; }

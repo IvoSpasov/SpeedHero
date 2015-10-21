@@ -128,7 +128,7 @@
 
                 if (inputPost.File != null)
                 {
-                    if (!CheckIsFileAnImage(inputPost.File))
+                    if (!this.CheckIsFileAnImage(inputPost.File))
                     {
                         ModelState.AddModelError("Cover photo", "Cover photo must be of type \"jpeg\" or \"png\".");
                         ViewBag.ModelState = "Invalid";
