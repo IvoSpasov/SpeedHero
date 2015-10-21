@@ -18,6 +18,6 @@
 
         [Required]
         [Display(Name = "Cover photo")]
-        public IEnumerable<HttpPostedFileBase> Files { get; set; }
+        public HttpPostedFileBase File { get; set; }
     }
 }

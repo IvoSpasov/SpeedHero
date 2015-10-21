@@ -59,7 +59,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult CreatePost(CreatePostViewModel inputPost)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && CheckIsFileAnImage(inputPost.File))
             {
                 // This is to remind me if I don't use kendo Editor and the content needs decoding/encoding before saving to DB.
                 // string content = HttpUtility.HtmlDecode(inputPost.Content);
@@ -67,8 +67,8 @@
                 Mapper.CreateMap<CreatePostViewModel, Post>();
                 var newPost = Mapper.Map<Post>(inputPost);
                 newPost.AuthorId = this.User.Identity.GetUserId();
-                newPost.CoverPhotoPath = WebConstants.ImagesPath + this.GetCoverPhotoName(inputPost.Files);
-                this.SavePhoto(inputPost.Files, WebConstants.ImagesPath);
+                newPost.CoverPhotoPath = WebConstants.ImagesPath + inputPost.File.FileName;
+                this.SaveCoverPhoto(inputPost.File, WebConstants.ImagesPath);
                 this.postsRepository.Add(newPost);
                 this.postsRepository.SaveChanges();
                 this.TempData["SuccessfullNewPost"] = "Your post was successfully created.";
@@ -79,12 +79,21 @@
             return this.View(inputPost);
         }
 
-        // TODO check if it's a picture or not
-        protected void SavePhoto(IEnumerable<HttpPostedFileBase> files, string path)
+        protected bool CheckIsFileAnImage(HttpPostedFileBase file)
         {
-            if (files == null)
+            if (file == null)
             {
-                throw new ArgumentNullException("No collection of files");
+                throw new ArgumentNullException("No file");
+            }
+
+            return file.ContentType == "image/jpeg";
+        }
+
+        protected void SaveCoverPhoto(HttpPostedFileBase coverPhoto, string path)
+        {
+            if (coverPhoto == null)
+            {
+                throw new ArgumentNullException("No cover photo");
             }
 
             if (string.IsNullOrEmpty(path))
@@ -92,23 +101,10 @@
                 throw new ArgumentNullException("No path in which to save the files");
             }
 
-            var coverPhoto = files.FirstOrDefault();
-
             // Some browsers send file names with full path. We only care about the file name.
-            var fileName = Path.GetFileName(coverPhoto.FileName);
-            var destinationPath = Path.Combine(Server.MapPath(path), fileName);
+            var coverPhotoName = Path.GetFileName(coverPhoto.FileName);
+            var destinationPath = Path.Combine(Server.MapPath(path), coverPhotoName);
             coverPhoto.SaveAs(destinationPath);
-        }
-
-        protected string GetCoverPhotoName(IEnumerable<HttpPostedFileBase> files)
-        {
-            if (files == null)
-            {
-                throw new ArgumentNullException("No collection of files");
-            }
-
-            var coverPhoto = files.FirstOrDefault();
-            return coverPhoto.FileName;
         }
     }
 }
