@@ -59,7 +59,12 @@
         [ValidateAntiForgeryToken]
         public ActionResult CreatePost(CreatePostViewModel inputPost)
         {
-            if (ModelState.IsValid && CheckIsFileAnImage(inputPost.File))
+            if (inputPost.File != null && !CheckIsFileAnImage(inputPost.File))
+            {
+                ModelState.AddModelError("Cover photo", "Cover photo must be of type \"jpeg\" or...");
+            }
+
+            if (ModelState.IsValid)
             {
                 // This is to remind me if I don't use kendo Editor and the content needs decoding/encoding before saving to DB.
                 // string content = HttpUtility.HtmlDecode(inputPost.Content);
