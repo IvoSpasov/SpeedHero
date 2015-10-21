@@ -61,7 +61,7 @@
         {
             if (inputPost.File != null && !CheckIsFileAnImage(inputPost.File))
             {
-                ModelState.AddModelError("Cover photo", "Cover photo must be of type \"jpeg\" or...");
+                ModelState.AddModelError("Cover photo", "Cover photo must be of type \"jpeg\" or \"png\"");
             }
 
             if (ModelState.IsValid)
@@ -91,7 +91,17 @@
                 throw new ArgumentNullException("No file");
             }
 
-            return file.ContentType == "image/jpeg";
+            var allowedFileTypes = new List<string> { "image/jpeg", "image/png"};
+
+            foreach (var type in allowedFileTypes)
+            {
+                if (file.ContentType == type)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         protected void SaveCoverPhoto(HttpPostedFileBase coverPhoto, string path)
