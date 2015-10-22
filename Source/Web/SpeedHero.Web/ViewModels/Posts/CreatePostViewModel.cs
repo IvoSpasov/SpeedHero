@@ -19,8 +19,7 @@
         [Display(Name = "Cover photo URL")]
         public string CoverPhotoUrl { get; set; }
 
-        [Required]
-        [Display(Name = "Cover photo")]
+        [Display(Name = "Cover photo file")]
         public HttpPostedFileBase File { get; set; }
     }
 }

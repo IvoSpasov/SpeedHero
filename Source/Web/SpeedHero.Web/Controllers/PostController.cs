@@ -59,6 +59,17 @@
         [ValidateAntiForgeryToken]
         public ActionResult CreatePost(CreatePostViewModel inputPost)
         {
+            if (inputPost.CoverPhotoUrl == null && inputPost.File == null)
+            {
+                ModelState.AddModelError("Cover photo", "There must be a Cover photo specified either by URL or file on your pc.");
+            }
+
+            if (inputPost.CoverPhotoUrl != null && inputPost.File != null)
+            {
+                ModelState.AddModelError("Cover photo", "Please specify only one input for cover photo.");
+            }
+
+
             if (inputPost.File != null && !this.CheckIsFileAnImage(inputPost.File))
             {
                 ModelState.AddModelError("Cover photo", "Cover photo must be of type \"jpeg\" or \"png\".");
@@ -72,8 +83,17 @@
                 Mapper.CreateMap<CreatePostViewModel, Post>();
                 var newPost = Mapper.Map<Post>(inputPost);
                 newPost.AuthorId = this.User.Identity.GetUserId();
-                newPost.CoverPhotoPath = WebConstants.ImagesPath + inputPost.File.FileName;
-                this.SaveCoverPhoto(inputPost.File, WebConstants.ImagesPath);
+
+                if (inputPost.CoverPhotoUrl != null)
+                {
+                    newPost.CoverPhotoPath = inputPost.CoverPhotoUrl;
+                }
+                else
+                {
+                    newPost.CoverPhotoPath = WebConstants.ImagesPath + inputPost.File.FileName;
+                    this.SaveCoverPhoto(inputPost.File, WebConstants.ImagesPath);
+                }
+
                 this.postsRepository.Add(newPost);
                 this.postsRepository.SaveChanges();
                 this.TempData["SuccessfullNewPost"] = "Your post was successfully created.";
