@@ -120,6 +120,11 @@
         [ValidateAntiForgeryToken]
         public ActionResult Edit(EditPostViewModel inputPost, string returnUrl)
         {
+            if (inputPost.File != null && !this.CheckIsFileAnImage(inputPost.File))
+            {
+                ModelState.AddModelError("Cover photo", "Cover photo must be of type \"jpeg\" or \"png\".");
+            }
+
             if (ModelState.IsValid)
             {
                 var postFromDatabase = this.postsRepository.GetById(inputPost.Id);
@@ -128,13 +133,6 @@
 
                 if (inputPost.File != null)
                 {
-                    if (!this.CheckIsFileAnImage(inputPost.File))
-                    {
-                        ModelState.AddModelError("Cover photo", "Cover photo must be of type \"jpeg\" or \"png\".");
-                        ViewBag.ModelState = "Invalid";
-                        return this.View(inputPost);
-                    }
-
                     postFromDatabase.CoverPhotoPath = WebConstants.ImagesPath + inputPost.File.FileName;
                     this.SaveCoverPhoto(inputPost.File, WebConstants.ImagesPath);
                 }

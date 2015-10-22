@@ -22,7 +22,7 @@
         public string Content { get; set; }
 
         [Required]
-        [Display(Name = "Cover photo path")]
+        [Display(Name = "Cover photo path or URL")]
         public string CoverPhotoPath { get; set; }
 
         [Display(Name = "New cover photo")]

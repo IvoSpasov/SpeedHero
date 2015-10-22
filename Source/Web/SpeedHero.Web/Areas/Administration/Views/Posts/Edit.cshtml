@@ -35,23 +35,24 @@
         @Html.LabelFor(p => p.File, new { @class = "control-label col-sm-2" })
         <div class="col-sm-8">
             @(Html.Kendo().Upload()
-            .Name("File")
-            .Multiple(false))
+                .Name("File")
+                .Multiple(false)
+                .Messages(m => m.Select("Browse")))
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-12">
             @(Html.Kendo().Editor()
-            .Name("Content")
-            .Encode(false)
-            .HtmlAttributes(new { style = "width: 100%; height:700px" })
-            .ImageBrowser(imageBrowser => imageBrowser
-                .Image("~/Content/UserFiles/Images/{0}")
-                .Read("Read", "ImageBrowser")
-                .Create("Create", "ImageBrowser")
-                .Destroy("Destroy", "ImageBrowser")
-                .Upload("Upload", "ImageBrowser")
-                .Thumbnail("Thumbnail", "ImageBrowser")))
+                .Name("Content")
+                .Encode(false)
+                .HtmlAttributes(new { style = "width: 100%; height:700px" })
+                .ImageBrowser(imageBrowser => imageBrowser
+                    .Image("~/Content/UserFiles/Images/{0}")
+                    .Read("Read", "ImageBrowser")
+                    .Create("Create", "ImageBrowser")
+                    .Destroy("Destroy", "ImageBrowser")
+                    .Upload("Upload", "ImageBrowser")
+                    .Thumbnail("Thumbnail", "ImageBrowser")))
         </div>
     </div>
     <div class="form-group">
