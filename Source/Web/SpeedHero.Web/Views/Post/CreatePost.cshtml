@@ -35,11 +35,14 @@
 
     <div class="form-group">
         @Html.LabelFor(p => p.File, new { @class = "control-label col-sm-2" })
-        <div class="col-sm-8">
+        <div class="col-sm-8 kendo-upload">
             @(Html.Kendo().Upload()
                 .Name("File")
                 .Multiple(false)
-                .Messages(m => m.Select("Browse")))
+                .Messages(m => m.Select("Browse"))
+                .Events(events => events
+                    .Select("onKendoUploadSelect")
+                    .Remove("onKendoUploadRemove")))
         </div>
     </div>
     <div class="form-group">
@@ -70,26 +73,5 @@
 
 @section scripts{
     @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/coverPhoto")
 }
-
-<script>
-    $('#CoverPhotoUrl').on('keyup', onInstertedUrl);
-    $('#CoverPhotoUrl').on('paste', onInstertedUrl);
-
-    function onInstertedUrl() {
-        var _this = this,
-            $fileInput = $('input[id="File"]'),
-            $fileInputParent = $fileInput.parent();            
-
-        setTimeout(function () {
-            if ($(_this).val()) {
-                $fileInput.attr('disabled', '');
-                $fileInputParent.addClass('k-state-disabled');
-            }
-            else {
-                $fileInput.removeAttr('disabled');
-                $fileInputParent.removeClass('k-state-disabled');
-            }
-        }, 100);
-    }
-</script>

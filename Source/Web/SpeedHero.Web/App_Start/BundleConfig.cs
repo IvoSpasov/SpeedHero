@@ -41,6 +41,9 @@
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/coverPhoto").Include(
+                        "~/Scripts/cover-photo.js"));
         }
 
         private static void RegisterStyleBundles(BundleCollection bundles)

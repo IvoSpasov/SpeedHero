@@ -272,6 +272,7 @@
     <Content Include="Content\bootstrap.cyborg.css" />
     <Content Include="Content\bootstrap.cyborg.min.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Scripts\cover-photo.js" />
     <Content Include="Content\kendo\Black\editor.png" />
     <Content Include="Content\kendo\Black\imagebrowser.png" />
     <Content Include="Content\kendo\Black\indeterminate.gif" />
