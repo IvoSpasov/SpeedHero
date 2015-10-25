@@ -50,17 +50,17 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var comment = this.commentsRepository
+            var commentFromDatabase = this.commentsRepository
                 .GetById(id.Value);
 
-            if (comment == null)
+            if (commentFromDatabase == null)
             {
                 return this.HttpNotFound("Comment not found");
             }
 
-            var mappedComment = Mapper.Map<EditCommentViewModel>(comment);
+            var mappedComment = Mapper.Map<EditCommentViewModel>(commentFromDatabase);
 
-            ViewBag.PostId = comment.PostId;
+            ViewBag.PostId = commentFromDatabase.PostId;
             return this.View(mappedComment);
         }
 
@@ -85,7 +85,19 @@
 
         public ActionResult Delete(int? id)
         {
-            var commentFromDatabase = this.commentsRepository.GetById(id.Value);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var commentFromDatabase = this.commentsRepository
+                .GetById(id.Value);
+
+            if (commentFromDatabase == null)
+            {
+                return this.HttpNotFound("Comment not found");
+            }
+
             this.commentsRepository.Delete(id.Value);
             this.commentsRepository.SaveChanges();
 

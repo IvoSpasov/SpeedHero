@@ -17,7 +17,7 @@
             BundleTable.EnableOptimizations = false;
         }
 
-        public static void RegisterScriptBundles(BundleCollection bundles)
+        private static void RegisterScriptBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                         "~/Scripts/kendo/kendo.all.min.js",
