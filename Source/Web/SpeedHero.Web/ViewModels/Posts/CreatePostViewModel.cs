@@ -15,7 +15,6 @@
         [AllowHtml]
         public string Content { get; set; }
 
-
         [Display(Name = "Cover photo URL")]
         public string CoverPhotoUrl { get; set; }
 

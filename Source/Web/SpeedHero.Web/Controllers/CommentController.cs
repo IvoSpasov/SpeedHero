@@ -63,8 +63,7 @@
                 .All()
                 .Where(c => c.PostId == postId)
                 .OrderByDescending(c => c.CreatedOn)
-                .Project()
-                .To<ShowCommentViewModel>();
+                .ProjectTo<ShowCommentViewModel>();
 
             return this.PartialView("_ShowCommentsPartialView", commentsForCurrentPost);
         }

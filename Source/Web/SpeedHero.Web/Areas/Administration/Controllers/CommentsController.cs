@@ -37,8 +37,7 @@
             var comments = this.commentsRepository
                 .All()
                 .Where(c => c.PostId == id.Value)
-                .Project()
-                .To<ShowCommentsViewModel>();
+                .ProjectTo<ShowCommentsViewModel>();
 
             return this.PartialView("_ShowAllInPost", comments);
         }

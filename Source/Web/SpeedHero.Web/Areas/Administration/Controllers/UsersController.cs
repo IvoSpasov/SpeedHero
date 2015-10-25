@@ -33,8 +33,7 @@
         {
             var users = this.usersRepository
                 .All()
-                .Project()
-                .To<ShowUsersViewModel>();
+                .ProjectTo<ShowUsersViewModel>();
 
             DataSourceResult result = users.ToDataSourceResult(request);
 

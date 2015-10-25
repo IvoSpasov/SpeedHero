@@ -69,7 +69,6 @@
                 ModelState.AddModelError("Cover photo", "Please specify only one input for cover photo.");
             }
 
-
             if (inputPost.File != null && !this.CheckIsFileAnImage(inputPost.File))
             {
                 ModelState.AddModelError("Cover photo", "Cover photo must be of type \"jpeg\" or \"png\".");

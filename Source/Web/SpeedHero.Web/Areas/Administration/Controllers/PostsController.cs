@@ -38,8 +38,7 @@
         {
             var posts = this.postsRepository
                 .All()
-                .Project()
-                .To<ShowPostsViewModel>();
+                .ProjectTo<ShowPostsViewModel>();
 
             DataSourceResult result = posts.ToDataSourceResult(request);
 
