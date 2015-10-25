@@ -82,6 +82,8 @@
             return this.View(inputComment);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int? id)
         {
             if (id == null)
