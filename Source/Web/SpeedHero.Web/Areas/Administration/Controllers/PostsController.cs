@@ -52,7 +52,8 @@
 
             if (ModelState.IsValid)
             {
-                postFromDatabase = this.postsRepository.GetById(inputPost.Id);
+                postFromDatabase = this.postsRepository
+                    .GetById(inputPost.Id);
                 Mapper.CreateMap<UpdatePostViewModel, Post>();
                 Mapper.Map(inputPost, postFromDatabase);
                 this.postsRepository.Update(postFromDatabase);
@@ -83,15 +84,15 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var post = this.postsRepository
+            var postFromDatabase = this.postsRepository
                 .GetById(id.Value);
 
-            if (post == null)
+            if (postFromDatabase == null)
             {
                 return this.HttpNotFound("Post not found");
             }
 
-            var mappedPost = Mapper.Map<PostDetailsViewModel>(post);
+            var mappedPost = Mapper.Map<PostDetailsViewModel>(postFromDatabase);
             return this.View(mappedPost);
         }
 
@@ -102,16 +103,16 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var post = this.postsRepository
+            var postFromDatabase = this.postsRepository
                 .GetById(id.Value);
 
-            if (post == null)
+            if (postFromDatabase == null)
             {
                 return this.HttpNotFound("Post not found");
             }
 
             ViewBag.ReturnUrl = returnUrl;
-            var mappedPost = Mapper.Map<EditPostViewModel>(post);
+            var mappedPost = Mapper.Map<EditPostViewModel>(postFromDatabase);
             return this.View(mappedPost);
         }
 
@@ -126,7 +127,8 @@
 
             if (ModelState.IsValid)
             {
-                var postFromDatabase = this.postsRepository.GetById(inputPost.Id);
+                var postFromDatabase = this.postsRepository
+                    .GetById(inputPost.Id);
                 Mapper.CreateMap<EditPostViewModel, Post>();
                 Mapper.Map(inputPost, postFromDatabase);
 
@@ -182,6 +184,21 @@
             var coverPhotoName = Path.GetFileName(coverPhoto.FileName);
             var destinationPath = Path.Combine(Server.MapPath(path), coverPhotoName);
             coverPhoto.SaveAs(destinationPath);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            this.postsRepository.Delete(id.Value);
+            this.postsRepository.SaveChanges();
+
+            return this.RedirectToAction("Index", "Home", new { area = string.Empty });
         }
     }
 }

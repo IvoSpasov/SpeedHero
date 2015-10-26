@@ -27,15 +27,22 @@
 </dl>
 
 <div class="row margin-bottom-15">
-    <div class="col-sm-6">
-        @Html.ActionLink("Back", "Index", "Posts", new { area = WebConstants.AdministrationAreaName }, new { @class = "btn btn-default btn-block" })
+    <div class="col-sm-4">
+        @Html.ActionLink("Show post", "ShowPost", "Post", new { area = string.Empty, id = Model.Id }, new { @class = "btn btn-primary btn-block" })
     </div>
-    <div class="col-sm-6 padding-left-0">
+    <div class="col-sm-4 padding-left-0">
         @Html.ActionLink("Edit post",
         "Edit",
         "Posts",
         new { area = WebConstants.AdministrationAreaName, id = Model.Id, returnUrl = @Url.Action("Details", "Posts", new { area = WebConstants.AdministrationAreaName, id = Model.Id }) },
         new { @class = "btn btn-primary btn-block" })
+    </div>
+    <div class="col-sm-4 padding-left-0">
+        @using (Html.BeginForm("Delete", "Posts", new { id = Model.Id }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" value="Delete post" class="btn btn-danger btn-block" />
+        }
     </div>
 </div>
 
