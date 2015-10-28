@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
     using System.Net;
     using System.Web;
     using System.Web.Mvc;
@@ -148,6 +147,21 @@
             return this.View(inputPost);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            this.postsRepository.Delete(id.Value);
+            this.postsRepository.SaveChanges();
+
+            return this.RedirectToAction("Index", "Home", new { area = string.Empty });
+        }
+
         private bool CheckIsFileAnImage(HttpPostedFileBase file)
         {
             if (file == null)
@@ -184,21 +198,6 @@
             var coverPhotoName = Path.GetFileName(coverPhoto.FileName);
             var destinationPath = Path.Combine(Server.MapPath(path), coverPhotoName);
             coverPhoto.SaveAs(destinationPath);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            this.postsRepository.Delete(id.Value);
-            this.postsRepository.SaveChanges();
-
-            return this.RedirectToAction("Index", "Home", new { area = string.Empty });
         }
     }
 }
