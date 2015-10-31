@@ -1,6 +1,5 @@
 ﻿namespace SpeedHero.Web.ViewModels.Posts
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Web;
     using System.Web.Mvc;
@@ -12,13 +11,14 @@
         [Display(Name = "Title")]
         public string Title { get; set; }
 
-        // [UIHint("tinymce_full")]
         [Required]
         [AllowHtml]
         public string Content { get; set; }
 
-        [Required]
-        [Display(Name = "Cover Photo")]
-        public IEnumerable<HttpPostedFileBase> CoverPhoto { get; set; }
+        [Display(Name = "Cover photo URL")]
+        public string CoverPhotoUrl { get; set; }
+
+        [Display(Name = "Cover photo file")]
+        public HttpPostedFileBase File { get; set; }
     }
 }

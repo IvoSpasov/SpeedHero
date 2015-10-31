@@ -1,12 +1,12 @@
-﻿@model SpeedHero.Web.ViewModels.Posts.CreatePostViewModel
+﻿@model SpeedHero.Web.Areas.Administration.ViewModels.Posts.EditPostViewModel
 
 @{
-    ViewBag.Title = "Create Post";
+    ViewBag.Title = "Edit post";
 }
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("CreatePost", "Post", FormMethod.Post, new { @role = "form", @class = "form-horizontal" }))
+@using (Html.BeginForm("Edit", "Posts", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @role = "form", @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
 
@@ -25,24 +25,19 @@
             @Html.EditorFor(p => p.Title, new { htmlAttributes = new { @class = "form-control" } })
         </div>
     </div>
-
     <div class="form-group">
-        @Html.LabelFor(p => p.CoverPhotoUrl, new { @class = "control-label col-sm-2" })
+        @Html.LabelFor(p => p.CoverPhotoPath, new { @class = "control-label col-sm-2" })
         <div class="col-sm-8">
-            @Html.EditorFor(p => p.CoverPhotoUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "paste the photo URL here or browse it on your pc" } })
+            @Html.EditorFor(p => p.CoverPhotoPath, new { htmlAttributes = new { @class = "form-control" } })
         </div>
     </div>
-
     <div class="form-group">
         @Html.LabelFor(p => p.File, new { @class = "control-label col-sm-2" })
-        <div class="col-sm-8 kendo-upload">
+        <div class="col-sm-8">
             @(Html.Kendo().Upload()
                 .Name("File")
                 .Multiple(false)
-                .Messages(m => m.Select("Browse"))
-                .Events(events => events
-                    .Select("onKendoUploadSelect")
-                    .Remove("onKendoUploadRemove")))
+                .Messages(m => m.Select("Browse")))
         </div>
     </div>
     <div class="form-group">
@@ -61,17 +56,15 @@
         </div>
     </div>
     <div class="form-group">
-        <div class="col-sm-3">
-            <input type="submit" value="Create" class="btn btn-primary btn-block" />
+        <div class="col-sm-6">
+            <a href="@ViewBag.ReturnUrl" class="btn btn-default btn-block">Back</a>
+        </div>
+        <div class="col-sm-6 padding-left-0">
+            <input type="submit" value="Save" class="btn btn-primary btn-block" />
         </div>
     </div>
 }
 
-@section styles{
-    @Styles.Render("~/Content/kendo")
-}
-
-@section scripts{
-    @Scripts.Render("~/bundles/kendo")
-    @Scripts.Render("~/bundles/coverPhoto")
-}
+<script>
+    $('.k-textbox').removeClass('k-textbox').addClass('form-control text-box single-line');
+</script>

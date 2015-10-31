@@ -1,0 +1,53 @@
+﻿@using SpeedHero.Web.Helpers
+@model SpeedHero.Web.Areas.Administration.ViewModels.Posts.PostDetailsViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h3 class="text-center">@Html.DisplayFor(p => p.Title)</h3>
+
+<dl class="dl-horizontal">
+    <dt class="text-primary">@Html.DisplayNameFor(p => p.Id)</dt>
+    <dd>@Html.DisplayFor(p => p.Id)</dd>
+    <dt class="text-primary">@Html.DisplayNameFor(p => p.Title)</dt>
+    <dd>@Html.DisplayFor(p => p.Title)</dd>
+    <dt class="text-primary">@Html.DisplayNameFor(p => p.AuthorName)</dt>
+    <dd>@Html.DisplayFor(p => p.AuthorName)</dd>
+    <dt class="text-primary">@Html.DisplayNameFor(p => p.CreatedOn)</dt>
+    <dd>@Model.CreatedOn</dd>
+    <dt class="text-primary">@Html.DisplayNameFor(p => p.ModifiedOn)</dt>
+    <dd>@Model.ModifiedOn</dd>
+    <dt class="text-primary">@Html.DisplayNameFor(p => p.CoverPhotoPath)</dt>
+    <dd>@Html.DisplayFor(p => p.CoverPhotoPath)</dd>
+    <dt class="text-primary">Cover photo</dt>
+    <dd><img src="@Model.CoverPhotoPath" /></dd>
+    <dt class="text-primary">@Html.DisplayNameFor(p => p.Content)</dt>
+    <dd>@Html.Raw(Model.Content)</dd>
+</dl>
+
+<div class="row margin-bottom-15">
+    <div class="col-sm-4">
+        @Html.ActionLink("Show post", "ShowPost", "Post", new { area = string.Empty, id = Model.Id }, new { @class = "btn btn-primary btn-block" })
+    </div>
+    <div class="col-sm-4 padding-left-0">
+        @Html.ActionLink("Edit post",
+        "Edit",
+        "Posts",
+        new { area = WebConstants.AdministrationAreaName, id = Model.Id, returnUrl = @Url.Action("Details", "Posts", new { area = WebConstants.AdministrationAreaName, id = Model.Id }) },
+        new { @class = "btn btn-primary btn-block" })
+    </div>
+    <div class="col-sm-4 padding-left-0">
+        @using (Html.BeginForm("Delete", "Posts", new { id = Model.Id }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" value="Delete post" class="btn btn-danger btn-block" />
+        }
+    </div>
+</div>
+
+@Html.Action("ShowAllInPost", "Comments", new { id = Model.Id })
+
+<script>
+    $('.container img').addClass('img-responsive center-block').removeAttr('style width');
+</script>

@@ -2,6 +2,7 @@
 
 @{
     const int NumberOfPostsPerRow = 3;
+    string postUrl;
     int allPostsCount = Model.Count();
     int currentPostCounter = 0;
 
@@ -10,13 +11,14 @@
         <div class="row">
             @foreach (var post in Model)
             {
+                postUrl = Url.RouteUrl("Show post", new { id = post.Id });
                 currentPostCounter++;
 
-                <div class="col-sm-4">
-                    <a href="~/ShowPost/@post.Id">
+                <div class="col-sm-4 margin-15">
+                    <a href="@postUrl">
                         <img src="@post.CoverPhotoPath" class="img-responsive center-block" />
                     </a>
-                    <a href="~/ShowPost/@post.Id">
+                    <a href="@postUrl">
                         <h3>@post.Title</h3>
                     </a>
                     <div>

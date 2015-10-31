@@ -1,0 +1,57 @@
+﻿@using SpeedHero.Web.Helpers
+@using SpeedHero.Web.Areas.Administration.ViewModels.Posts
+
+@{
+    ViewBag.Title = "Posts";
+    const string ControllerName = "Posts";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@(Html.Kendo()
+    .Grid<ShowPostsViewModel>()
+    .Name("posts-grid")
+    .Columns(columns =>
+        {
+            columns.Bound(p => p.Id);
+            columns.Bound(p => p.Title);
+            columns.Bound(p => p.AuthorName);
+            columns.Bound(p => p.CreatedOn);
+            columns.Bound(p => p.ModifiedOn);
+            columns.Template(@<text></text>)
+                .ClientTemplate(@Html.ActionLink(
+                    "Details", 
+                    "Details", 
+                    ControllerName, 
+                    new { id = "#=Id#" }, 
+                    new { @class = "k-button" }).ToString());
+            columns.Template(@<text></text>)
+                .ClientTemplate(@Html.ActionLink(
+                    "Full edit", 
+                    "Edit", 
+                    ControllerName,
+                    new { id = "#=Id#", returnUrl = @Url.Action("Index", ControllerName, new { area = WebConstants.AdministrationAreaName }) }, 
+                    new { @class = "k-button" }).ToString());
+            columns.Command(com => com.Edit()).Title("Title edit");
+            columns.Command(com => com.Destroy()).Title("Delete");
+        })
+    .Pageable(p => p.Refresh(true))
+    .Sortable()
+    .Groupable()
+    .ColumnMenu()
+    .Editable(edit =>
+        {
+            edit.Mode(GridEditMode.PopUp);
+        })
+    //.ToolBar(toolbar =>
+    //    {
+    //        toolbar.Create();
+    //    })
+    .DataSource(data => data
+            .Ajax()
+            .Model(m => m.Id(p => p.Id))
+            .Read(read => read.Action("Read", ControllerName))
+            .Update(up => up.Action("Update", ControllerName))
+            .Destroy(destr => destr.Action("Destroy", ControllerName))
+            .PageSize(20))
+)

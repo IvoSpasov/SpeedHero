@@ -68,7 +68,6 @@ namespace SpeedHero.Web.App_Start
             kernel.Bind<DbContext>().To<SpeedHeroDbContext>();
             kernel.Bind(typeof(IGenericRepository<>)).To(typeof(GenericRepository<>));
             kernel.Bind(typeof(IDeletableEntityRepository<>)).To(typeof(DeletableEntityRepository<>));
-            kernel.Bind<ISanitizer>().To<HtmlSanitizerAdapter>();
         }        
     }
 }

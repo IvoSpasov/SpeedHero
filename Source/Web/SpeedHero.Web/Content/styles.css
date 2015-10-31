@@ -26,20 +26,11 @@ a:hover a:visited, a:link, a:active {
     text-decoration: none;
 }
 
-.col-sm-4 {
-    padding: 15px 15px;
+.alert {
+    margin-top: 20px;
 }
 
-.post-content {
-    font-size: 18px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-.all-comments {
-    padding: 15px 15px 0;
-}
-
+/*custom classes (start)*/
 .margin-15 {
     margin-bottom: 15px;
     margin-top: 15px;
@@ -49,27 +40,37 @@ a:hover a:visited, a:link, a:active {
     margin-bottom: 15px;
 }
 
-.content img {
-    max-width: 90%;
+.max-width-90 {
+    width: 90%;
 }
 
-.alert {
-    margin-top: 20px;
+.padding-left-0 {
+    padding-left: 0;
 }
 
-
-/*fixing kendo grid (Start)*/
-table.k-button {
-
+.text-size-30 {
+    font-size: 30px;
 }
 
-table a.k-button{
-    color: #515967;
-    text-decoration: none;
+.text-color-white {
+    color: #fff;
 }
+/*custom classes (end)*/
 
-table {
+/*fixing kendo grid (start)*/
+div.k-grid table {
     background-color: #fff;
     color: #515967;
 }
-/*fixing kendo grid (End)*/
+
+    div.k-grid table a {
+        color: #515967;
+        text-decoration: none;
+    }
+/*fixing kendo grid (end)*/
+
+/*for Kendo Upload button*/
+
+.k-upload .k-button {
+    margin: 0 0 0 0;
+}

@@ -40,8 +40,7 @@
                 .All()
                 .OrderByDescending(p => p.CreatedOn)
                 .Take(12)
-                .Project()
-                .To<IndexViewModel>();
+                .ProjectTo<IndexViewModel>();
 
             return this.PartialView("_ShowLatestPosts", posts);
         }

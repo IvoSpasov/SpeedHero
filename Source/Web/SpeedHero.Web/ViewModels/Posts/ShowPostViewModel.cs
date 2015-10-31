@@ -26,7 +26,7 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
-            Mapper.CreateMap<Post, ShowPostViewModel>()
+            configuration.CreateMap<Post, ShowPostViewModel>()
                 .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(p => p.Author.UserName))
                 .ForMember(dto => dto.NumberOfComments, opt => opt.MapFrom(p => p.Comments.Count()));
         }

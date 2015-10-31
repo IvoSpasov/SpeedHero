@@ -1,9 +1,9 @@
 ﻿namespace SpeedHero.Web.Controllers
 {
     using System.Linq;
-    using System.Web;
     using System.Web.Mvc;
-
+    
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Microsoft.AspNet.Identity;
 
@@ -13,11 +13,11 @@
 
     public class CommentController : Controller
     {
-        private readonly IGenericRepository<Comment> commentsRepository;
+        private readonly IDeletableEntityRepository<Comment> commentsRepository;
 
-        public CommentController(IGenericRepository<Comment> commentsGenericRepository)
+        public CommentController(IDeletableEntityRepository<Comment> commentsDeletableRepository)
         {
-            this.commentsRepository = commentsGenericRepository;
+            this.commentsRepository = commentsDeletableRepository;
         }
 
         // [ChildActionOnly] It does not work with RedirectToAction.
@@ -40,16 +40,9 @@
         {
             if (ModelState.IsValid)
             {
-                var currentUserId = this.User.Identity.GetUserId();
-                string content = HttpUtility.HtmlDecode(inputComment.Content);
-
-                var comment = new Comment
-                {
-                    Content = content,
-                    PostId = inputComment.PostId,
-                    AuthorId = currentUserId
-                };
-
+                Mapper.CreateMap<CreateCommentViewModel, Comment>();
+                var comment = Mapper.Map<Comment>(inputComment);
+                comment.AuthorId = this.User.Identity.GetUserId();
                 this.commentsRepository.Add(comment);
                 this.commentsRepository.SaveChanges();
             }
@@ -70,8 +63,7 @@
                 .All()
                 .Where(c => c.PostId == postId)
                 .OrderByDescending(c => c.CreatedOn)
-                .Project()
-                .To<ShowCommentViewModel>();
+                .ProjectTo<ShowCommentViewModel>();
 
             return this.PartialView("_ShowCommentsPartialView", commentsForCurrentPost);
         }

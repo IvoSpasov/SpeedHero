@@ -1,7 +1,31 @@
-﻿@model SpeedHero.Web.ViewModels.Posts.ShowPostViewModel
+﻿@using SpeedHero.Common
+@using SpeedHero.Web.Helpers
+@model SpeedHero.Web.ViewModels.Posts.ShowPostViewModel
 
 @{
     ViewBag.Title = Model.Title;
+}
+
+@if (User.IsInRole(GlobalConstants.AdministratorRoleName))
+{
+    <div class="row margin-15">
+        <div class="col-sm-6">
+            @Html.ActionLink(
+                "Details", 
+                "Details", 
+                "Posts", 
+                new { area = WebConstants.AdministrationAreaName, id = Model.Id }, 
+                new { @class = "btn btn-default btn-block" })
+        </div>
+        <div class="col-sm-6 padding-left-0">
+            @Html.ActionLink(
+                "Edit",
+                "Edit",
+                "Posts",
+                new { area = WebConstants.AdministrationAreaName, id = Model.Id, returnUrl = @Url.RouteUrl("Show post", new { id = Model.Id }) },
+                new { @class = "btn btn-default btn-block" })
+        </div>
+    </div>
 }
 
 @if (TempData["SuccessfullNewPost"] != null)
@@ -63,3 +87,7 @@
     @Scripts.Render("~/bundles/jqueryAjax")
     @*@Scripts.Render("~/bundles/jqueryForm")*@
 }
+
+<script>
+    $('.content img').addClass('center-block max-width-90').removeAttr('style width');
+</script>

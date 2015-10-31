@@ -1,7 +1,6 @@
 ﻿namespace SpeedHero.Web.ViewModels.Comments
 {
     using System;
-    using System.Linq;
 
     using AutoMapper;
 
@@ -18,7 +17,7 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
-            Mapper.CreateMap<Comment, ShowCommentViewModel>()
+            configuration.CreateMap<Comment, ShowCommentViewModel>()
                 .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(c => c.Author.UserName));
         }
     }

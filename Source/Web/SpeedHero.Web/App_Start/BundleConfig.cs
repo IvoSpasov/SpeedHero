@@ -1,6 +1,5 @@
 ﻿namespace SpeedHero.Web.App_Start
 {
-    using System.Web;
     using System.Web.Optimization;
 
     public class BundleConfig
@@ -18,7 +17,7 @@
             BundleTable.EnableOptimizations = false;
         }
 
-        public static void RegisterScriptBundles(BundleCollection bundles)
+        private static void RegisterScriptBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                         "~/Scripts/kendo/kendo.all.min.js",
@@ -42,17 +41,18 @@
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/coverPhoto").Include(
+                        "~/Scripts/cover-photo.js"));
         }
 
         private static void RegisterStyleBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/kendo").Include(
-                        "~/Content/kendo/kendo.common.min.css",
                         "~/Content/kendo/kendo.common-bootstrap.min.css",
                         "~/Content/kendo/kendo.silver.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
-                        "~/Content/bootstrap.min.css",
                         "~/Content/bootstrap.cyborg.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/custom").Include(
