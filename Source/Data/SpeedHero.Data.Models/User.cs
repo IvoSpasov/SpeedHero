@@ -25,8 +25,10 @@
             this.comments = new HashSet<Comment>();
         }
 
+        [MaxLength(25)]
         public string FirstName { get; set; }
 
+        [MaxLength(25)]
         public string LastName { get; set; }
 
         public DateTime CreatedOn { get; set; }
