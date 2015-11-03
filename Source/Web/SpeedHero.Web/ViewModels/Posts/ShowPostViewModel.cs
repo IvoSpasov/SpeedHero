@@ -20,14 +20,14 @@
 
         public DateTime CreatedOn { get; set; }
         
-        public string AuthorName { get; set; }
+        public string AuthorUserName { get; set; }
 
         public int NumberOfComments { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Post, ShowPostViewModel>()
-                .ForMember(dto => dto.AuthorName, opt => opt.MapFrom(p => p.Author.UserName))
+                //.ForMember(dto => dto.AuthorName, opt => opt.MapFrom(p => p.Author.UserName))
                 .ForMember(dto => dto.NumberOfComments, opt => opt.MapFrom(p => p.Comments.Count()));
         }
     }
