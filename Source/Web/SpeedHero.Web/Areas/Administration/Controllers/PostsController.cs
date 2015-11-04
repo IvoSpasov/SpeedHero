@@ -134,7 +134,7 @@
                 if (inputPost.File != null)
                 {
                     postFromDatabase.CoverPhotoPath = WebConstants.ImagesPath + inputPost.File.FileName;
-                    KendoUpload.SaveCoverPhoto(inputPost.File, WebConstants.ImagesPath, Server);
+                    KendoUpload.SaveCoverPhoto(inputPost.File, WebConstants.ImagesPath, this.Server);
                 }
 
                 this.postsRepository.Update(postFromDatabase);

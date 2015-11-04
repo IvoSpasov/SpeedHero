@@ -19,29 +19,19 @@ namespace SpeedHero.Data.Migrations
             this.AutomaticMigrationDataLossAllowed = true;
         }
 
+        // This method will be called after migrating to the latest version.
         protected override void Seed(SpeedHeroDbContext context)
         {
-            // This method will be called after migrating to the latest version.
-
-            // You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            // to avoid creating duplicate seed data. E.g.
-            //
-            //   context.People.AddOrUpdate(
-            //     p => p.FullName,
-            //     new Person { FullName = "Andrew Peters" },
-            //     new Person { FullName = "Brice Lambson" },
-            //     new Person { FullName = "Rowan Miller" }
-            //   );
             this.SeedRoles(context);
             this.SeedUsersWithRoles(context);
         }
 
-        protected void SeedRoles(SpeedHeroDbContext context)
+        private void SeedRoles(SpeedHeroDbContext context)
         {
             context.Roles.AddOrUpdate(r => r.Name, new IdentityRole(GlobalConstants.AdministratorRoleName));
         }
 
-        protected void SeedUsersWithRoles(SpeedHeroDbContext context)
+        private void SeedUsersWithRoles(SpeedHeroDbContext context)
         {
             const string AdminUserName = "admin";
             const string AdminEmail = "admin@admin.com";

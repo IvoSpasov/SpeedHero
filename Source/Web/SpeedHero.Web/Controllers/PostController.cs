@@ -90,7 +90,7 @@
                 else
                 {
                     newPost.CoverPhotoPath = WebConstants.ImagesPath + inputPost.File.FileName;
-                    KendoUpload.SaveCoverPhoto(inputPost.File, WebConstants.ImagesPath, Server);
+                    KendoUpload.SaveCoverPhoto(inputPost.File, WebConstants.ImagesPath, this.Server);
                 }
 
                 this.postsRepository.Add(newPost);
