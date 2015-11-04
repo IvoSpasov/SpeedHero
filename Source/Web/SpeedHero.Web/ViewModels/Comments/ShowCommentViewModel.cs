@@ -7,7 +7,7 @@
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Infrastructure.Mapping;
 
-    public class ShowCommentViewModel : IMapFrom<Comment>//, IHaveCustomMappings
+    public class ShowCommentViewModel : IMapFrom<Comment> //, IHaveCustomMappings
     {
         public string Content { get; set; }
 

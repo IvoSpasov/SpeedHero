@@ -234,6 +234,7 @@
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageBrowserController.cs" />
+    <Compile Include="Helpers\KendoUpload.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -906,6 +907,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\KendoUpload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

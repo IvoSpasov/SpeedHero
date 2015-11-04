@@ -69,7 +69,7 @@
                 ModelState.AddModelError("Cover photo", "Please specify only one input for cover photo.");
             }
 
-            if (inputPost.File != null && !this.CheckIsFileAnImage(inputPost.File))
+            if (inputPost.File != null && !KendoUpload.CheckIsFileAnImage(inputPost.File))
             {
                 ModelState.AddModelError("Cover photo", "Cover photo must be of type \"jpeg\" or \"png\".");
             }
@@ -90,7 +90,7 @@
                 else
                 {
                     newPost.CoverPhotoPath = WebConstants.ImagesPath + inputPost.File.FileName;
-                    this.SaveCoverPhoto(inputPost.File, WebConstants.ImagesPath);
+                    KendoUpload.SaveCoverPhoto(inputPost.File, WebConstants.ImagesPath, Server);
                 }
 
                 this.postsRepository.Add(newPost);
@@ -101,44 +101,6 @@
 
             ViewBag.ModelState = "Invalid";
             return this.View(inputPost);
-        }
-
-        private bool CheckIsFileAnImage(HttpPostedFileBase file)
-        {
-            if (file == null)
-            {
-                throw new ArgumentNullException("No file");
-            }
-
-            var allowedFileTypes = new List<string> { "image/jpeg", "image/png" };
-
-            foreach (var type in allowedFileTypes)
-            {
-                if (file.ContentType == type)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private void SaveCoverPhoto(HttpPostedFileBase coverPhoto, string path)
-        {
-            if (coverPhoto == null)
-            {
-                throw new ArgumentNullException("No cover photo");
-            }
-
-            if (string.IsNullOrEmpty(path))
-            {
-                throw new ArgumentNullException("No path in which to save the files");
-            }
-
-            // Some browsers send file names with full path. We only care about the file name.
-            var coverPhotoName = Path.GetFileName(coverPhoto.FileName);
-            var destinationPath = Path.Combine(Server.MapPath(path), coverPhotoName);
-            coverPhoto.SaveAs(destinationPath);
         }
     }
 }
