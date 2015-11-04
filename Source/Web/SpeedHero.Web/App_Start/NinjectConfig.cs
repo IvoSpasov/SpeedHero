@@ -1,5 +1,5 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SpeedHero.Web.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(SpeedHero.Web.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SpeedHero.Web.App_Start.NinjectConfig), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(SpeedHero.Web.App_Start.NinjectConfig), "Stop")]
 
 namespace SpeedHero.Web.App_Start
 {
@@ -15,7 +15,7 @@ namespace SpeedHero.Web.App_Start
     using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Web.Infrastructure;
 
-    public static class NinjectWebCommon 
+    public static class NinjectConfig 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
