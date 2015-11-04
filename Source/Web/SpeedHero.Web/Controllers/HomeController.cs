@@ -13,15 +13,7 @@
     {
         private const int CacheInMinutes = 1;
         private readonly IDeletableEntityRepository<Post> postsRepository;
-
-        // This is no logner needed due to Ninject
-        // Poor man's dependency injection
-        // public HomeController()
-        //     : this(new GenericRepository<Post>(new SpeedHeroDbContext()))
-        // {
-        // }
-
-        // This constructor can be used for unit testing
+        
         public HomeController(IDeletableEntityRepository<Post> postsDeletableRepository)
         {
             this.postsRepository = postsDeletableRepository;

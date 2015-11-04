@@ -72,6 +72,7 @@
             {
                 // This is to remind me if I don't use kendo Editor and the content needs decoding/encoding before saving to DB.
                 // string content = HttpUtility.HtmlDecode(inputPost.Content);
+                // TODO: CreateMap must happen once and not on every request
                 Mapper.CreateMap<CreatePostViewModel, Post>();
                 var newPost = Mapper.Map<Post>(inputPost);
                 newPost.AuthorId = this.User.Identity.GetUserId();
