@@ -3,6 +3,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
+    using Common.Constants;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Areas.Administration.ViewModels.Base;
     using SpeedHero.Web.Infrastructure.Mapping;
@@ -15,7 +16,7 @@
 
         [Display(Name = "Title")]
         [Required]
-        [StringLength(100, MinimumLength = 5)]        
+        [StringLength(ValidationConstants.PostTitleMaxLength, MinimumLength = ValidationConstants.PostTitleMinLength)]        
         public string Title { get; set; }
 
         [Display(Name = "Author")]

@@ -1,17 +1,11 @@
 ﻿namespace SpeedHero.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
     using System.Net;
-    using System.Web;
     using System.Web.Mvc;
 
     using AutoMapper;
+    using Common.Constants;
     using Microsoft.AspNet.Identity;
-
-    using SpeedHero.Common;
     using SpeedHero.Data.Common.Repositories;
     using SpeedHero.Data.Models;
     using SpeedHero.Web.Helpers;
@@ -78,7 +72,6 @@
             {
                 // This is to remind me if I don't use kendo Editor and the content needs decoding/encoding before saving to DB.
                 // string content = HttpUtility.HtmlDecode(inputPost.Content);
-
                 Mapper.CreateMap<CreatePostViewModel, Post>();
                 var newPost = Mapper.Map<Post>(inputPost);
                 newPost.AuthorId = this.User.Identity.GetUserId();

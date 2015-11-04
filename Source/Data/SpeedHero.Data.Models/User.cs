@@ -10,6 +10,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
+    using SpeedHero.Common.Constants;
     using SpeedHero.Data.Common.Models;
 
     public class User : IdentityUser, IAuditInfo, IDeletableEntity
@@ -25,10 +26,10 @@
             this.comments = new HashSet<Comment>();
         }
 
-        [MaxLength(25)]
+        [MaxLength(ValidationConstants.NameMaxLength)]
         public string FirstName { get; set; }
 
-        [MaxLength(25)]
+        [MaxLength(ValidationConstants.NameMaxLength)]
         public string LastName { get; set; }
 
         public DateTime CreatedOn { get; set; }

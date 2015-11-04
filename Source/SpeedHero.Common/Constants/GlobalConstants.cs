@@ -1,4 +1,4 @@
-﻿namespace SpeedHero.Common
+﻿namespace SpeedHero.Common.Constants
 {
     public class GlobalConstants
     {

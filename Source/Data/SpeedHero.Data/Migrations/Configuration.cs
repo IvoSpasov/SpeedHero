@@ -6,7 +6,7 @@ namespace SpeedHero.Data.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    using SpeedHero.Common;
+    using SpeedHero.Common.Constants;
     using SpeedHero.Data.Models;
 
     public sealed class Configuration : DbMigrationsConfiguration<SpeedHeroDbContext>

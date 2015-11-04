@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    using SpeedHero.Common.Constants;
     using SpeedHero.Data.Common.Models;
 
     public class Post : DeletableEntity, IAuditInfo, IDeletableEntity
@@ -18,7 +19,7 @@
         [Key]
         public int Id { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(ValidationConstants.PostTitleMaxLength)]
         [Required]
         public string Title { get; set; }
 

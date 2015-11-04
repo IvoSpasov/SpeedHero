@@ -4,10 +4,12 @@
     using System.Web;
     using System.Web.Mvc;
 
+    using Common.Constants;
+
     public class CreatePostViewModel
     {
         [Required]
-        [StringLength(100, MinimumLength = 5)]
+        [StringLength(ValidationConstants.PostTitleMaxLength, MinimumLength = ValidationConstants.PostTitleMinLength)]
         [Display(Name = "Title")]
         public string Title { get; set; }
 
