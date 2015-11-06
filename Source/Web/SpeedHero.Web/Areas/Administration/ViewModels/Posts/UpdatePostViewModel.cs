@@ -3,8 +3,10 @@
     using System.ComponentModel.DataAnnotations;
 
     using Common.Constants;
+    using Data.Models;
+    using Infrastructure.Mapping;
 
-    public class UpdatePostViewModel
+    public class UpdatePostViewModel : IMapFrom<Post>
     {
         // Server side validation
         public int Id { get; set; }

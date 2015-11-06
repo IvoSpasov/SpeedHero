@@ -70,7 +70,6 @@
             if (ModelState.IsValid)
             {
                 var commentFromDatabase = this.commentsRepository.GetById(inputComment.Id);
-                Mapper.CreateMap<EditCommentViewModel, Comment>();
                 Mapper.Map(inputComment, commentFromDatabase);
 
                 this.commentsRepository.Update(commentFromDatabase);

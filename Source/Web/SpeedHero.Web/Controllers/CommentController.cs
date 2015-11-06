@@ -40,7 +40,6 @@
         {
             if (ModelState.IsValid)
             {
-                Mapper.CreateMap<CreateCommentViewModel, Comment>();
                 var comment = Mapper.Map<Comment>(inputComment);
                 comment.AuthorId = this.User.Identity.GetUserId();
                 this.commentsRepository.Add(comment);

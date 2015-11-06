@@ -3,7 +3,10 @@
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
-    public class CreateCommentViewModel
+    using Data.Models;
+    using Infrastructure.Mapping;
+
+    public class CreateCommentViewModel : IMapFrom<Comment>
     {
         [Required]
         public int PostId { get; set; }

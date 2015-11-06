@@ -53,7 +53,6 @@
             {
                 postFromDatabase = this.postsRepository
                     .GetById(inputPost.Id);
-                Mapper.CreateMap<UpdatePostViewModel, Post>();
                 Mapper.Map(inputPost, postFromDatabase);
                 this.postsRepository.Update(postFromDatabase);
                 this.postsRepository.SaveChanges();
@@ -128,7 +127,6 @@
             {
                 var postFromDatabase = this.postsRepository
                     .GetById(inputPost.Id);
-                Mapper.CreateMap<EditPostViewModel, Post>();
                 Mapper.Map(inputPost, postFromDatabase);
 
                 if (inputPost.File != null)

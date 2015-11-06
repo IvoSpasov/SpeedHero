@@ -14,7 +14,7 @@
         public int Id { get; set; }
 
         [Required]
-        [StringLength(ValidationConstants.PostTitleMaxLength, MinimumLength = ValidationConstants.PostTitleMaxLength)]
+        [StringLength(ValidationConstants.PostTitleMaxLength, MinimumLength = ValidationConstants.PostTitleMinLength)]
         [Display(Name = "Title")]
         public string Title { get; set; }
 

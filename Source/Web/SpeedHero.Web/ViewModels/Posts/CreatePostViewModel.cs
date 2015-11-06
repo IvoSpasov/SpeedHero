@@ -5,8 +5,10 @@
     using System.Web.Mvc;
 
     using Common.Constants;
+    using Data.Models;
+    using Infrastructure.Mapping;
 
-    public class CreatePostViewModel
+    public class CreatePostViewModel : IMapFrom<Post>
     {
         [Required]
         [StringLength(ValidationConstants.PostTitleMaxLength, MinimumLength = ValidationConstants.PostTitleMinLength)]
